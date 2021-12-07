@@ -1,11 +1,20 @@
 import {Card, Container, Form, Button, Col, Row} from 'react-bootstrap';
 import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import API from "../API";
 
 function Registration(props) {
     const [emailLogin, setEmailLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
     const [passwordConfirmLogin, setPasswordConfirmLogin] = useState('');
     const [buttonEnabled, setButtonEnabled] = useState(false);
+
+    const handleRegistration = (event) => {
+        API.registerNewUser(emailLogin, passwordLogin).then((user) => {
+            console.log(user);
+            props.setIsSignedIn(user);
+        });
+    }
 
     useEffect(() => {
         if (emailLogin !== '' && passwordLogin !== '' && passwordConfirmLogin !== '') {
@@ -49,9 +58,15 @@ function Registration(props) {
                 </Form.Group>
             </Form>
             <Row className='fixed-bottom mx-4 mb-4'>
-                <Button variant="primary" type="submit" disabled={!buttonEnabled}>
+                <Button
+                    variant="primary"
+                    disabled={!buttonEnabled}
+                    onClick={() => handleRegistration()}>
                     Register
                 </Button>
+                <Link to="/" className='text-center text-muted mt-2'>
+                    Already got an account?
+                </Link>
             </Row>
         </Container>
     );

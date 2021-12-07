@@ -50,7 +50,8 @@ function App() {
                     <Login/>
                 }/>
                 <Route exact path="/register" element={
-                    <Registration/>
+                    <Registration
+                    setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/mygames" element={
                     <>

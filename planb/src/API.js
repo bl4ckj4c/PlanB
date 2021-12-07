@@ -25,7 +25,9 @@ async function registerNewUser(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
-            return userCredential.user;
+            const user = userCredential.user;
+            console.log(user);
+            return user;
         })
         .catch((error) => {
             return error;
@@ -58,6 +60,8 @@ async function getAllGames() {
 }
 
 const API = {
+    registerNewUser,
+    signInUser,
     getAllGames
 };
 
