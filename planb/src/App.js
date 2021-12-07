@@ -11,7 +11,10 @@ import {Col, Container, Form, Row} from "react-bootstrap";
 import API from './API'
 import SignInScreen from './components/login_old';
 import GameCard from './components/GameCard';
+import Login from './components/Login';
+import Registration from './components/Registration';
 import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
+
 
 
 function App() {
@@ -43,11 +46,12 @@ function App() {
             setIsSignedIn={setIsSignedIn}/>*/
         <BrowserRouter>
             <Routes>
-                {/*<Route exact path="/" element={
-                    <SignInScreen
-                        isSignedIn={isSignedIn}
-                        setIsSignedIn={setIsSignedIn}/>
-                }/>*/}
+                <Route exact path="/" element={
+                    <Login/>
+                }/>
+                <Route exact path="/register" element={
+                    <Registration/>
+                }/>
                 <Route exact path="/mygames" element={
                     <>
                         <Container>
