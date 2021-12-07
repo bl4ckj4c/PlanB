@@ -9,28 +9,17 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {Col, Container, Form, Row} from "react-bootstrap";
 
 import API from './API'
-import SignInScreen from './components/login';
+import SignInScreen from './components/login_old';
 import GameCard from './components/GameCard';
 import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
 
-
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-
-import {firebaseConfig} from "./firebase-client/config";
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [gameList, setGameList] = useState([]);
 
     useEffect(() => {
-        const games = collection(db, 'Games');
-        getDocs(games).then((items) => {
-            console.log(items.docs.map(doc => doc.data()));
-        });
-
+        API.getAllGames().then(result => console.log(result));
     }, []);
 
     useEffect(() => {
