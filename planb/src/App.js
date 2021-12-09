@@ -55,7 +55,7 @@ function App() {
                 }/>
                 <Route exact path="/mygames" element={
                     <>
-                        <Container>
+                        <Container className = "v-width-100">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={2}>
                                     <Plus size={30}/>
