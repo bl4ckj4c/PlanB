@@ -23,6 +23,7 @@ function App() {
 
     useEffect(() => {
         API.getAllGames().then(result => console.log(result));
+        API.getUserGames('EGTY3JBs1iVP5UZ59J3wv76pWnL2').then(result => console.log(result));
     }, []);
 
     useEffect(() => {
