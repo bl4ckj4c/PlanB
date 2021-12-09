@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import * as Icon from 'react-bootstrap-icons';
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import {Col, Container, Form, Row} from "react-bootstrap";
 
 import API from './API'
@@ -47,6 +47,9 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={
+                    isSignedIn ? <Navigate replace to = "/mygames"/> : <Navigate replace to = "/login"/> 
+                }/>
+                <Route exact path="/login" element={
                     <Login/>
                 }/>
                 <Route exact path="/register" element={
@@ -55,12 +58,12 @@ function App() {
                 }/>
                 <Route exact path="/mygames" element={
                     <>
-                        <Container className = "v-width-100">
+                        <Container>
                             <Row className='justify-content-between mt-2'>
-                                <Col xs={2}>
-                                    <Plus size={30}/>
+                                <Col xs={6}>
+                                    <Plus size={30} color="grey"/>
+                                    <span className = "text-muted align-middle">Add game</span> 
                                 </Col>
-                                <Col xs={2}/>
                                 <Col xs={2}>
                                     <PersonCircle size={30} color="grey"/>
                                 </Col>
@@ -89,6 +92,21 @@ function App() {
                             <GameCard/>
                         </Container>
                     </>
+                }/>
+                <Route exact path="/addgame" element={
+                    isSignedIn ? <div/> : <Navigate replace to = "/login"/> 
+                }/>
+                
+                <Route exact path="/newsession" element={
+                    isSignedIn ? <div/> : <Navigate replace to = "/login"/> 
+                }/>
+
+                <Route exact path="/rules" element={
+                    isSignedIn ? <div/> : <Navigate replace to = "/login"/> 
+                }/>
+
+                <Route exact path="/suggest" element={
+                    isSignedIn ? <div/> : <Navigate replace to = "/login"/> 
                 }/>
             </Routes>
         </BrowserRouter>
