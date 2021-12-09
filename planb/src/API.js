@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase/app";
 import {getFirestore, collection, getDocs} from "firebase/firestore";
-import {getAuth, createUserWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
 
 import {firebaseConfig} from "./firebase-client/config";
 
