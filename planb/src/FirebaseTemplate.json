@@ -1,0 +1,12 @@
+{
+  "Title": "Monopoly",
+  "Categories":  [
+    "Family", "Dice"
+  ],
+  "Description": "TEST",
+  "Difficulty": "Easy",
+  "Duration": "1h",
+  "PlayersMax": 7,
+  "PlayersMin": 2,
+  "Rules": "http://url/..."
+}
