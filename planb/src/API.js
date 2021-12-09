@@ -1,6 +1,24 @@
 import {initializeApp} from "firebase/app";
-import {getFirestore, collection, getDocs} from "firebase/firestore";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged} from "firebase/auth";
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    doc,
+    getDocs,
+    setDoc,
+    addDoc,
+    getDoc,
+    updateDoc,
+    arrayUnion,
+    arrayRemove
+} from "firebase/firestore";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged
+} from "firebase/auth";
 
 import {firebaseConfig} from "./firebase-client/config";
 
@@ -23,10 +41,17 @@ onAuthStateChanged(auth, (user) => {
 
 async function registerNewUser(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
             // Signed in
             const user = userCredential.user;
             console.log(user);
+
+            // Create new document for the new user into table 'UserGames'
+            const docRef = await addDoc(collection(db, 'UserGames'), {
+                UID: user.uid,
+                Games: []
+            });
+
             return user;
         })
         .catch((error) => {
@@ -59,10 +84,57 @@ async function getAllGames() {
     return games;
 }
 
+async function getUserGames(uid) {
+    const gamesCollection = collection(db, 'UserGames');
+    const q = query(gamesCollection, where('UID', '==', uid));
+    const querySnapshot = await getDocs(q);
+    let games = [];
+
+    querySnapshot.forEach((doc) => {
+        doc.data().Games.forEach(async (game) => {
+            const res = await getDoc(game.GameRef);
+            games.push(res.data());
+        });
+    });
+    return games;
+}
+
+async function insertOrRemoveUserGame(uid, gameID, type) {
+    const gamesCollection = collection(db, 'UserGames');
+    const q = query(gamesCollection, where('UID', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    let ids = [];
+
+    // Update the user game collection with the new game
+    querySnapshot.forEach((doc) => {
+        ids.push(doc.id);
+    });
+    const userRef = doc(db, 'UserGames', ids[0]);
+
+    if (type === 'insert') {
+        await updateDoc(userRef, {
+            Games: arrayUnion({
+                Frequency: 0,
+                GameRef: '/Game/' + gameID
+            })
+        });
+    } else if (type === 'remove') {
+        await updateDoc(userRef, {
+            Games: arrayRemove({
+                Frequency: 0,
+                GameRef: '/Game/' + gameID
+            })
+        });
+    }
+}
+
 const API = {
     registerNewUser,
     signInUser,
-    getAllGames
+    getAllGames,
+    getUserGames,
+    insertOrRemoveUserGame
 };
 
 export default API;
