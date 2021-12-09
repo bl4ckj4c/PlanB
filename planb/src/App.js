@@ -10,12 +10,12 @@ import {Col, Container, Form, Row} from "react-bootstrap";
 
 import API from './API'
 import SignInScreen from './components/login_old';
-import GameCard from './components/GameCard';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
 
-
+//our imports
+import MyGames from './components/MyGames';
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(false);
@@ -57,41 +57,8 @@ function App() {
                     setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/mygames" element={
-                    <>
-                        <Container>
-                            <Row className='justify-content-between mt-2'>
-                                <Col xs={6}>
-                                    <Plus size={30} color="grey"/>
-                                    <span className = "text-muted align-middle">Add game</span> 
-                                </Col>
-                                <Col xs={2}>
-                                    <PersonCircle size={30} color="grey"/>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <h1 className='m-2'>My Games</h1>
-                            </Row>
-                            <Row>
-                                <Form>
-                                    <Form.Group>
-                                        <Form.Control type='text' placeholder='Search among your games'/>
-                                    </Form.Group>
-                                </Form>
-                            </Row>
-                        </Container>
-                        <Container fluid className='mt-3'>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                        </Container>
-                    </>
+                    /*isSignedIn ? <MyGames /> : <Navigate replace to = "/login"/> */
+                    <MyGames />
                 }/>
                 <Route exact path="/addgame" element={
                     isSignedIn ? <div/> : <Navigate replace to = "/login"/> 
