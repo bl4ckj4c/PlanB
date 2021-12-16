@@ -47,20 +47,15 @@ function MyGames(props) {
                                 </Form>
                             </Row>
                         </Container>
-                        <Container fluid className='pt-3 bg-light' id="games">
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
+                        <Container fluid className='pt-3 bg-light pb-5' id="games">
+                            {props.gameList.length ? 
+                                props.gameList.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
+                            :
+                                <h3>No games...</h3>
+                            }
                         </Container>
 
-                        <Container className="mt-5">
+                        <Container>
                             <Row className='fixed-bottom mx-4 mb-4'>
                                 <Button
                                     variant="primary"
