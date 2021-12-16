@@ -20,7 +20,7 @@ import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
 import MyGames from './components/MyGames';
 
 function App() {
-    const [isSignedIn, setIsSignedIn] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(true);
     const [gameList, setGameList] = useState([]);
 
     useEffect(() => {
@@ -75,6 +75,11 @@ function App() {
                 }/>
                 
                 <Route exact path="/newsession" element={
+                    //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
+                    <NewSession/>
+                }/>
+
+                <Route exact path="/gamesfound" element={
                     //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
                     <NewSession/>
                 }/>
