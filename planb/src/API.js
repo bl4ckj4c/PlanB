@@ -26,27 +26,30 @@ import {firebaseConfig} from "./firebase-client/config";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
-let currentUser = auth.currentUser;
+let currentUser = null;
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        console.log(user.email);
+        // User is signed in
+        //const uid = user.uid;
+        //console.log(user.email);
+        currentUser = {
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email
+        };
     } else {
         // User is signed out
-        // ...
+        currentUser = null;
     }
 });
-
 
 async function registerNewUser(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
+            //console.log(user);
 
             // Create new document for the new user into table 'UserGames'
             const docRef = await addDoc(collection(db, 'UserGames'), {
@@ -75,7 +78,7 @@ async function signInUser(email, password) {
 }
 
 async function signOutUser() {
-    signOut()
+    signOut(auth)
         .then(() => {
             // Signed out
         })
@@ -143,20 +146,6 @@ async function insertOrRemoveUserGame(uid, gameID, type) {
     }
 }
 
-function getUserInfo() {
-    // User signed in
-    if (currentUser !== null) {
-        return {
-            displayName: currentUser.displayName,
-            email: currentUser.email
-        };
-    }
-    // User not signed in
-    else {
-        return undefined;
-    }
-}
-
 const API = {
     registerNewUser,
     signInUser,
@@ -164,7 +153,7 @@ const API = {
     getAllGames,
     getUserGames,
     insertOrRemoveUserGame,
-    getUserInfo
+    auth
 };
 
 export default API;

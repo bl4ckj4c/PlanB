@@ -13,7 +13,10 @@ function MyGames(props) {
                         <span className = "text-muted align-middle">Add game</span> 
                     </Col>
                     <Col xs={2}>
-                        <PersonCircle size={30} color="grey"/>
+                        <PersonCircle
+                            size={30}
+                            color="grey"
+                        />
                     </Col>
                 </Row>
                 <Row>
