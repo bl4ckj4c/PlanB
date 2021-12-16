@@ -20,7 +20,6 @@ import MyGames from './components/MyGames';
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(true);
-    const [gameList, setGameList] = useState([]);
     const [user, loading, error] = useAuthState(API.auth);
 
     useEffect(() => {
@@ -36,21 +35,6 @@ function App() {
             }
         }
     }, [loading]);
-
-    useEffect(() => {
-        if (isSignedIn) {
-            API.getAllGames()
-                .then((res) => {
-                    console.log(res);
-                    setGameList(res);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } else {
-            setGameList([]);
-        }
-    }, [isSignedIn])
 
     return (
         <BrowserRouter>
@@ -74,7 +58,7 @@ function App() {
                 }/>
                 <Route exact path="/mygames" element={
                     /*isSignedIn ? <MyGames /> : <Navigate replace to = "/login"/> */
-                    <MyGames gameList={gameList}/>
+                    <MyGames/>
                 }/>
                 <Route exact path="/profile" element={
                     //isSignedIn ? <ProfileInfo/> : <Navigate replace to = "/login"/>

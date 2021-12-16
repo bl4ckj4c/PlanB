@@ -3,7 +3,6 @@ import {Card, Col, Row} from 'react-bootstrap';
 import {HourglassSplit, Dice1, Dice3, Dice5, People} from 'react-bootstrap-icons';
 
 function GameCard(props) {
-    console.log(props.game);
     const game = {
         title: props.game.Title,
         categories: [...props.game.Categories],
