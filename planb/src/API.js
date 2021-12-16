@@ -14,6 +14,11 @@ import {
     arrayRemove
 } from "firebase/firestore";
 import {
+    getStorage,
+    ref,
+    getDownloadURL
+} from "firebase/storage";
+import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -25,7 +30,8 @@ import {firebaseConfig} from "./firebase-client/config";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth();
+const storage = getStorage(app);
+const auth = getAuth(app);
 let currentUser = null;
 
 onAuthStateChanged(auth, (user) => {
@@ -148,6 +154,11 @@ async function insertOrRemoveUserGame(uid, gameID, type) {
     }
 }
 
+async function getGameImage(gameImageID) {
+    const url = await getDownloadURL(ref(storage, gameImageID));
+    return url;
+}
+
 const API = {
     registerNewUser,
     signInUser,
@@ -155,6 +166,7 @@ const API = {
     getAllGames,
     getUserGames,
     insertOrRemoveUserGame,
+    getGameImage,
     auth
 };
 
