@@ -1,15 +1,35 @@
-import {Col, Container, Form, Row, Button} from "react-bootstrap";
-import {ChevronLeft, HourglassSplit, People, PersonCircle, Plus} from "react-bootstrap-icons";
-import React, {useState} from "react";
-import API from "../API";
+import {Col, Container, Form, Row, Button, Badge} from "react-bootstrap";
+import {ChevronLeft, HourglassSplit, People, PersonCircle, Plus, Dice1, Dice3, Dice5, X} from "react-bootstrap-icons";
+import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
+import API from "../API";
+import { Categories, AddCategory } from "./Categories";
 
 function NewSession(props) {
+    const {} = props;
+
     const [page, setPage] = useState('');
     const [players, setPlayers] = useState();
     const [time, setTime] = useState();
     const [hours, setHours] = useState(1);
     const [minutes, setMinutes] = useState(0);
+    const [categories, setCategories] = useState([]);
+    const [confirmedCategories, setConfirmedCategories] = useState([]);
+    const [allCategories, setAllCategories] = useState([]);
+    const [showAddTag, setShowAddTag] = useState(true);
+
+    useEffect(() => {
+        setAllCategories([
+            "Strategy", "Family", "Party", "Card"
+        ]);
+    }, []);
+
+    useEffect(() => {
+        if (confirmedCategories.length === allCategories.length)
+            setShowAddTag(false);
+        else
+            setShowAddTag(true);
+    }, [allCategories, confirmedCategories]);
 
     const handleBackButton = (event) => {
         setPage('mygames');
@@ -38,13 +58,13 @@ function NewSession(props) {
         <>
             {
                 page === 'mygames' ?
-                    <Navigate replace to = "/mygames"/>
+                    <Navigate replace to="/mygames"/>
                     :
                     page === 'foundgames' ?
-                        <Navigate replace to = "/foundgames"/>
+                        <Navigate replace to="/foundgames"/>
                         :
                         <>
-                            <Container id="nav" className = "pb-2 border-bottom border-secondary">
+                            <Container id="nav" className="pb-2 border-bottom border-secondary">
                                 <Row className='justify-content-between mt-2'>
                                     <Col xs={6}>
                                         <Button
@@ -52,7 +72,7 @@ function NewSession(props) {
                                             className="bg-white border-0 p-0"
                                             onClick={() => handleBackButton()}>
                                             <ChevronLeft size={25} color="grey"/>
-                                            <span className = "text-muted align-middle">Back</span>
+                                            <span className="text-muted align-middle">Back</span>
                                         </Button>
                                     </Col>
                                 </Row>
@@ -64,41 +84,113 @@ function NewSession(props) {
                                 <Form>
                                     <Form.Group className='mb-3' controlId='formNumberOfPlayers'>
                                         <Row className="align-items-center mx-auto">
-                                        <Col xs={4}>
-                                        <Form.Label column>
-                                            <People size={40}/>
-                                        </Form.Label>
-                                        </Col>
-                                        <Col xs={8}>
-                                            <Form.Control
-                                                type='number'
-                                                placeholder='Number of players'
-                                                value={players}
-                                                onChange={(ev) => handlePlayers(ev)}
-                                            />
-                                        </Col>
+                                            <Col xs={4}>
+                                                <Form.Label column>
+                                                    <People size={40}/>
+                                                </Form.Label>
+                                            </Col>
+                                            <Col xs={8}>
+                                                <Form.Control
+                                                    type='number'
+                                                    placeholder='Number of players'
+                                                    value={players}
+                                                    onChange={(ev) => handlePlayers(ev)}
+                                                />
+                                            </Col>
                                         </Row>
                                     </Form.Group>
                                 </Form>
                                 <Form>
                                     <Form.Group className='mb-3' controlId='formNumberOfPlayers'>
                                         <Row className="align-items-center mx-auto">
-                                        <Col xs={4}>
-                                        <Form.Label column>
-                                            <HourglassSplit size={40}/>
-                                        </Form.Label>
-                                        </Col>
-                                        <Col xs={8} className="justify-content-center">
-                                            <Form.Control
-                                                type='time'
-                                                placeholder='Duration'
-                                                value={time}
-                                                onChange={(ev) => handleTime(ev)}
-                                            />
-                                        </Col>
+                                            <Col xs={4}>
+                                                <Form.Label column>
+                                                    <HourglassSplit size={40}/>
+                                                </Form.Label>
+                                            </Col>
+                                            <Col xs={8} className="justify-content-center">
+                                                <Form.Control
+                                                    type='time'
+                                                    placeholder='Duration'
+                                                    value={time}
+                                                    onChange={(ev) => handleTime(ev)}
+                                                />
+                                            </Col>
                                         </Row>
                                     </Form.Group>
                                 </Form>
+                                <Form>
+                                    <div key="radio-key" className="mb-3">
+                                        <Row className="align-items-center mx-auto p-3">
+                                            <Col xs={4}>
+                                                <div className="text-center">
+                                                    <Dice1 className='mx-2'/>
+                                                    Easy
+                                                </div>
+                                                <Form.Check
+                                                    className="text-center"
+                                                    name="radio-key"
+                                                    type="radio"
+                                                    id="radio-easy"
+                                                />
+                                            </Col>
+                                            <Col xs={4}>
+                                                <div className="text-center">
+                                                    <Dice3 className='mx-2'/>
+                                                    Mid
+                                                </div>
+                                                <Form.Check
+                                                    className="text-center"
+                                                    name="radio-key"
+                                                    type="radio"
+                                                    id="radio-mid"
+                                                />
+                                            </Col>
+                                            <Col xs={4}>
+                                                <div className="text-center">
+                                                    <Dice5 className='mx-2'/>
+                                                    Hard
+                                                </div>
+                                                <Form.Check
+                                                    className="text-center"
+                                                    name="radio-key"
+                                                    type="radio"
+                                                    id="radio-hard"
+                                                />
+                                            </Col>
+                                        </Row>
+                                    </div>
+                                </Form>
+                            </Container>
+                            <Container>
+                                <Row>
+                                    <h2 className='m-2'>Categories</h2>
+                                </Row>
+                                <Container>
+                                    <Categories confirmedCategories={confirmedCategories}
+                                                setConfirmedCategories={setConfirmedCategories}/>
+                                    {
+                                        showAddTag ?
+                                            <AddCategory allCategories={allCategories}
+                                                         categories={categories}
+                                                         setCategories={setCategories}
+                                                         confirmedCategories={confirmedCategories}
+                                                         setConfirmedCategories={setConfirmedCategories}/>
+                                            :
+                                            <div/>
+                                    }
+
+                                </Container>
+                            </Container>
+                            <Container className="mt-5">
+                                <Row className='fixed-bottom mx-4 mb-4'>
+                                    <Button
+                                        variant="primary"
+                                        type="submit"
+                                        onClick={() => handleFindGames()}>
+                                        Search among your games
+                                    </Button>
+                                </Row>
                             </Container>
                         </>
             }
