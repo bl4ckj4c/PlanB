@@ -1,10 +1,17 @@
 import {Card, Container, Form, Button, Col, Row} from 'react-bootstrap';
 import {useState} from "react";
 import {Link} from "react-router-dom";
+import API from '../API'
 
 function Login(props) {
     const [emailLogin, setEmailLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
+    
+    const handleLogin = (event) => {
+        API.signInUser(emailLogin, passwordLogin)
+            .then(() => props.setIsSignedIn(true))
+            .catch(() => props.setIsSignedIn(false));
+    }
 
     return (
         <Container fluid className='mt-5'>
@@ -13,15 +20,30 @@ function Login(props) {
             </Row>
             <Form className='mt-5 mx-4'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Email address"/>
+                    <Form.Control
+                        type="email"
+                        placeholder="Email address"
+                        value={emailLogin}
+                        onChange={(event) => {
+                            setEmailLogin(event.target.value);
+                        }}/>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="password" placeholder="Password"/>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        value={passwordLogin}
+                        onChange={(event) => {
+                            setPasswordLogin(event.target.value);
+                        }}/>
                 </Form.Group>
             </Form>
             <Row className='fixed-bottom mx-4 mb-4'>
-                <Button variant="primary" type="submit">
+                <Button
+                    variant="primary"
+                    type="submit"
+                    onClick={() => handleLogin()}>
                     Login
                 </Button>
                 <Link to="/register" className='text-center text-muted mt-2'>
