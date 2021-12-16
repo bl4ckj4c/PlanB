@@ -17,6 +17,7 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signOut,
     onAuthStateChanged
 } from "firebase/auth";
 
@@ -25,13 +26,14 @@ import {firebaseConfig} from "./firebase-client/config";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
+let currentUser = auth.currentUser;
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        // ...
+        console.log(user.email);
     } else {
         // User is signed out
         // ...
@@ -55,6 +57,7 @@ async function registerNewUser(email, password) {
             return user;
         })
         .catch((error) => {
+            console.log(error);
             return error;
         });
 }
@@ -63,10 +66,21 @@ async function signInUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
+            console.log(userCredential.user);
             return userCredential.user;
         })
         .catch((error) => {
             return error;
+        });
+}
+
+async function signOutUser() {
+    signOut()
+        .then(() => {
+            // Signed out
+        })
+        .catch(() => {
+            // Not signed out, still logged in
         });
 }
 
@@ -129,12 +143,28 @@ async function insertOrRemoveUserGame(uid, gameID, type) {
     }
 }
 
+function getUserInfo() {
+    // User signed in
+    if (currentUser !== null) {
+        return {
+            displayName: currentUser.displayName,
+            email: currentUser.email
+        };
+    }
+    // User not signed in
+    else {
+        return undefined;
+    }
+}
+
 const API = {
     registerNewUser,
     signInUser,
+    signOutUser,
     getAllGames,
     getUserGames,
-    insertOrRemoveUserGame
+    insertOrRemoveUserGame,
+    getUserInfo
 };
 
 export default API;
