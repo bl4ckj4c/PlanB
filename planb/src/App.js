@@ -15,6 +15,7 @@ import Registration from './components/Registration';
 import NewSession from './components/NewSession';
 import ProfileInfo from './components/ProfileInfo';
 import Welcome from './components/Welcome';
+import Rules from './components/Rules';
 import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
 
 import {useAuthState} from 'react-firebase-hooks/auth';
@@ -104,7 +105,7 @@ function App() {
                 }/>
 
                 <Route exact path="/rules" element={
-                    isSignedIn ? <div/> : <Navigate replace to="/login"/>
+                    isSignedIn ? <Rules/> : <Navigate replace to="/login"/>
                 }/>
 
                 <Route exact path="/suggest" element={
