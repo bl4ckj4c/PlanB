@@ -3,20 +3,15 @@ import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import * as Icon from 'react-bootstrap-icons';
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import {Col, Container, Form, Row} from "react-bootstrap";
-
 import API from './API'
-import SignInScreen from './components/login_old';
 import Login from './components/Login';
 import Registration from './components/Registration';
 import NewSession from './components/NewSession';
 import ProfileInfo from './components/ProfileInfo';
 import Welcome from './components/Welcome';
 import Rules from './components/Rules';
-import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
 
 import {useAuthState} from 'react-firebase-hooks/auth';
 
@@ -79,7 +74,7 @@ function App() {
                 }/>
                 <Route exact path="/mygames" element={
                     /*isSignedIn ? <MyGames /> : <Navigate replace to = "/login"/> */
-                    <MyGames gameList = {gameList}/>
+                    <MyGames gameList={gameList}/>
                 }/>
                 <Route exact path="/profile" element={
                     //isSignedIn ? <ProfileInfo/> : <Navigate replace to = "/login"/>
