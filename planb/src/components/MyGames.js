@@ -17,17 +17,23 @@ function MyGames(props) {
         <>
             {
                 newSession ?
-                    <Navigate replace to = "/newsession"/>
+                    <Navigate replace to="/newsession"/>
                     :
                     <>
-                        <Container id="nav" className = "pb-2 border-bottom border-secondary">
+                        <Container id="nav" className="pb-2 border-bottom border-secondary">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
                                     <Plus size={30} color="grey"/>
-                                    <span className = "text-muted align-middle">Add game</span>
+                                    <span className="text-muted align-middle">Add game</span>
                                 </Col>
                                 <Col xs={2}>
-                                    <PersonCircle size={30} color="grey"/>
+                                    <a href='/profile'>
+                                        <PersonCircle
+                                            className='mt-1'
+                                            size={30}
+                                            color="grey"
+                                        />
+                                    </a>
                                 </Col>
                             </Row>
                             <Row>
@@ -41,19 +47,15 @@ function MyGames(props) {
                                 </Form>
                             </Row>
                         </Container>
-                        <Container fluid className='pt-3 bg-light' id = "games">
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
-                            <GameCard/>
+                        <Container fluid className='pt-3 bg-light pb-5' id="games">
+                            {props.gameList.length ? 
+                                props.gameList.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
+                            :
+                                <h3>No games...</h3>
+                            }
                         </Container>
-                        <Container className="mt-5">
+
+                        <Container>
                             <Row className='fixed-bottom mx-4 mb-4'>
                                 <Button
                                     variant="primary"
