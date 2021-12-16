@@ -6,7 +6,7 @@ import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
 function MyGames(props) {
     return (
         <>
-            <Container id="nav" className = "pb-2 border-bottom border-dark">
+            <Container id="nav" className = "pb-2 border-bottom border-secondary">
                 <Row className='justify-content-between mt-2'>
                     <Col xs={6}>
                         <Plus size={30} color="grey"/>
