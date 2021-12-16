@@ -28,8 +28,6 @@ function App() {
     const [user, loading, error] = useAuthState(API.auth);
 
     useEffect(() => {
-        //API.getAllGames().then(result => console.log(result));
-        //API.getUserGames('EGTY3JBs1iVP5UZ59J3wv76pWnL2').then(result => console.log(result));
         console.log(user);
     }, []);
 
@@ -48,7 +46,7 @@ function App() {
             API.getAllGames()
                 .then((res) => {
                     console.log(res);
-                    //setGameList(res);
+                    setGameList(res);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -80,7 +78,7 @@ function App() {
                 }/>
                 <Route exact path="/mygames" element={
                     /*isSignedIn ? <MyGames /> : <Navigate replace to = "/login"/> */
-                    <MyGames/>
+                    <MyGames gameList = {gameList}/>
                 }/>
                 <Route exact path="/profile" element={
                     //isSignedIn ? <ProfileInfo/> : <Navigate replace to = "/login"/>

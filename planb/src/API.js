@@ -95,7 +95,9 @@ async function getAllGames() {
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         //console.log(doc.id, " => ", doc.data());
-        games.push(doc.data());
+        let game = doc.data();
+        game.id = doc.id;
+        games.push(game);
     });
 
     return games;
