@@ -1,6 +1,7 @@
 import {Col, Container, Form, Row} from "react-bootstrap";
 import GameCard from './GameCard';
 import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
+import {Button} from "react-bootstrap";
 
 
 function MyGames(props) {
@@ -13,10 +14,13 @@ function MyGames(props) {
                         <span className = "text-muted align-middle">Add game</span> 
                     </Col>
                     <Col xs={2}>
-                        <PersonCircle
-                            size={30}
-                            color="grey"
-                        />
+                        <a href='/profile'>
+                            <PersonCircle
+                                className='mt-1'
+                                size={30}
+                                color="grey"
+                            />
+                        </a>
                     </Col>
                 </Row>
                 <Row>

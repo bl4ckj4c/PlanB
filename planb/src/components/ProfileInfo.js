@@ -15,10 +15,12 @@ function ProfileInfo(props) {
         <>
             <Container id="nav" className="pb-2">
                 <Row className='justify-content-between mt-2'>
-                    <Col xs={6}>
-                        <ChevronLeft size={25} color="grey"/>
-                        <span className="text-muted align-middle">Back</span>
-                    </Col>
+                    <a href='/mygames'>
+                        <Col xs={6}>
+                            <ChevronLeft size={25} color="grey"/>
+                            <span className="text-muted align-middle">Back</span>
+                        </Col>
+                    </a>
                 </Row>
             </Container>
             <Container>
