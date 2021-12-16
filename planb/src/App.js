@@ -23,7 +23,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import MyGames from './components/MyGames';
 
 function App() {
-    const [isSignedIn, setIsSignedIn] = useState(false);
+    const [isSignedIn, setIsSignedIn] = useState(true);
     const [gameList, setGameList] = useState([]);
     const [user, loading, error] = useAuthState(API.auth);
 
@@ -94,6 +94,11 @@ function App() {
                 }/>
 
                 <Route exact path="/newsession" element={
+                    //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
+                    <NewSession/>
+                }/>
+
+                <Route exact path="/gamesfound" element={
                     //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
                     <NewSession/>
                 }/>

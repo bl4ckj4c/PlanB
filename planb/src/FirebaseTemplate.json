@@ -1,12 +1,85 @@
-{
-  "Title": "Monopoly",
-  "Categories":  [
-    "Family", "Dice"
-  ],
-  "Description": "TEST",
-  "Difficulty": "Easy",
-  "Duration": "1h",
-  "PlayersMax": 7,
-  "PlayersMin": 2,
-  "Rules": "http://url/..."
-}
+[
+    {
+        "Title": "7 Rosso",
+        "Categories": [
+            "Carte",
+            "Numeri"
+        ],
+        "Description": "7 Rosso è un divertente gioco di carte dalle regole decisamente semplici ma assolutamente coinvolgenti. Ad ogni mano il numero più alto vince, con i colori che servono per dirimere i pareggi. Tuttavia le regole del gioco cambiano continuamente durante i turni e quella che potrebbe sembrarti una vittoria schiacciante durante il tuo turno, potrebbe trasformarsi in una clamorosa sconfitta al termine del round. L'ultimo giocatore a non perdere, verrà proclamato vincitore!",
+        "Difficulty": "Easy",
+        "Duration": "00:20",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "http://www.craniocreations.it/wp-content/uploads/2019/02/7rosso_regole-def_3mm.pdf"
+    },
+    {
+        "Title": "7 Wonders",
+        "Categories": [
+            "Carte",
+            "Economia",
+            "Civilizzazione",
+            "Costruzione Città"
+        ],
+        "Description": "7 Wonders è un gioco di carte in cui sarete chiamati a sviluppare una delle più grandi civiltà del passato, costruendo una delle 7 Meraviglie del Mondo. Potrete concentrarvi sullo sviluppo delle risorse per costruire edifici costosissimi, oppure potrete concentrarvi sullo sviluppo delle tecnologie oppure ancora sugli edifici militari per combattere i vostri vicini. Non esiste una strategia dominante, è importante capire di volta in volta la strategia degli altri giocatori e scegliere di conseguenza l'edificio più adatto a voi ed alla civiltà che avete scelto! Con 7 Wonders avrete l'occasione di immergervi nella più splendida antichità, dando vita ad una delle civiltà che avete imparato ad apprezzare nei libri di storia!",
+        "Difficulty": "Mid",
+        "Duration": "00:30",
+        "PlayersMax": 7,
+        "PlayersMin": 2,
+        "Rules": "https://cdn.svc.asmodee.net/production-rprod/storage/downloads/games/7wonders/it/sev-it02-rules-1598889283Fb3rD.pdf"
+    },
+    {
+        "Title": "Bananagrams",
+        "Categories": [
+            "Tempo Reale",
+            "Giochi di Parole"
+        ],
+        "Description": "Bananagrams è un divertente gioco di parole che deve il suo nome al divertente astuccio in cui sono contenuti i materiali di gioco: una serie di tessere lettera plastificate con cui comporre una miriade di parole. Il gioco è semplice, rapido e si presta bene ad essere giocato in grandi gruppi di gioco.",
+        "Difficulty": "Easy",
+        "Duration": "00:15",
+        "PlayersMax": 8,
+        "PlayersMin": 1,
+        "Rules": "https://www.dvgiochi.com/giochi/Bananagrams/download/Bananagrams_ITA-Rules.pdf"
+    },
+    {
+        "Title": "Bang - The Dice Game",
+        "Categories": [
+            "Combattimento",
+            "Party",
+            "Dadi",
+            "Bluff"
+        ],
+        "Description": "Bang! The Dice Game è il gioco di dadi che riprende in modo fedele le meccaniche che hanno reso un best seller l'omonimo party game con le carte di Bang!, tutte raccolte in una manciata di dadi. Si tratta della rivisitazione in una lotta tra cowboy e pellerossa tutta in chiave dadesca!",
+        "Difficulty": "Mid",
+        "Duration": "00:15",
+        "PlayersMax": 8,
+        "PlayersMin": 3,
+        "Rules": "https://www.dvgiochi.com/giochi/bangtdg/download/BANG!%20Dice%20Game_Rules_ITA.pdf"
+    },
+    {
+        "Title": "Bears vs Babies",
+        "Categories": [
+            "Humor",
+            "Carte"
+        ],
+        "Description": "In Bears vs Babies vestirete i panni di un gruppo di intrepidi generali orsi che dovranno assemblare un potente esercito di orsetti di peluche composti da una serie di pezzi raccolti alla meno peggio da un universo di carte divertenti per affrontare un'orda urlante di bebè.",
+        "Difficulty": "Easy",
+        "Duration": "00:20",
+        "PlayersMax": 5,
+        "PlayersMin": 2,
+        "Rules": "https://www.asmodee.it/giochi/bearsvsbabies/Bears_vs_Babies_ITA.pdf"
+    },
+    {
+        "Title": "Unstable Unicorns",
+        "Categories": [
+            "Humor",
+            "Carte",
+            "Party"
+        ],
+        "Description": " Unstable Unicorns is a strategic card game about everyone’s two favorite things: Destruction and Unicorns! From the back of the box: Learn how unstable your friendships really are. You start with a Baby Unicorn in your Stable. SO CUTE! But don't get too attached, because even Baby Unicorns aren't safe in this game! There are over 20 Magical Unicorns to collect, and each has a special power. Build your Unicorn Army as fast as you can, or be destroyed by one of your so-called friends!",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 8,
+        "PlayersMin": 2,
+        "Rules": "https://www.asmodee.it/giochi/Unstable_Unicorns/Unstable_Unicorns_ITA.pdf"
+    }
+]

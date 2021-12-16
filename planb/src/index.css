@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /*avoiding x scrolling on mobile*/
+  /* Avoiding x scrolling on mobile */
   overflow-x: hidden;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -19,3 +19,5 @@ code {
     monospace;
 }
 
+/* Avoiding displaying the time picker for duration form */
+input[type="time"]::-webkit-calendar-picker-indicator { background: none; display:none; }
