@@ -12,11 +12,10 @@ import NewSession from './components/NewSession';
 import ProfileInfo from './components/ProfileInfo';
 import Welcome from './components/Welcome';
 import Rules from './components/Rules';
+import MyGames from './components/MyGames';
+import AddGame from './components/AddGame';
 
 import {useAuthState} from 'react-firebase-hooks/auth';
-
-//our imports
-import MyGames from './components/MyGames';
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(true);
@@ -68,7 +67,7 @@ function App() {
                         setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/addgame" element={
-                    isSignedIn ? <div/> : <Navigate replace to="/login"/>
+                    isSignedIn ? <AddGame /> : <Navigate replace to="/login"/>
                 }/>
 
                 <Route exact path="/newsession" element={

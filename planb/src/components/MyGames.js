@@ -15,9 +15,14 @@ function MyGames(props) {
     const [gamesToShow, setGamesToShow] = useState([]);
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState('');
 
     const handleNewSession = (event) => {
         setNewSession(true);
+    }
+
+    const handleAddGameButton = (event) => {
+        setPage('addgame');
     }
 
     //useEffect for loading games
@@ -60,6 +65,7 @@ function MyGames(props) {
 
     return (
         <>
+            {page !== '' && <Navigate replace to={`/${page}`}/>}
             {
                 newSession ?
                     <Navigate replace to="/newsession"/>
@@ -68,8 +74,13 @@ function MyGames(props) {
                         <Container id="nav" className="pb-2 my-border-color border-bottom ">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
-                                    <Plus size={30} color="grey"/>
-                                    <span className="text-muted align-middle">Add game</span>
+                                    <Button
+                                        type="submit"
+                                        className="bg-white border-0 p-0"
+                                        onClick={() => handleAddGameButton()}>
+                                        <Plus size={30} color="grey"/>
+                                        <span className="text-muted align-middle">Add game</span>
+                                    </Button>
                                 </Col>
                                 <Col xs={2}>
                                     <a href='/profile'>
@@ -93,7 +104,7 @@ function MyGames(props) {
                                 </Form>
                             </Row>
                         </Container>
-                        <Container fluid className='pt-3 bg-light pb-5 min-vh-100' id="games">
+                        <Container fluid className='pt-3 bg-light pb-5 min-vh-75' id="games">
                             {gamesToShow.length ? 
                                 gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
                             :

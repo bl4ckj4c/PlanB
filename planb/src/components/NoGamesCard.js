@@ -6,8 +6,8 @@ function NoGamesCard(props) {
     //props.filter = false, this card is displayed because user does not have games
     console.log(props.filter);
     return (
-        <Container className='fixed-top d-flex align-items-center min-vh-100' >
-            <Card className='mb-2 border-danger w-100'>
+        <Container className='d-flex align-items-center min-vh-75 pb-5' >
+            <Card className='mb-5 border-danger w-100'>
                 <Card.Body>
                     <Card.Title className='text-danger'>
                         <ExclamationTriangle /> Wait wait wait.. <ExclamationTriangle />
@@ -15,7 +15,7 @@ function NoGamesCard(props) {
                     <Card.Subtitle className='text-danger'>
                         <small>
                             {props.filter ? 
-                                "You're looking for something you don't have"
+                                "It seems incredible, we know, but nothing matches your research"
                             :   "It seems like you don't have games!" 
                             }
                         </small>
