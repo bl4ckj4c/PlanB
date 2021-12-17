@@ -65,7 +65,7 @@ function MyGames(props) {
                     <Navigate replace to="/newsession"/>
                     :
                     <>
-                        <Container id="nav" className="pb-2 border-bottom border-secondary">
+                        <Container id="nav" className="pb-2 my-border-color border-bottom ">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
                                     <Plus size={30} color="grey"/>
