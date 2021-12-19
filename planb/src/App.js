@@ -49,6 +49,7 @@ function App() {
                         :
                         <Login
                             userLoading={loading}
+                            userError={error}
                             setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/register" element={
@@ -60,7 +61,14 @@ function App() {
                     <MyGames/>
                 }/>
                 <Route exact path="/profile" element={
-                    //isSignedIn ? <ProfileInfo/> : <Navigate replace to = "/login"/>
+                    /*isSignedIn ?
+                        <ProfileInfo
+                            user={user}
+                            userLoading={loading}
+                            isSignedIn={isSignedIn}
+                            setIsSignedIn={setIsSignedIn}/>
+                        :
+                        <Navigate replace to="/login"/>*/
                     <ProfileInfo
                         user={user}
                         userLoading={loading}
@@ -68,7 +76,7 @@ function App() {
                         setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/addgame" element={
-                    isSignedIn ? <AddGame /> : <Navigate replace to="/login"/>
+                    isSignedIn ? <AddGame/> : <Navigate replace to="/login"/>
                 }/>
 
                 <Route exact path="/newsession" element={
