@@ -60,15 +60,12 @@ function Login(props) {
                 if (error !== undefined && error.code === 'auth/invalid-email') {
                     setErrorMessage('Invalid email');
                     setShow(true);
-                    console.log('Invalid email');
                 } else if (error !== undefined && error.code === 'auth/user-not-found') {
                     setErrorMessage('User not found');
                     setShow(true);
-                    console.log('User not found');
                 } else if (error !== undefined && error.code === 'auth/wrong-password') {
                     setErrorMessage('Invalid password');
                     setShow(true);
-                    console.log('Invalid password');
                 }
             }
         }
