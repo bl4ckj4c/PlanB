@@ -66,6 +66,12 @@ function Login(props) {
                 } else if (error !== undefined && error.code === 'auth/wrong-password') {
                     setErrorMessage('Invalid password');
                     setShow(true);
+                } else if (error !== undefined && error.code === 'auth/too-many-requests') {
+                    setErrorMessage('We are experiencing some server issues, please retry later');
+                    setShow(true);
+                } else if (error !== undefined && error.code === 'auth/quota-exceeded') {
+                    setErrorMessage('We are experiencing some server issues, please retry later.');
+                    setShow(true);
                 }
             }
         }

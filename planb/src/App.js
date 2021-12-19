@@ -53,8 +53,7 @@ function App() {
                             setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/register" element={
-                    <Registration
-                        setIsSignedIn={setIsSignedIn}/>
+                        isSignedIn ? <Navigate replace to="/mygames"/> : <Registration setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/mygames" element={
                     /*isSignedIn ? <MyGames /> : <Navigate replace to = "/login"/> */

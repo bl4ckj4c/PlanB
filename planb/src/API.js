@@ -19,8 +19,6 @@ import {
 } from "firebase/storage";
 import {
     getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
 } from "firebase/auth";
@@ -49,24 +47,12 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-async function registerNewUser(email, password) {
-    createUserWithEmailAndPassword(auth, email, password)
-        .then(async (userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            //console.log(user);
-
-            // Create new document for the new user into table 'UserGames'
-            const docRef = await addDoc(collection(db, 'UserGames'), {
-                UID: user.uid,
-                Games: []
-            });
-
-            return user;
-        })
-        .catch((error) => {
-            return error;
-        });
+async function createNewUserGameList(userID) {
+    // Create new document for the new user into table 'UserGames'
+    const docRef = await addDoc(collection(db, 'UserGames'), {
+        UID: userID,
+        Games: []
+    });
 }
 
 async function signOutUser() {
@@ -146,7 +132,7 @@ async function getGameImage(gameImageID) {
 }
 
 const API = {
-    registerNewUser,
+    createNewUserGameList,
     signOutUser,
     getAllGames,
     getUserGames,
