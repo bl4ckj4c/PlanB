@@ -18,12 +18,12 @@ import AddGame from './components/AddGame';
 import {useAuthState} from 'react-firebase-hooks/auth';
 
 function App() {
-    const [isSignedIn, setIsSignedIn] = useState(true);
+    const [isSignedIn, setIsSignedIn] = useState(false);
     const [user, loading, error] = useAuthState(API.auth);
 
-    useEffect(() => {
+    /*useEffect(() => {
         console.log(user);
-    }, []);
+    }, []);*/
 
     useEffect(() => {
         if (!loading) {
@@ -64,6 +64,7 @@ function App() {
                     <ProfileInfo
                         user={user}
                         userLoading={loading}
+                        isSignedIn={isSignedIn}
                         setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/addgame" element={
