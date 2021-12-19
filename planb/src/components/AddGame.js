@@ -64,7 +64,7 @@ function AddGame(props) {
             {page !== '' && <Navigate replace to={`/${page}`}/>}
             {
                 <>
-                    <Container id="nav" className="pb-2 my-border-color border-bottom ">
+                    <Container id="nav" className="pb-2 my-border-color border-bottom border-top-0">
                         <Row className='justify-content-between mt-2'>
                             <Col xs={6}>
                                 <Button
