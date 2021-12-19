@@ -6,7 +6,6 @@ import {
     where,
     doc,
     getDocs,
-    setDoc,
     addDoc,
     getDoc,
     updateDoc,
@@ -64,19 +63,6 @@ async function registerNewUser(email, password) {
             });
 
             return user;
-        })
-        .catch((error) => {
-            console.log(error);
-            return error;
-        });
-}
-
-async function signInUser(email, password) {
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            console.log(userCredential.user);
-            return userCredential.user;
         })
         .catch((error) => {
             return error;
@@ -161,7 +147,6 @@ async function getGameImage(gameImageID) {
 
 const API = {
     registerNewUser,
-    signInUser,
     signOutUser,
     getAllGames,
     getUserGames,
