@@ -92,8 +92,8 @@ async function getUserGames() {
         querySnapshot.forEach((doc) => {
             doc.data().Games.forEach(async (game) => {
                 const res = await getDoc(game.GameRef);
-                let gameTmp = game.data();
-                gameTmp.id = game.id;
+                let gameTmp = res.data();
+                gameTmp.id = res.id;
                 games.push(gameTmp);
             });
         });
