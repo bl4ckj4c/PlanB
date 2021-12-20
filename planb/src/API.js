@@ -136,7 +136,9 @@ async function insertOrRemoveUserGame(uid, gameID, type) {
 }
 
 async function getGameImage(gameImageID) {
+    console.log(gameImageID);
     const url = await getDownloadURL(ref(storage, gameImageID));
+    console.log(url);
     return url;
 }
 

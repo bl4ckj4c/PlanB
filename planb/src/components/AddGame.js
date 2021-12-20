@@ -33,17 +33,18 @@ function AddGame(props) {
                 //need to show only games that user does not have already
                 API.getUserGames().
                     then((usergames) => {
-                        /*
-                        console.log(usergames);
-                        console.log(games);
-                        
-                        for(let game of games)
-                            console.log(game.id);
-
-                        for(let usergame in usergames)
-                            console.log(usergame);
-                        */
                         const tmp = games.filter(game => !usergames.find(usergame => usergame.id === game.id));
+                        tmp.sort((game1, game2) => {
+                            const title1 = game1.Title.toUpperCase();
+                            const title2 = game2.Title.toUpperCase();
+                            if(title1 < title2){
+                                return -1;
+                            }
+                            else if (title1 > title2){
+                                return 1;
+                            }
+                            return 0;
+                        });
                         setGames(tmp);
                         setLoading(false);
                     })
@@ -66,11 +67,9 @@ function AddGame(props) {
             //NOT WORKING
             const filtered = games.filter(game => {
                 if(game.Title.toUpperCase().startsWith(filter.toUpperCase())){
-                    console.log(game.Title + "\n"+game.Difficulty + "\n"+ game.Categories);
                     return true;
                 }
                 else if(game.Difficulty.toUpperCase().startsWith(filter.toUpperCase())){
-                    console.log(game.Title + "\n"+game.Difficulty + "\n"+ game.Categories);
                     return true;
                 }
                 else if (game.Categories.find(item => item.toUpperCase().startsWith(filter.toUpperCase())))

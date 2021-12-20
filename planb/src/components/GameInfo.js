@@ -14,7 +14,9 @@ function GameInfo(props) {
         playersMax: props.game.PlayersMax,
         hour: parseInt(props.game.Duration.split(':')[0]),
         minutes: parseInt(props.game.Duration.split(':')[1]),
-        difficulty: props.game.Difficulty
+        difficulty: props.game.Difficulty,
+        frequency: props.game.Frequency,
+        ImageId: props.game.ImageId
     }
     let time;
     if (game.hour === 0)
@@ -33,13 +35,14 @@ function GameInfo(props) {
         diceIcon = <Dice5 xs={4} size={40} className='col'/>;
 
     useEffect(() => {
-        API.getGameImage()
+        API.getGameImage(game.ImageId)
             .then((url) => {
                 console.log("pippo");
                 setImageUrl(url);
                 setImageLoading(false);
             })
             .catch((error) => {
+                console.log(error);
                 setImageUrl('error');
                 setImageLoading(false);
             });
@@ -120,6 +123,7 @@ function GameInfo(props) {
                         </Col>
                         <Col xs={3}/>
                     </Row>
+
                 </Container>
             }
         </>

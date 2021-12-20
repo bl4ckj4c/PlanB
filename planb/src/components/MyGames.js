@@ -32,8 +32,8 @@ function MyGames(props) {
 
     //useEffect for loading games
     useEffect(() => {
-        //API.getUserGames()
-        API.getAllGames()
+        API.getUserGames()
+        //API.getAllGames()
             .then((games) => {
                 setGames(games);
                 setLoading(false);

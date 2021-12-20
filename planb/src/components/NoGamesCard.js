@@ -4,7 +4,6 @@ import { ExclamationTriangle } from 'react-bootstrap-icons';
 function NoGamesCard(props) {
     //Note: props.filter = true if this card is displayed due to a filter
     //props.filter = false, this card is displayed because user does not have games
-    console.log(props.filter);
     return (
         <Container className='d-flex align-items-center min-vh-75 pb-5' >
             <Card className='mb-5 border-danger w-100'>
