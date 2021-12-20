@@ -18,6 +18,12 @@
 .below-nav {
   margin-top: 7.8rem !important;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
