@@ -1,6 +1,6 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import GameCard from './GameCard';
-import {ChevronLeft} from "react-bootstrap-icons";
+import {ChevronLeft, Reddit} from "react-bootstrap-icons";
 import {Link, Navigate} from "react-router-dom";
 import API from "../API";
 import React, {useEffect, useState} from "react";
@@ -26,8 +26,20 @@ function AddGame(props) {
         //API.getUserGames()
         API.getAllGames()
             .then((games) => {
-                setGames(games);
-                setLoading(false);
+                //need to show only games that user does not have already
+                API.getUserGames().
+                    then((usergames) => {
+                        console.log(usergames);
+                        //for each game of the global list, search if it is included in usergames
+                        const tmp = games.filter(game => !usergames.find(res => res.id === game.id));
+                        setGames(tmp);
+                        setLoading(false);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        setLoading(false);
+                        setGames([]);
+                    });
             })
             .catch((err) => {
                 console.log(err);
@@ -64,7 +76,7 @@ function AddGame(props) {
             {page !== '' && <Navigate replace to={`/${page}`}/>}
             {
                 <>
-                    <Container id="nav" className="pb-2 my-border-color border-bottom border-top-0">
+                    <Container id="nav" className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
                         <Row className='justify-content-between mt-2'>
                             <Col xs={6}>
                                 <Button
@@ -88,7 +100,7 @@ function AddGame(props) {
                             </Form>
                         </Row>
                     </Container>
-                    <Container fluid className='pt-3 bg-light pb-5 min-vh-75' id="games">
+                    <Container fluid className='pt-3 bg-light pb-5 min-vh-75 below-nav' id="games">
                         {gamesToShow.length ? 
                             gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
                         :

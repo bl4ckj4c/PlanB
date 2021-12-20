@@ -71,7 +71,7 @@ function MyGames(props) {
                     <Navigate replace to="/newsession"/>
                     :
                     <>
-                        <Container id="nav" className="pb-2 my-border-color border-bottom border-top-0">
+                        <Container id="nav" className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
                                     <Button
@@ -104,7 +104,7 @@ function MyGames(props) {
                                 </Form>
                             </Row>
                         </Container>
-                        <Container fluid className='pt-3 bg-light pb-5 min-vh-75' id="games">
+                        <Container fluid className='pt-4 bg-light pb-5 min-vh-75 below-nav' id="games">
                             {gamesToShow.length ? 
                                 gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
                             :
