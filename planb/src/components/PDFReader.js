@@ -3,9 +3,7 @@ import Loader from './PDFLoader';
 import { Document, Page, pdfjs } from 'react-pdf';
 import ControlPanel from './PDFControlPanel';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-//pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.3.200/pdf.worker.js`;
 
-console.log(`//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`)
 
 const PDFReader = (props) => {
     const {pdf_url} = props;
@@ -14,6 +12,9 @@ const PDFReader = (props) => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
+
+    const mobileWidth = 370;
+    const mobileHeight = 650;
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
@@ -34,13 +35,19 @@ const PDFReader = (props) => {
                     pageNumber={pageNumber}
                     setPageNumber={setPageNumber}
                     pdf_url={pdf_url}
+                    isLoading={isLoading}
                 />
                 <Document
                     file={pdf_url}
                     onLoadSuccess={onDocumentLoadSuccess}
                     onLoadError={console.error}
                 >
-                    <Page pageNumber={pageNumber} scale={scale} />
+                    <Page
+                        pageNumber={pageNumber}
+                        scale={scale}
+                        width={mobileWidth}
+                        height={mobileHeight}
+                    />
                 </Document>
             </section>
         </div>
