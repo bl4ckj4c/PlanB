@@ -73,7 +73,7 @@ function Registration(props) {
                 } else if (error !== undefined && error.code === 'auth/quota-exceeded') {
                     setErrorMessage('We are experiencing some server issues, please retry later.');
                     setShow(true);
-                } else {
+                } else if (error !== undefined) {
                     setErrorMessage('We are experiencing some server issues, please retry later.');
                     setShow(true);
                 }
