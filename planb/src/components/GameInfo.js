@@ -37,7 +37,6 @@ function GameInfo(props) {
     useEffect(() => {
         API.getGameImage(game.ImageId)
             .then((url) => {
-                console.log("pippo");
                 setImageUrl(url);
                 setImageLoading(false);
             })
