@@ -1,4 +1,5 @@
 import React from 'react';
+import {Printer} from "react-bootstrap-icons";
 
 const PDFPrinter = ({ pdf_url }) => {
     const print = () => {
@@ -12,7 +13,7 @@ const PDFPrinter = ({ pdf_url }) => {
         pdfFrame.contentWindow.print();
     };
     return (
-        <i className="fas fa-print clickable" onClick={print} title="download" />
+        <Printer onClick={print} title="download" />
     );
 };
 

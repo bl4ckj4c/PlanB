@@ -1,8 +1,17 @@
 import React from 'react';
 import PDFPrinter from './PDFPrinter';
+import {
+    ChevronCompactLeft,
+    ChevronCompactRight, ChevronDoubleLeft,
+    ChevronDoubleRight,
+    Download,
+    ZoomIn,
+    ZoomOut
+} from "react-bootstrap-icons";
+import {Col, Container, Row} from "react-bootstrap";
 
 const ControlPanel = (props) => {
-    const { pdf_url, pageNumber, numPages, setPageNumber, scale, setScale } = props;
+    const {pdf_url, pageNumber, numPages, setPageNumber, scale, setScale, isLoading} = props;
 
     const isFirstPage = pageNumber === 1;
     const isLastPage = pageNumber === numPages;
@@ -24,7 +33,7 @@ const ControlPanel = (props) => {
     };
 
     const onPageChange = (e) => {
-        const { value } = e.target;
+        const {value} = e.target;
         setPageNumber(Number(value));
     };
 
@@ -43,58 +52,83 @@ const ControlPanel = (props) => {
     };
 
     return (
-        <div className="control-panel m-3 p-3 d-flex align-items-baseline justify-content-between">
-            <div className="d-flex justify-content-between align-items-baseline">
-                <i
-                    className={`fas fa-fast-backward mx-3 ${firstPageClass}`}
-                    onClick={goToFirstPage}
-                />
-                <i
-                    className={`fas fa-backward mx-3 ${firstPageClass}`}
-                    onClick={goToPreviousPage}
-                />
-                <span>
-          Page{' '}
-                    <input
-                        name="pageNumber"
-                        type="number"
-                        min={1}
-                        max={numPages || 1}
-                        className="p-0 pl-1 mx-2"
-                        value={pageNumber}
-                        onChange={onPageChange}
-                    />{' '}
-                    of {numPages}
-        </span>
-                <i
-                    className={`fas fa-forward mx-3 ${lastPageClass}`}
-                    onClick={goToNextPage}
-                />
-                <i
-                    className={`fas fa-fast-forward mx-3 ${lastPageClass}`}
-                    onClick={goToLastPage}
-                />
-            </div>
-            <div className="d-flex justify-content-between align-items-baseline">
-                <i
-                    className={`fas fa-search-minus mx-3 ${zoomOutClass}`}
-                    onClick={zoomOut}
-                />
-                <span>{(scale * 100).toFixed()}%</span>
-                <i
-                    className={`fas fa-search-plus mx-3 ${zoomInClass}`}
-                    onClick={zoomIn}
-                />
-            </div>
-            <div className="mx-3">
-                <a href={pdf_url} download={true} title="download">
-                    <i className="fas fa-file-download clickable" />
-                </a>
-            </div>
-            <div className="mx-3">
-                <PDFPrinter pdf_url={pdf_url} />
-            </div>
-        </div>
+        <>
+            {
+                isLoading ?
+                    <div />
+                    :
+                    <Container className="control-panel m-3 p-3 align-items-center my-auto">
+                        <Row className="my-auto p-3">
+                            <Col>
+                                <div className="d-flex justify-content-between align-items-baseline">
+                                    <div className="p-2">
+                                        <ChevronDoubleLeft
+                                            onClick={goToFirstPage}
+                                        />
+                                    </div>
+                                    <div className="p-2">
+                                        <ChevronCompactLeft
+                                            onClick={goToPreviousPage}
+                                        />
+                                    </div>
+                                    <span>
+                            Page{' '}
+                                        <input
+                                            name="pageNumber"
+                                            type="number"
+                                            min={1}
+                                            max={numPages || 1}
+                                            className="p-0 pl-1 mx-2"
+                                            value={pageNumber}
+                                            onChange={onPageChange}
+                                        />{' '}
+                                        of {numPages}
+                        </span>
+                                    <div className="p-2">
+                                        <ChevronCompactRight
+                                            onClick={goToNextPage}
+                                        />
+                                    </div>
+                                    <div className="p-2">
+                                        <ChevronDoubleRight
+                                            onClick={goToLastPage}
+                                        />
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row className="my-auto p-3">
+                            <Col>
+                                <Container className="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <ZoomOut
+                                            onClick={zoomOut}
+                                        />
+                                    </div>
+                                    <div>
+                                        <span>{(scale * 100).toFixed()}%</span>
+                                    </div>
+                                    <div>
+                                        <ZoomIn
+                                            onClick={zoomIn}
+                                        />
+                                    </div>
+                                </Container>
+                            </Col>
+                            {/*<Col>
+                                <div className="mx-3">
+                                    <a href={pdf_url} download={true} title="download">
+                                        <Download className="text-black"/>
+                                    </a>
+                                </div>
+                                <div className="mx-3">
+                                    <PDFPrinter pdf_url={pdf_url}/>
+                                </div>
+                            </Col>*/}
+                        </Row>
+                    </Container>
+            }
+        </>
     );
 };
 

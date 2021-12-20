@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Loader from './PDFLoader';
 import { Document, Page, pdfjs } from 'react-pdf';
 import ControlPanel from './PDFControlPanel';
+import PDFPrinter from "./PDFPrinter";
+import PDFControlPanel from "./PDFControlPanel";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 
@@ -28,15 +30,6 @@ const PDFReader = (props) => {
                 id="pdf-section"
                 className="d-flex flex-column align-items-center w-100"
             >
-                <ControlPanel
-                    scale={scale}
-                    setScale={setScale}
-                    numPages={numPages}
-                    pageNumber={pageNumber}
-                    setPageNumber={setPageNumber}
-                    pdf_url={pdf_url}
-                    isLoading={isLoading}
-                />
                 <Document
                     file={pdf_url}
                     onLoadSuccess={onDocumentLoadSuccess}
@@ -49,6 +42,15 @@ const PDFReader = (props) => {
                         height={mobileHeight}
                     />
                 </Document>
+                <PDFControlPanel
+                    pdf_url={pdf_url}
+                    pageNumber={pageNumber}
+                    numPages={numPages}
+                    setPageNumber={setPageNumber}
+                    scale={scale}
+                    setScale={setScale}
+                    isLoading={isLoading}
+                />
             </section>
         </div>
     );
