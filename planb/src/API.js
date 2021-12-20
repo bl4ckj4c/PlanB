@@ -95,12 +95,7 @@ async function getUserGames() {
         let games = [];
 
         querySnapshot.forEach((doc) => {
-            doc.data().Games.forEach(async (game) => {
-                const res = await getDoc(game.GameRef);
-                let gameTmp = res.data();
-                gameTmp.id = res.id;
-                games.push(gameTmp);
-            });
+            games = doc.data().Games;
         });
         return games;
     }
@@ -127,14 +122,14 @@ async function insertOrRemoveUserGame(uid, gameID, type) {
         await updateDoc(userRef, {
             Games: arrayUnion({
                 Frequency: 0,
-                GameRef: '/Game/' + gameID
+                GameRef: gameID
             })
         });
     } else if (type === 'remove') {
         await updateDoc(userRef, {
             Games: arrayRemove({
                 Frequency: 0,
-                GameRef: '/Game/' + gameID
+                GameRef: gameID
             })
         });
     }
