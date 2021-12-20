@@ -53,6 +53,11 @@ async function createNewUserGameList(userID) {
         UID: userID,
         Games: []
     });
+    try {
+        return !!docRef.id;
+    } catch (err) {
+        return false;
+    }
 }
 
 async function signOutUser() {

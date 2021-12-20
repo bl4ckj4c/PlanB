@@ -48,7 +48,7 @@ function Registration(props) {
         // Start registration
         setButtonLoading(true);
         if (emailFlag && passwordFlag) {
-            const res = await createUserWithEmailAndPassword(emailLogin, passwordLogin);
+            await createUserWithEmailAndPassword(emailLogin, passwordLogin);
         }
         setButtonLoading(false);
     }
@@ -56,7 +56,10 @@ function Registration(props) {
     useEffect(async () => {
         if (!loading) {
             if (user !== undefined) {
-                const resDb = await API.createNewUserGameList(user.user.uid);
+                const resNewDoc = await API.createNewUserGameList(user.user.uid);
+                if(!resNewDoc) {
+                    console.error('New user collection not created');
+                }
                 props.setIsSignedIn(true);
             } else {
                 props.setIsSignedIn(false);
