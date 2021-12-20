@@ -81,19 +81,26 @@ async function getAllGames() {
     return games;
 }
 
-async function getUserGames(uid) {
-    const gamesCollection = collection(db, 'UserGames');
-    const q = query(gamesCollection, where('UID', '==', uid));
-    const querySnapshot = await getDocs(q);
-    let games = [];
+async function getUserGames() {
+    // User authenticated
+    if(currentUser !== null) {
+        const gamesCollection = collection(db, 'UserGames');
+        const q = query(gamesCollection, where('UID', '==', currentUser.uid));
+        const querySnapshot = await getDocs(q);
+        let games = [];
 
-    querySnapshot.forEach((doc) => {
-        doc.data().Games.forEach(async (game) => {
-            const res = await getDoc(game.GameRef);
-            games.push(res.data());
+        querySnapshot.forEach((doc) => {
+            doc.data().Games.forEach(async (game) => {
+                const res = await getDoc(game.GameRef);
+                games.push(res.data());
+            });
         });
-    });
-    return games;
+        return games;
+    }
+    // User not authenticated
+    else {
+        throw 'User not authenticated';
+    }
 }
 
 async function insertOrRemoveUserGame(uid, gameID, type) {
