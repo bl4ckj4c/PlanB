@@ -8,6 +8,8 @@ import React, {useEffect, useState} from "react";
 //special cards
 import LoadingCard from "./LoadingCard";
 import NoGamesCard from "./NoGamesCard";
+//modal
+import ModalGameInfo from "./ModalGameInfo";
 
 function MyGames(props) {
     const [newSession, setNewSession] = useState(false);
@@ -16,6 +18,9 @@ function MyGames(props) {
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState('');
+    const [modalShow, setModalShow] = useState(false);
+    const [modalGame, setModalGame] = useState({});
+
 
     const handleNewSession = (event) => {
         setNewSession(true);
@@ -63,6 +68,12 @@ function MyGames(props) {
         }
     }, [filter, games.length]);
 
+    
+    const showGameInfo = (game) => {
+        setModalGame(game);
+        setModalShow(true);
+    }
+
     return (
         <>
             {page !== '' && <Navigate replace to={`/${page}`}/>}
@@ -106,7 +117,7 @@ function MyGames(props) {
                         </Container>
                         <Container fluid className='pt-4 bg-light pb-5 min-vh-75 below-nav' id="games">
                             {gamesToShow.length ? 
-                                gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
+                                gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}  showGameInfo = {showGameInfo}/>)
                             :
                                 ( loading ?
                                     <LoadingCard />
@@ -126,6 +137,12 @@ function MyGames(props) {
                                 </Button>
                             </Row>
                         </Container>
+
+                        <ModalGameInfo
+                        game = {modalGame}
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
                     </>
             }
         </>

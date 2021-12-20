@@ -1,13 +1,15 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import GameCard from './GameCard';
-import {ChevronLeft, Reddit} from "react-bootstrap-icons";
-import {Link, Navigate} from "react-router-dom";
+import {ChevronLeft} from "react-bootstrap-icons";
+import {Navigate} from "react-router-dom";
 import API from "../API";
 import React, {useEffect, useState} from "react";
 
 //special cards
 import LoadingCard from "./LoadingCard";
 import NoGamesCard from "./NoGamesCard";
+//modal
+import ModalGameInfo from "./ModalGameInfo";
 
 function AddGame(props) {
     const [filter, setFilter] = useState("");
@@ -15,6 +17,8 @@ function AddGame(props) {
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState('');
+    const [modalShow, setModalShow] = useState(false);
+    const [modalGame, setModalGame] = useState({});
 
 
     const handleBackButton = (event) => {
@@ -29,9 +33,17 @@ function AddGame(props) {
                 //need to show only games that user does not have already
                 API.getUserGames().
                     then((usergames) => {
+                        /*
                         console.log(usergames);
-                        //for each game of the global list, search if it is included in usergames
-                        const tmp = games.filter(game => !usergames.find(res => res.id === game.id));
+                        console.log(games);
+                        
+                        for(let game of games)
+                            console.log(game.id);
+
+                        for(let usergame in usergames)
+                            console.log(usergame);
+                        */
+                        const tmp = games.filter(game => !usergames.find(usergame => usergame.id === game.id));
                         setGames(tmp);
                         setLoading(false);
                     })
@@ -71,6 +83,11 @@ function AddGame(props) {
         }
     }, [filter, games.length]);
 
+    const showGameInfo = (game) => {
+        setModalGame(game);
+        setModalShow(true);
+    }
+
     return (
         <>
             {page !== '' && <Navigate replace to={`/${page}`}/>}
@@ -102,7 +119,7 @@ function AddGame(props) {
                     </Container>
                     <Container fluid className='pt-3 bg-light pb-5 min-vh-75 below-nav' id="games">
                         {gamesToShow.length ? 
-                            gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}/>)
+                            gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id} showGameInfo = {showGameInfo}/>)
                         :
                             ( loading ?
                                 <LoadingCard />
@@ -111,6 +128,12 @@ function AddGame(props) {
                             )
                         }
                     </Container>
+                    <ModalGameInfo
+                        add = "true"
+                        game={modalGame}
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
                 </>
             }
         </>

@@ -35,6 +35,7 @@ function GameInfo(props) {
     useEffect(() => {
         API.getGameImage()
             .then((url) => {
+                console.log("pippo");
                 setImageUrl(url);
                 setImageLoading(false);
             })
@@ -47,13 +48,14 @@ function GameInfo(props) {
 
     return (
         <>
+            {/*
             <Container id="nav" className="pb-2">
                 <Row className='justify-content-between mt-2'>
                     <Col xs={6}>
                         <Button
                             type="submit"
                             className="bg-white border-0 p-0"
-                            /*onClick={() => handleBackButton()}*/
+                            /*onClick={() => handleBackButton()}
                         >
                             <ChevronLeft size={25} color="grey"/>
                             <span className="text-muted align-middle">Back</span>
@@ -64,6 +66,7 @@ function GameInfo(props) {
                     <h1 className='m-2 text-center'>{game.title}</h1>
                 </Row>
             </Container>
+            */}
             {imageLoading ?
                 <Container className="mt-10">
                     <Row className="justify-content-center">

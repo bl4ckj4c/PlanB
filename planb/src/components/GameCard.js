@@ -4,6 +4,7 @@ import {HourglassSplit, Dice1, Dice3, Dice5, People} from 'react-bootstrap-icons
 
 function GameCard(props) {
     const game = {
+        id: props.game.id,
         title: props.game.Title,
         categories: [...props.game.Categories],
         playersMin: props.game.PlayersMin,
@@ -36,8 +37,11 @@ function GameCard(props) {
     else if(game.difficulty === 'Hard')
         diceIcon = <Dice5 className='mx-2'/>;
 
+    const showGameInfo = (game) => {
+        props.showGameInfo(game)
+    }
     return (
-        <Card className='mb-2'>
+        <Card onClick={() => showGameInfo(props.game)} className='mb-2 cursor-pointer'>
             <Card.Body>
                 <Card.Title>
                     {game.title}
