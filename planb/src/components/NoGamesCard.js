@@ -9,7 +9,7 @@ function NoGamesCard(props) {
             <Card className='mb-5 border-danger w-100'>
                 <Card.Body>
                     <Card.Title className='text-danger'>
-                        <ExclamationTriangle /> Wait wait wait.. <ExclamationTriangle />
+                        <ExclamationTriangle /> Wait wait wait... <ExclamationTriangle />
                     </Card.Title>
                     <Card.Subtitle className='text-danger'>
                         <small>

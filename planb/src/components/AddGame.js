@@ -1,4 +1,4 @@
-import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import {Button, Col, Container, Form, Row, Spinner} from "react-bootstrap";
 import GameCard from './GameCard';
 import {ChevronLeft} from "react-bootstrap-icons";
 import {Navigate} from "react-router-dom";
@@ -121,7 +121,13 @@ function AddGame(props) {
                             gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id} showGameInfo = {showGameInfo}/>)
                         :
                             ( loading ?
-                                <LoadingCard />
+                                <Container className='d-flex align-items-center min-vh-75 pb-5' >
+                                    <Spinner
+                                        className='mx-auto d-block'
+                                        variant="secondary"
+                                        animation="border">
+                                    </Spinner>
+                                </Container>
                             :
                                 <NoGamesCard filter = {true}/>
                             )

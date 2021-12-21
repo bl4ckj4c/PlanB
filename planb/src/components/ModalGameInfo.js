@@ -21,9 +21,6 @@ function ModalGameInfo(props) {
         <Modal.Body>
             <GameInfo game = {game} />
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant = "secondary" onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
       </Modal>
     );
   }
