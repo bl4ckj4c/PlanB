@@ -21,12 +21,14 @@ function Category(props) {
     return (
         <Badge pill bg="secondary" style={{"line-height": "2.09", "margin": "2px"}}>
             {category}
-            <Button className="m-0 p-0 bg-secondary border-0"
-                    style={{"height": "18", "width": "18", "vertical-align": "middle", "font-size": "0"}}
-                    onClick={() => handleRemovingTag()}
-            >
-                <X size={18}/>
-            </Button>
+            {setConfirmedCategories !== "" &&
+                <Button className="m-0 p-0 bg-secondary border-0"
+                        style={{"height": "18", "width": "18", "vertical-align": "middle", "font-size": "0"}}
+                        onClick={() => handleRemovingTag()}
+                >
+                    <X size={18}/>
+                </Button>
+            }
         </Badge>);
 }
 

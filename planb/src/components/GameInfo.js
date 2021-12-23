@@ -2,6 +2,7 @@ import {Button, Col, Container, Image, Row, Spinner} from "react-bootstrap";
 import {ChevronLeft, Dice1, Dice3, Dice5, HourglassSplit, People} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import API from "../API";
+import { Categories } from "./Categories";
 
 function GameInfo(props) {
     const [imageUrl, setImageUrl] = useState('');
@@ -70,8 +71,8 @@ function GameInfo(props) {
             </Container>
             */}
             {imageLoading ?
-                <Container className="mt-10">
-                    <Row className="justify-content-center">
+                <Container className="d-flex align-items-center min-vh-75">
+                    <Row className="justify-content-center w-100">
                         <Col xs={12} sm={4} md={4}>
                             <Spinner
                                 className='mx-auto d-block'
@@ -83,8 +84,9 @@ function GameInfo(props) {
                     </Row>
                 </Container>
                 :
-                <Container fluid className='mt-3'>
-                    <Row>
+                <Container fluid className='mt-3 min-vh-75'>
+                    {/**GAME IMAGE */}
+                    <Row className="min-vh-200px">
                         <Col>
                             <Image
                                 className='rounded mx-auto d-block'
@@ -92,6 +94,7 @@ function GameInfo(props) {
                                 src={imageUrl}/>
                         </Col>
                     </Row>
+                    {/**NUMBER OF PLAYERS */}
                     <Row className='align-items-center justify-content-center mt-5'>
                         <Col xs={1}/>
                         <People xs={4} size={40} className='col'/>
@@ -102,6 +105,7 @@ function GameInfo(props) {
                         </Col>
                         <Col xs={3}/>
                     </Row>
+                    {/**GAME DURATION */}
                     <Row className='align-items-center justify-content-center mt-4'>
                         <Col xs={1}/>
                         <HourglassSplit xs={4} size={40} className='col'/>
@@ -112,6 +116,7 @@ function GameInfo(props) {
                         </Col>
                         <Col xs={3}/>
                     </Row>
+                    {/**GAME DIFFICULTY */}
                     <Row className='align-items-center justify-content-center mt-4'>
                         <Col xs={1}/>
                         {diceIcon}
@@ -121,6 +126,13 @@ function GameInfo(props) {
                             </h3>
                         </Col>
                         <Col xs={3}/>
+                    </Row>
+                    {/**GAME CATEGORIES */}
+                    <Row className='align-items-center justify-content-center mt-4'>
+                        <Container>
+                            <Categories confirmedCategories={game.categories}
+                                        setConfirmedCategories=""/>
+                        </Container>
                     </Row>
 
                 </Container>
