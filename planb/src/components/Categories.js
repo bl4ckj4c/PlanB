@@ -21,6 +21,10 @@ function Category(props) {
     return (
         <Badge pill bg="secondary" style={{"line-height": "2.09", "margin": "2px"}}>
             {category}
+            {/**Nel caso in cui Categories viene renderizzato a partire da GameInfo, abbiamo setConfirmedCategories="" 
+             * in modo da non mostrare il bottone con la x dentro il badge, che nel caso di NewSession serve per togliere 
+             * una delle categorie inserite.
+            */}
             {setConfirmedCategories !== "" &&
                 <Button className="m-0 p-0 bg-secondary border-0"
                         style={{"height": "18", "width": "18", "vertical-align": "middle", "font-size": "0"}}
