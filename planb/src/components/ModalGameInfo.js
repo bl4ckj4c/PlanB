@@ -1,4 +1,6 @@
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, Row} from 'react-bootstrap';
+//API
+import API from "../API";
 
 //GameInfo
 import GameInfo from './GameInfo';
@@ -6,6 +8,18 @@ import GameInfo from './GameInfo';
 function ModalGameInfo(props) {
     //props.add === "true"
     const game = props.game;
+    const addGame = () => {
+      //console.log(game);
+      API.insertOrRemoveUserGame(game.id, "insert")
+      .then((data)=> console.log(data))
+      .catch((err) => console.log(err));
+    }
+    const deleteGame = () => {
+      //console.log(game);
+      API.insertOrRemoveUserGame(game.id, "remove")
+        .then((data)=> console.log(data))
+        .catch((err) => console.log(err));
+    }
     return (
       <Modal
         {...props}
@@ -20,6 +34,13 @@ function ModalGameInfo(props) {
         </Modal.Header>
         <Modal.Body>
             <GameInfo game = {game} />
+            <Row className='align-items-center justify-content-center mt-4'>
+              {props.add === "true" ?
+                <Button variant = "success" onClick={() => addGame()}>Add</Button>
+              :
+                <Button variant = "danger" onClick={() => deleteGame()}>Delete</Button>
+              }
+            </Row>
         </Modal.Body>
       </Modal>
     );

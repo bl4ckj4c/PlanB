@@ -11,6 +11,8 @@ function GameInfo(props) {
     const game = {
         title: props.game.Title,
         categories: [...props.game.Categories],
+        description: props.game.Description,
+        descriptionCut: props.game.Description.substring(0,80),
         playersMin: props.game.PlayersMin,
         playersMax: props.game.PlayersMax,
         hour: parseInt(props.game.Duration.split(':')[0]),
@@ -95,7 +97,7 @@ function GameInfo(props) {
                         </Col>
                     </Row>
                     {/**NUMBER OF PLAYERS */}
-                    <Row className='align-items-center justify-content-center mt-5'>
+                    <Row className='align-items-center justify-content-center mt-4'>
                         <Col xs={1}/>
                         <People xs={4} size={40} className='col'/>
                         <Col xs={4}>
@@ -106,7 +108,7 @@ function GameInfo(props) {
                         <Col xs={3}/>
                     </Row>
                     {/**GAME DURATION */}
-                    <Row className='align-items-center justify-content-center mt-4'>
+                    <Row className='align-items-center justify-content-center mt-3'>
                         <Col xs={1}/>
                         <HourglassSplit xs={4} size={40} className='col'/>
                         <Col xs={4}>
@@ -117,7 +119,7 @@ function GameInfo(props) {
                         <Col xs={3}/>
                     </Row>
                     {/**GAME DIFFICULTY */}
-                    <Row className='align-items-center justify-content-center mt-4'>
+                    <Row className='align-items-center justify-content-center mt-3'>
                         <Col xs={1}/>
                         {diceIcon}
                         <Col xs={4}>
@@ -129,11 +131,20 @@ function GameInfo(props) {
                     </Row>
                     {/**GAME CATEGORIES */}
                     <Row className='align-items-center justify-content-center mt-4'>
+                        {/*<Container><span>Categories</span></Container>*/}
                         <Container>
                             <Categories confirmedCategories={game.categories}
                                         setConfirmedCategories=""/>
                         </Container>
                     </Row>
+                    {/**GAME DESCRIPTION */}
+                    <Row className='align-items-center justify-content-center mt-4'>
+                        <Container>
+                            <h5>Description</h5>
+                            <p>{game.descriptionCut}</p> 
+                        </Container>
+                    </Row>
+                    
 
                 </Container>
             }
