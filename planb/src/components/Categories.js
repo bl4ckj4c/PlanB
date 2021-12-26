@@ -5,9 +5,10 @@ import {Clock, Dice1, Dice3, Dice5, People, X, Plus, Dash, Check} from 'react-bo
 function Categories(props) {
     const {confirmedCategories, setConfirmedCategories} = props;
 
-    return confirmedCategories.map((item, index) => <Category category={item}
-                                                              confirmedCategories={confirmedCategories}
-                                                              setConfirmedCategories={setConfirmedCategories}/>);
+    return confirmedCategories.map((item, index) => 
+            <Category key = {index} category={item} confirmedCategories={confirmedCategories}
+                setConfirmedCategories={setConfirmedCategories}/>
+        );
 }
 
 function Category(props) {
@@ -19,7 +20,7 @@ function Category(props) {
     }
 
     return (
-        <Badge pill bg="secondary" style={{"line-height": "2.09", "margin": "2px"}}>
+        <Badge pill bg="secondary" style={{"lineHeight": "2.09", "margin": "2px"}}>
             {category}
             {/**Nel caso in cui Categories viene renderizzato a partire da GameInfo, abbiamo setConfirmedCategories="" 
              * in modo da non mostrare il bottone con la x dentro il badge, che nel caso di NewSession serve per togliere 

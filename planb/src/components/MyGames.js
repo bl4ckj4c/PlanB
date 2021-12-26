@@ -6,7 +6,6 @@ import API from "../API";
 import React, {useEffect, useState} from "react";
 
 //special cards
-import LoadingCard from "./LoadingCard";
 import NoGamesCard from "./NoGamesCard";
 //modal
 import ModalGameInfo from "./ModalGameInfo";
@@ -33,7 +32,6 @@ function MyGames(props) {
     //useEffect for loading games
     useEffect(() => {
         API.getUserGames()
-        //API.getAllGames()
             .then((games) => {
                 setGames(games);
                 setGamesLoading(false);
@@ -48,17 +46,14 @@ function MyGames(props) {
     //useEffect for filtering games
     useEffect(() => {
         if (filter !== "") {
-            //NOT WORKING
             const filtered = games.filter(game => {
-                if(game.Title.toUpperCase().startsWith(filter.toUpperCase())){
-                    console.log(game.Title + "\n"+game.Difficulty + "\n"+ game.Categories);
+                if (game.Title.toUpperCase().startsWith(filter.toUpperCase())) {
+                    console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
                     return true;
-                }
-                else if(game.Difficulty.toUpperCase().startsWith(filter.toUpperCase())){
-                    console.log(game.Title + "\n"+game.Difficulty + "\n"+ game.Categories);
+                } else if (game.Difficulty.toUpperCase().startsWith(filter.toUpperCase())) {
+                    console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
                     return true;
-                }
-                else if (game.Categories.find(item => item.toUpperCase().startsWith(filter.toUpperCase())))
+                } else if (game.Categories.find(item => item.toUpperCase().startsWith(filter.toUpperCase())))
                     return true;
                 return false;
             });
@@ -68,7 +63,12 @@ function MyGames(props) {
         }
     }, [filter, games.length]);
 
-    
+
+    //function that adds (in frontend only) a usergame, and subsequently refreshes the view
+    const deleteUsergame = (gameId) => {
+        const tmp = games.filter(game => game.id !== gameId);
+        setGames(tmp);
+    }
     const showGameInfo = (game) => {
         setModalGame(game);
         setModalShow(true);
@@ -82,7 +82,8 @@ function MyGames(props) {
                     <Navigate replace to="/newsession"/>
                     :
                     <>
-                        <Container id="nav" className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
+                        <Container id="nav"
+                                   className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
                                     <Button
@@ -110,7 +111,8 @@ function MyGames(props) {
                                 <Form>
                                     <Form.Group>
                                         <Form.Control type='text' placeholder='Search among your games'
-                                        value = {filter} onChange = {(event) => setFilter(event.target.value)}/>
+                                                      value={filter}
+                                                      onChange={(event) => setFilter(event.target.value)}/>
                                     </Form.Group>
                                 </Form>
                             </Row>
@@ -145,10 +147,12 @@ function MyGames(props) {
                         </Container>
 
                         <ModalGameInfo
-                        game = {modalGame}
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                    />
+                            fullscreen
+                            game={modalGame}
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            deleteusergame = {deleteUsergame}
+                        />
                     </>
             }
         </>
