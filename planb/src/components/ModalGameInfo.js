@@ -15,8 +15,8 @@ function ModalGameInfo(props) {
         //console.log(game);
         setButtonLoading(true);
         API.insertOrRemoveUserGame(game.id, "insert")
-            .then((data) => {
-                console.log(data);
+            .then(() => {
+                props.addusergame(game.id);
                 props.onHide();
                 setButtonLoading(false);
             })
@@ -41,7 +41,9 @@ function ModalGameInfo(props) {
     }
     return (
         <Modal
-            {...props}
+            fullscreen = {props.fullscreen}
+            show = {props.show}
+            onHide = {props.onHide}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered

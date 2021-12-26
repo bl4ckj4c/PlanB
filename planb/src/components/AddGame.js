@@ -14,6 +14,7 @@ function AddGame(props) {
     const [filter, setFilter] = useState("");
     const [gamesToShow, setGamesToShow] = useState([]);
     const [games, setGames] = useState([]);
+    const [usergames, setUsergames] = useState([]);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState('');
     const [modalShow, setModalShow] = useState(false);
@@ -44,17 +45,20 @@ function AddGame(props) {
                             }
                             return 0;
                         });
+                        setUsergames(usergames);
                         setGames(tmp);
                         setLoading(false);
                     })
                     .catch((err) => {
                         console.log(err);
+                        setUsergames([]);
                         setLoading(false);
                         setGames([]);
                     });
             })
             .catch((err) => {
                 console.log(err);
+                setUsergames([]);
                 setLoading(false);
                 setGames([]);
             })
@@ -80,6 +84,28 @@ function AddGame(props) {
             setGamesToShow(games);
         }
     }, [filter, games.length]);
+
+    //function that adds (in frontend only) a usergame, and subsequently refreshes the view
+    const addUsergame = (gameId) => {
+        const game = games.find(game => game.id === gameId);
+        const newUsergames = usergames;
+        newUsergames.push(game);
+
+        const tmp = games.filter(game => !newUsergames.find(usergame => usergame.id === game.id));
+        tmp.sort((game1, game2) => {
+            const title1 = game1.Title.toUpperCase();
+            const title2 = game2.Title.toUpperCase();
+            if(title1 < title2){
+                return -1;
+            }
+            else if (title1 > title2){
+                return 1;
+            }
+            return 0;
+        });
+        setUsergames(newUsergames);
+        setGames(tmp);
+    }
 
     const showGameInfo = (game) => {
         setModalGame(game);
@@ -134,10 +160,11 @@ function AddGame(props) {
                     </Container>
                     <ModalGameInfo
                         fullscreen
-                        add = "true"
                         game={modalGame}
                         show={modalShow}
                         onHide={() => setModalShow(false)}
+                        add = "true"
+                        addusergame = {addUsergame}
                     />
                 </>
             }
