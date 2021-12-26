@@ -6,17 +6,17 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import API from './API'
-import Login from './components/Login';
-import Registration from './components/Registration';
-import NewSession from './components/NewSession';
-import ProfileInfo from './components/ProfileInfo';
-import Welcome from './components/Welcome';
-import Rules from './components/Rules';
-import MyGames from './components/MyGames';
-import AddGame from './components/AddGame';
+import Login from './components/Login/Login';
+import Registration from './components/Login/Registration';
+import NewSession from './components/NewSession/NewSession';
+import ProfileInfo from './components/Common/ProfileInfo';
+import Welcome from './components/Login/Welcome';
+import Rules from './components/Common/Rules';
+import MyGames from './components/MyGames/MyGames';
+import AddGame from './components/AddGame/AddGame';
 
 import {useAuthState} from 'react-firebase-hooks/auth';
-import GamesFound from "./components/GamesFound";
+import GamesFound from "./components/NewSession/GamesFound";
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(false);

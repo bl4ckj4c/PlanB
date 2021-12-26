@@ -1,6 +1,6 @@
 import {Modal, Button, Row, Spinner} from 'react-bootstrap';
 //API
-import API from "../API";
+import API from "../../API";
 
 //GameInfo
 import GameInfo from './GameInfo';

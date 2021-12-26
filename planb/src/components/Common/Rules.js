@@ -1,5 +1,5 @@
-import './style/pdf.css';
-import PDFReader from "./PDFReader";
+import '../style/pdf.css';
+import PDFReader from "../PDF/PDFReader";
 
 
 function Rules(props) {

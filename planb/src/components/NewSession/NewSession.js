@@ -2,8 +2,8 @@ import {Col, Container, Form, Row, Button, Badge} from "react-bootstrap";
 import {ChevronLeft, HourglassSplit, People, PersonCircle, Plus, Dice1, Dice3, Dice5, X} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
-import API from "../API";
-import { Categories, AddCategory } from "./Categories";
+import API from "../../API";
+import { Categories, AddCategory } from "../Common/Categories";
 
 function NewSession(props) {
     const {
