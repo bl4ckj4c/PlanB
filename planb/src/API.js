@@ -105,31 +105,50 @@ async function getUserGames() {
     }
 }
 
-async function insertOrRemoveUserGame(uid, gameID, type) {
-    const gamesCollection = collection(db, 'UserGames');
-    const q = query(gamesCollection, where('UID', '==', uid));
+async function insertOrRemoveUserGame(gameID, type) {
+    const usersCollection = collection(db, 'UserGames');
+    const q = query(usersCollection, where('UID', '==', currentUser.uid));
     const querySnapshot = await getDocs(q);
+    const game = doc(db, 'Games', gameID).get();
 
     let ids = [];
-
-    // Update the user game collection with the new game
     querySnapshot.forEach((doc) => {
         ids.push(doc.id);
     });
     const userRef = doc(db, 'UserGames', ids[0]);
 
+    const gameData = game.data();
+
     if (type === 'insert') {
         await updateDoc(userRef, {
             Games: arrayUnion({
+                Title: gameData.Title,
+                Categories: gameData.Categories,
+                Description: gameData.Description,
+                Difficulty: gameData.Difficulty,
+                Duration: gameData.Duration,
+                PlayersMax: gameData.PlayersMax,
+                PlayersMin: gameData.PlayersMin,
+                Rules: gameData.Rules,
+                ImageId: gameData.ImageId,
                 Frequency: 0,
-                GameRef: gameID
+                id: game.id
             })
         });
     } else if (type === 'remove') {
         await updateDoc(userRef, {
             Games: arrayRemove({
+                Title: gameData.Title,
+                Categories: gameData.Categories,
+                Description: gameData.Description,
+                Difficulty: gameData.Difficulty,
+                Duration: gameData.Duration,
+                PlayersMax: gameData.PlayersMax,
+                PlayersMin: gameData.PlayersMin,
+                Rules: gameData.Rules,
+                ImageId: gameData.ImageId,
                 Frequency: 0,
-                GameRef: gameID
+                id: game.id
             })
         });
     }
