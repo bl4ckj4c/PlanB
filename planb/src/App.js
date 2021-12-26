@@ -119,9 +119,10 @@ function App() {
                     />
                 }/>
 
-                <Route exact path="/rules" element={
-                    isSignedIn ? <Rules/> : <Navigate replace to="/login"/>
-                }/>
+                {/*<Route exact path="/rules" element={
+                    //isSignedIn ? <Rules pdf_url={"https://www.hasbro.com/common/instruct/00009.pdf"} /> : <Navigate replace to="/login"/>
+                    //<Rules pdf_url={"https://www.hasbro.com/common/instruct/00009.pdf"} />
+                }/>*/}
 
                 <Route exact path="/suggest" element={
                     isSignedIn ? <div/> : <Navigate replace to="/login"/>
