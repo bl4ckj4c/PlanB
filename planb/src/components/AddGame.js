@@ -133,6 +133,7 @@ function AddGame(props) {
                         }
                     </Container>
                     <ModalGameInfo
+                        fullscreen
                         add = "true"
                         game={modalGame}
                         show={modalShow}

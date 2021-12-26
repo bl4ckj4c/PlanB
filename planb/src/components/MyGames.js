@@ -32,7 +32,7 @@ function MyGames(props) {
     //useEffect for loading games
     useEffect(() => {
         API.getUserGames()
-        //API.getAllGames()
+            //API.getAllGames()
             .then((games) => {
                 setGames(games);
                 setLoading(false);
@@ -49,15 +49,13 @@ function MyGames(props) {
         if (filter !== "") {
             //NOT WORKING
             const filtered = games.filter(game => {
-                if(game.Title.toUpperCase().startsWith(filter.toUpperCase())){
-                    console.log(game.Title + "\n"+game.Difficulty + "\n"+ game.Categories);
+                if (game.Title.toUpperCase().startsWith(filter.toUpperCase())) {
+                    console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
                     return true;
-                }
-                else if(game.Difficulty.toUpperCase().startsWith(filter.toUpperCase())){
-                    console.log(game.Title + "\n"+game.Difficulty + "\n"+ game.Categories);
+                } else if (game.Difficulty.toUpperCase().startsWith(filter.toUpperCase())) {
+                    console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
                     return true;
-                }
-                else if (game.Categories.find(item => item.toUpperCase().startsWith(filter.toUpperCase())))
+                } else if (game.Categories.find(item => item.toUpperCase().startsWith(filter.toUpperCase())))
                     return true;
                 return false;
             });
@@ -67,7 +65,7 @@ function MyGames(props) {
         }
     }, [filter, games.length]);
 
-    
+
     const showGameInfo = (game) => {
         setModalGame(game);
         setModalShow(true);
@@ -81,7 +79,8 @@ function MyGames(props) {
                     <Navigate replace to="/newsession"/>
                     :
                     <>
-                        <Container id="nav" className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
+                        <Container id="nav"
+                                   className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
                                     <Button
@@ -109,25 +108,27 @@ function MyGames(props) {
                                 <Form>
                                     <Form.Group>
                                         <Form.Control type='text' placeholder='Search among your games'
-                                        value = {filter} onChange = {(event) => setFilter(event.target.value)}/>
+                                                      value={filter}
+                                                      onChange={(event) => setFilter(event.target.value)}/>
                                     </Form.Group>
                                 </Form>
                             </Row>
                         </Container>
                         <Container fluid className='pt-4 bg-light pb-5 min-vh-75 below-nav' id="games">
-                            {gamesToShow.length ? 
-                                gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}  showGameInfo = {showGameInfo}/>)
-                            :
-                                ( loading ?
-                                    <Container className='d-flex align-items-center min-vh-75 pb-5' >
-                                        <Spinner
-                                            className='mx-auto d-block'
-                                            variant="secondary"
-                                            animation="border">
-                                        </Spinner>
-                                    </Container>
+                            {gamesToShow.length ?
+                                gamesToShow.map(game => <GameCard game={game} key={'game' + game.id}
+                                                                  showGameInfo={showGameInfo}/>)
                                 :
-                                    (games.length ? <NoGamesCard filter = {true}/> : <NoGamesCard filter = {false}/>)
+                                (loading ?
+                                        <Container className='d-flex align-items-center min-vh-75 pb-5'>
+                                            <Spinner
+                                                className='mx-auto d-block'
+                                                variant="secondary"
+                                                animation="border">
+                                            </Spinner>
+                                        </Container>
+                                        :
+                                        (games.length ? <NoGamesCard filter={true}/> : <NoGamesCard filter={false}/>)
                                 )
                             }
                         </Container>
@@ -144,10 +145,11 @@ function MyGames(props) {
                         </Container>
 
                         <ModalGameInfo
-                        game = {modalGame}
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                    />
+                            fullscreen
+                            game={modalGame}
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                        />
                     </>
             }
         </>
