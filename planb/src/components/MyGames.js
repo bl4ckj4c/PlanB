@@ -66,6 +66,11 @@ function MyGames(props) {
     }, [filter, games.length]);
 
 
+    //function that adds (in frontend only) a usergame, and subsequently refreshes the view
+    const deleteUsergame = (gameId) => {
+        const tmp = games.filter(game => game.id !== gameId);
+        setGames(tmp);
+    }
     const showGameInfo = (game) => {
         setModalGame(game);
         setModalShow(true);
@@ -149,6 +154,7 @@ function MyGames(props) {
                             game={modalGame}
                             show={modalShow}
                             onHide={() => setModalShow(false)}
+                            deleteusergame = {deleteUsergame}
                         />
                     </>
             }

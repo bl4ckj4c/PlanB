@@ -30,8 +30,8 @@ function ModalGameInfo(props) {
         //console.log(game);
         setButtonLoading(true);
         API.insertOrRemoveUserGame(game.id, "remove")
-            .then((data) => {
-                console.log(data);
+            .then(() => {
+                props.deleteusergame(game.id);
                 props.onHide();
                 setButtonLoading(false);
             })
