@@ -6,7 +6,6 @@ import API from "../API";
 import React, {useEffect, useState} from "react";
 
 //special cards
-import LoadingCard from "./LoadingCard";
 import NoGamesCard from "./NoGamesCard";
 //modal
 import ModalGameInfo from "./ModalGameInfo";

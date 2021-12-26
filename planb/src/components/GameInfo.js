@@ -7,19 +7,21 @@ import { Categories } from "./Categories";
 function GameInfo(props) {
     const [imageUrl, setImageUrl] = useState('');
     const [imageLoading, setImageLoading] = useState(true);
+    const [showMoreDescription, setShowMoreDescription] = useState(false);
 
     const game = {
         title: props.game.Title,
         categories: [...props.game.Categories],
         description: props.game.Description,
-        descriptionCut: props.game.Description.substring(0,80),
-        playersMin: props.game.PlayersMin,
-        playersMax: props.game.PlayersMax,
-        hour: parseInt(props.game.Duration.split(':')[0]),
-        minutes: parseInt(props.game.Duration.split(':')[1]),
+        descriptionCut: props.game.Description.substring(0,77)+"...",
         difficulty: props.game.Difficulty,
         frequency: props.game.Frequency,
-        ImageId: props.game.ImageId
+        ImageId: props.game.ImageId,
+        playersMin: props.game.PlayersMin,
+        playersMax: props.game.PlayersMax,
+        rules: props.game.Rules,
+        hour: parseInt(props.game.Duration.split(':')[0]),
+        minutes: parseInt(props.game.Duration.split(':')[1])        
     }
     let time;
     if (game.hour === 0)
@@ -31,11 +33,11 @@ function GameInfo(props) {
 
     let diceIcon;
     if (game.difficulty === 'Easy')
-        diceIcon = <Dice1 xs={4} size={40} className='col'/>;
+        diceIcon = <Dice1 xs={4} size={30} className='col'/>;
     else if (game.difficulty === 'Mid')
-        diceIcon = <Dice3 xs={4} size={40} className='col'/>;
+        diceIcon = <Dice3 xs={4} size={30} className='col'/>;
     else if (game.difficulty === 'Hard')
-        diceIcon = <Dice5 xs={4} size={40} className='col'/>;
+        diceIcon = <Dice5 xs={4} size={30} className='col'/>;
 
     useEffect(() => {
         API.getGameImage(game.ImageId)
@@ -86,9 +88,9 @@ function GameInfo(props) {
                     </Row>
                 </Container>
                 :
-                <Container fluid className='mt-3 min-vh-75'>
+                <Container fluid className='min-vh-75'>
                     {/**GAME IMAGE */}
-                    <Row className="min-vh-200px">
+                    <Row key = "game-image" className="min-vh-200px">
                         <Col>
                             <Image
                                 className='rounded mx-auto d-block'
@@ -96,52 +98,53 @@ function GameInfo(props) {
                                 src={imageUrl}/>
                         </Col>
                     </Row>
-                    {/**NUMBER OF PLAYERS */}
-                    <Row className='align-items-center justify-content-center mt-4'>
-                        <Col xs={1}/>
-                        <People xs={4} size={40} className='col'/>
-                        <Col xs={4}>
-                            <h3>
-                                {game.playersMin + '-' + game.playersMax}
-                            </h3>
+                    {/**Row with nplayers, duration, difficulty */}
+                    <Row key = "game-infos" className='align-items-center justify-content-center mt-4'>
+                        <Col className = "d-flex flex-column align-items-center">
+                            <People xs={4} size={30} className='col'/>
+                            <h5>{game.playersMin + '-' + game.playersMax}</h5>
                         </Col>
-                        <Col xs={3}/>
-                    </Row>
-                    {/**GAME DURATION */}
-                    <Row className='align-items-center justify-content-center mt-3'>
-                        <Col xs={1}/>
-                        <HourglassSplit xs={4} size={40} className='col'/>
-                        <Col xs={4}>
-                            <h3>
-                                {time}
-                            </h3>
+                        <Col className = "d-flex flex-column align-items-center">
+                            <HourglassSplit xs={4} size={30} className='col'/>
+                            <h5>{time}</h5>
                         </Col>
-                        <Col xs={3}/>
-                    </Row>
-                    {/**GAME DIFFICULTY */}
-                    <Row className='align-items-center justify-content-center mt-3'>
-                        <Col xs={1}/>
-                        {diceIcon}
-                        <Col xs={4}>
-                            <h3>
-                                {game.difficulty}
-                            </h3>
+                        <Col className = "d-flex flex-column align-items-center">
+                            {diceIcon}
+                            <h5>{game.difficulty}</h5>
                         </Col>
-                        <Col xs={3}/>
                     </Row>
                     {/**GAME CATEGORIES */}
-                    <Row className='align-items-center justify-content-center mt-4'>
-                        {/*<Container><span>Categories</span></Container>*/}
-                        <Container>
+                    <Row key = "game-categories" className='align-items-center justify-content-center mt-4'>
+                        <Container><h5>Categories:</h5></Container>
+                        <Container className="ml-1">
                             <Categories confirmedCategories={game.categories}
                                         setConfirmedCategories=""/>
                         </Container>
                     </Row>
                     {/**GAME DESCRIPTION */}
-                    <Row className='align-items-center justify-content-center mt-4'>
+                    <Row key = "game-description" className='align-items-center justify-content-center mt-4'>
                         <Container>
-                            <h5>Description</h5>
-                            <p>{game.descriptionCut}</p> 
+                            <h5>Description:</h5>
+                            {showMoreDescription ? 
+                                <p className="ml-1">
+                                    {game.description}<br></br>
+                                    <Button variant="link" className="p-0" onClick = {() => setShowMoreDescription(false)}>Hide more</Button>
+                                </p> 
+                            :
+                                <p className="ml-1">
+                                    {game.descriptionCut}<br></br>
+                                    <Button variant="link" className="p-0" onClick = {() => setShowMoreDescription(true)}>Show more</Button>
+                                </p> 
+                            }
+                            
+                        </Container>
+                    </Row>
+                    {/**GAME RULES */}
+                    <Row key = "game-rules" className='align-items-center justify-content-center mt-4'>
+                        <Container>
+                            <h5>Rules:</h5>
+                            <a href = "" className="ml-1">{game.rules}</a> 
+                            
                         </Container>
                     </Row>
                     
