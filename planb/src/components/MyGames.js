@@ -12,11 +12,11 @@ import NoGamesCard from "./NoGamesCard";
 import ModalGameInfo from "./ModalGameInfo";
 
 function MyGames(props) {
+    const {games, setGames, gamesLoading, setGamesLoading} = props;
+
     const [newSession, setNewSession] = useState(false);
     const [filter, setFilter] = useState("");
     const [gamesToShow, setGamesToShow] = useState([]);
-    const [games, setGames] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [page, setPage] = useState('');
     const [modalShow, setModalShow] = useState(false);
     const [modalGame, setModalGame] = useState({});
@@ -36,11 +36,11 @@ function MyGames(props) {
         //API.getAllGames()
             .then((games) => {
                 setGames(games);
-                setLoading(false);
+                setGamesLoading(false);
             })
             .catch((err) => {
                 console.log(err);
-                setLoading(false);
+                setGamesLoading(false);
                 setGames([]);
             })
     }, []);
@@ -119,7 +119,7 @@ function MyGames(props) {
                             {gamesToShow.length ? 
                                 gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}  showGameInfo = {showGameInfo}/>)
                             :
-                                ( loading ?
+                                ( gamesLoading ?
                                     <Container className='d-flex align-items-center min-vh-75 pb-5' >
                                         <Spinner
                                             className='mx-auto d-block'

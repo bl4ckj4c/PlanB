@@ -16,10 +16,20 @@ import MyGames from './components/MyGames';
 import AddGame from './components/AddGame';
 
 import {useAuthState} from 'react-firebase-hooks/auth';
+import GamesFound from "./components/GamesFound";
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(false);
     const [user, loading, error] = useAuthState(API.auth);
+
+    const [games, setGames] = useState([]);
+    const [gamesLoading, setGamesLoading] = useState(true);
+
+    const [sessionPlayers, setSessionPlayers] = useState();
+    const [sessionHours, setSessionHours] = useState(1);
+    const [sessionMinutes, setSessionMinutes] = useState(0);
+    const [sessionCategories, setSessionCategories] = useState([]);
+    const [sessionDifficulty, setSessionDifficulty] = useState('');
 
     /*useEffect(() => {
         console.log(user);
@@ -56,8 +66,14 @@ function App() {
                         isSignedIn ? <Navigate replace to="/mygames"/> : <Registration setIsSignedIn={setIsSignedIn}/>
                 }/>
                 <Route exact path="/mygames" element={
-                    isSignedIn ? <MyGames /> : <Navigate replace to = "/login"/> 
-                    /*<MyGames/>*/
+                    isSignedIn ?
+                        <MyGames
+                            games={games} setGames={setGames}
+                            gamesLoading={gamesLoading} setGamesLoading={setGamesLoading}
+                        />
+                        :
+                        <Navigate replace to = "/login"/>
+                        /*<MyGames/>*/
                 }/>
                 <Route exact path="/profile" element={
                     /*isSignedIn ?
@@ -80,12 +96,27 @@ function App() {
 
                 <Route exact path="/newsession" element={
                     //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
-                    <NewSession/>
+                    <NewSession
+                        games={games}
+                        sessionPlayers={sessionPlayers} setSessionPlayers={setSessionPlayers}
+                        sessionHours={sessionHours} setSessionHours={setSessionHours}
+                        sessionMinutes={sessionMinutes} setSessionMinutes={setSessionMinutes}
+                        sessionCategories={sessionCategories} setSessionCategories={setSessionCategories}
+                        sessionDifficulty={sessionDifficulty} setSessionDifficulty={setSessionDifficulty}
+                    />
                 }/>
 
                 <Route exact path="/gamesfound" element={
                     //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
-                    <NewSession/>
+                    <GamesFound
+                        games={games}
+                        gamesLoading={gamesLoading}
+                        sessionPlayers={sessionPlayers}
+                        sessionHours={sessionHours}
+                        sessionMinutes={sessionMinutes}
+                        sessionCategories={sessionCategories}
+                        sessionDifficulty={sessionDifficulty}
+                    />
                 }/>
 
                 <Route exact path="/rules" element={

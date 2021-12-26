@@ -6,22 +6,34 @@ import API from "../API";
 import { Categories, AddCategory } from "./Categories";
 
 function NewSession(props) {
-    const {} = props;
+    const {
+        games,
+        sessionPlayers, setSessionPlayers,
+        sessionHours, setSessionHours,
+        sessionMinutes, setSessionMinutes,
+        sessionCategories, setSessionCategories,
+        sessionDifficulty, setSessionDifficulty
+    } = props;
 
     const [page, setPage] = useState('');
-    const [players, setPlayers] = useState();
+
     const [time, setTime] = useState();
-    const [hours, setHours] = useState(1);
-    const [minutes, setMinutes] = useState(0);
-    const [categories, setCategories] = useState([]);
+
     const [confirmedCategories, setConfirmedCategories] = useState([]);
     const [allCategories, setAllCategories] = useState([]);
     const [showAddTag, setShowAddTag] = useState(true);
 
     useEffect(() => {
-        setAllCategories([
-            "Strategy", "Family", "Party", "Card"
-        ]);
+        const c = [];
+        games.forEach(game => {
+            for(const cat of game.Categories)
+            {
+                if(!c.find(tmp => tmp === cat)) {
+                    c.push(cat);
+                }
+            }
+        });
+        setAllCategories(c);
     }, []);
 
     useEffect(() => {
@@ -36,11 +48,11 @@ function NewSession(props) {
     }
 
     const handleFindGames = (event) => {
-        setPage('foundgames');
+        setPage('gamesfound');
     }
 
     const handlePlayers = (event) => {
-        setPlayers(event.target.value);
+        setSessionPlayers(event.target.value);
     }
 
     const handleTime = async (event) => {
@@ -48,10 +60,8 @@ function NewSession(props) {
         await setTime(t);
         const h = t.split(':')[0];
         const m = t.split(':')[1];
-        console.log(h)
-        console.log(m)
-        setHours(h);
-        setMinutes(m);
+        setSessionHours(h);
+        setSessionMinutes(m);
     }
 
     return (
@@ -60,8 +70,8 @@ function NewSession(props) {
                 page === 'mygames' ?
                     <Navigate replace to="/mygames"/>
                     :
-                    page === 'foundgames' ?
-                        <Navigate replace to="/foundgames"/>
+                    page === 'gamesfound' ?
+                        <Navigate replace to="/gamesfound"/>
                         :
                         <>
                             <Container id="nav" className="pb-2 border-bottom border-secondary">
@@ -93,7 +103,7 @@ function NewSession(props) {
                                                 <Form.Control
                                                     type='number'
                                                     placeholder='Number of players'
-                                                    value={players}
+                                                    value={sessionPlayers}
                                                     onChange={(ev) => handlePlayers(ev)}
                                                 />
                                             </Col>
@@ -132,6 +142,10 @@ function NewSession(props) {
                                                     name="radio-key"
                                                     type="radio"
                                                     id="radio-easy"
+                                                    onChange={(event) => {
+                                                        if (event.target.checked)
+                                                            setSessionDifficulty('Easy');
+                                                    }}
                                                 />
                                             </Col>
                                             <Col xs={4}>
@@ -144,6 +158,10 @@ function NewSession(props) {
                                                     name="radio-key"
                                                     type="radio"
                                                     id="radio-mid"
+                                                    onChange={(event) => {
+                                                        if (event.target.checked)
+                                                            setSessionDifficulty('Mid');
+                                                    }}
                                                 />
                                             </Col>
                                             <Col xs={4}>
@@ -156,6 +174,10 @@ function NewSession(props) {
                                                     name="radio-key"
                                                     type="radio"
                                                     id="radio-hard"
+                                                    onChange={(event) => {
+                                                        if (event.target.checked)
+                                                            setSessionDifficulty('Hard');
+                                                    }}
                                                 />
                                             </Col>
                                         </Row>
@@ -172,8 +194,8 @@ function NewSession(props) {
                                     {
                                         showAddTag ?
                                             <AddCategory allCategories={allCategories}
-                                                         categories={categories}
-                                                         setCategories={setCategories}
+                                                         categories={sessionCategories}
+                                                         setCategories={setSessionCategories}
                                                          confirmedCategories={confirmedCategories}
                                                          setConfirmedCategories={setConfirmedCategories}/>
                                             :
