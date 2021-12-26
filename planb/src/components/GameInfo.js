@@ -1,19 +1,21 @@
-import {Button, Col, Container, Image, Row, Spinner} from "react-bootstrap";
+import {Button, Col, Container, Image, Modal, Row, Spinner} from "react-bootstrap";
 import {ChevronLeft, Dice1, Dice3, Dice5, HourglassSplit, People} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import API from "../API";
-import { Categories } from "./Categories";
+import {Categories} from "./Categories";
+import Rules from "./Rules";
 
 function GameInfo(props) {
     const [imageUrl, setImageUrl] = useState('');
     const [imageLoading, setImageLoading] = useState(true);
     const [showMoreDescription, setShowMoreDescription] = useState(false);
+    const [showRules, setShowRules] = useState(false);
 
     const game = {
         title: props.game.Title,
         categories: [...props.game.Categories],
         description: props.game.Description,
-        descriptionCut: props.game.Description.substring(0,77)+"...",
+        descriptionCut: props.game.Description.substring(0, 77) + " ...",
         difficulty: props.game.Difficulty,
         frequency: props.game.Frequency,
         ImageId: props.game.ImageId,
@@ -21,7 +23,7 @@ function GameInfo(props) {
         playersMax: props.game.PlayersMax,
         rules: props.game.Rules,
         hour: parseInt(props.game.Duration.split(':')[0]),
-        minutes: parseInt(props.game.Duration.split(':')[1])        
+        minutes: parseInt(props.game.Duration.split(':')[1])
     }
     let time;
     if (game.hour === 0)
@@ -90,7 +92,7 @@ function GameInfo(props) {
                 :
                 <Container fluid className='min-vh-75'>
                     {/**GAME IMAGE */}
-                    <Row key = "game-image" className="min-vh-200px">
+                    <Row key="game-image" className="min-vh-200px">
                         <Col>
                             <Image
                                 className='rounded mx-auto d-block'
@@ -99,56 +101,74 @@ function GameInfo(props) {
                         </Col>
                     </Row>
                     {/**Row with nplayers, duration, difficulty */}
-                    <Row key = "game-infos" className='align-items-center justify-content-center mt-4'>
-                        <Col className = "d-flex flex-column align-items-center">
+                    <Row key="game-infos" className='align-items-center justify-content-center mt-4'>
+                        <Col className="d-flex flex-column align-items-center">
                             <People xs={4} size={30} className='col'/>
                             <h5>{game.playersMin + '-' + game.playersMax}</h5>
                         </Col>
-                        <Col className = "d-flex flex-column align-items-center">
+                        <Col className="d-flex flex-column align-items-center">
                             <HourglassSplit xs={4} size={30} className='col'/>
                             <h5>{time}</h5>
                         </Col>
-                        <Col className = "d-flex flex-column align-items-center">
+                        <Col className="d-flex flex-column align-items-center">
                             {diceIcon}
                             <h5>{game.difficulty}</h5>
                         </Col>
                     </Row>
                     {/**GAME CATEGORIES */}
-                    <Row key = "game-categories" className='align-items-center justify-content-center mt-4'>
+                    <Row key="game-categories" className='align-items-center justify-content-center mt-4'>
                         <Container><h5>Categories:</h5></Container>
-                        <Container className="ml-1">
+                        <Container>
                             <Categories confirmedCategories={game.categories}
                                         setConfirmedCategories=""/>
                         </Container>
                     </Row>
                     {/**GAME DESCRIPTION */}
-                    <Row key = "game-description" className='align-items-center justify-content-center mt-4'>
+                    <Row key="game-description" className='align-items-center justify-content-center mt-4'>
                         <Container>
                             <h5>Description:</h5>
-                            {showMoreDescription ? 
-                                <p className="ml-1">
+                            {showMoreDescription ?
+                                <p style={{
+                                    textAlign: 'justify',
+                                    textJustify: 'inter-word'
+                                }}>
                                     {game.description}<br></br>
-                                    <Button variant="link" className="p-0" onClick = {() => setShowMoreDescription(false)}>Hide more</Button>
-                                </p> 
-                            :
-                                <p className="ml-1">
+                                    <Button variant="link" className="p-0"
+                                            onClick={() => setShowMoreDescription(false)}>Hide more</Button>
+                                </p>
+                                :
+                                <p style={{
+                                    textAlign: 'justify',
+                                    textJustify: 'inter-word'
+                                }}>
                                     {game.descriptionCut}<br></br>
-                                    <Button variant="link" className="p-0" onClick = {() => setShowMoreDescription(true)}>Show more</Button>
-                                </p> 
+                                    <Button variant="link" className="p-0" onClick={() => setShowMoreDescription(true)}>Show
+                                        more</Button>
+                                </p>
                             }
-                            
+
                         </Container>
                     </Row>
                     {/**GAME RULES */}
-                    <Row key = "game-rules" className='align-items-center justify-content-center mt-4'>
+                    <Row key="game-rules" className='align-items-center justify-content-center mt-4'>
                         <Container>
                             <h5>Rules:</h5>
-                            <a href = "" className="ml-1">{game.rules}</a> 
-                            
+                            <a href='' onClick={(event) => {
+                                event.preventDefault();
+                                setShowRules(true);
+                            }}>Go to rules!</a>
+                            <Modal
+                                fullscreen
+                                show={showRules}
+                                onHide={() => setShowRules(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title id="contained-modal-title-vcenter">
+                                        <Rules url={game.rules}/>
+                                    </Modal.Title>
+                                </Modal.Header>
+                            </Modal>
                         </Container>
                     </Row>
-                    
-
                 </Container>
             }
         </>

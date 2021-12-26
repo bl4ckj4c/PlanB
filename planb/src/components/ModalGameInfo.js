@@ -25,6 +25,7 @@ function ModalGameInfo(props) {
                 setButtonLoading(false);
             });
     }
+
     const deleteGame = () => {
         //console.log(game);
         setButtonLoading(true);
@@ -39,6 +40,11 @@ function ModalGameInfo(props) {
                 setButtonLoading(false);
             });
     }
+
+    const showRules = () => {
+
+    }
+
     return (
         <Modal
             fullscreen = {props.fullscreen}
@@ -59,7 +65,7 @@ function ModalGameInfo(props) {
             <Modal.Footer as='div'>
                 {props.add === "true" ?
                     <Button
-                        className='mx-auto'
+                        className='mx-1'
                         style={{
                             width: '100%'
                         }}
@@ -78,7 +84,7 @@ function ModalGameInfo(props) {
                     </Button>
                     :
                     <Button
-                        className='mx-auto'
+                        className='mx-1'
                         style={{
                             width: '100%'
                         }}
