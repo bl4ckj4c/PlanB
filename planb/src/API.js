@@ -109,7 +109,8 @@ async function insertOrRemoveUserGame(gameID, type) {
     const usersCollection = collection(db, 'UserGames');
     const q = query(usersCollection, where('UID', '==', currentUser.uid));
     const querySnapshot = await getDocs(q);
-    const game = doc(db, 'Games', gameID).get();
+    const gameRef = doc(db, 'Games', gameID);
+    const game = await getDoc(gameRef);
 
     let ids = [];
     querySnapshot.forEach((doc) => {
@@ -136,6 +137,9 @@ async function insertOrRemoveUserGame(gameID, type) {
             })
         });
     } else if (type === 'remove') {
+        const userData = await getDoc(userRef);
+        const frequency = userData.data().Games.find((element) => element.id === gameID).Frequency;
+
         await updateDoc(userRef, {
             Games: arrayRemove({
                 Title: gameData.Title,
@@ -147,7 +151,7 @@ async function insertOrRemoveUserGame(gameID, type) {
                 PlayersMin: gameData.PlayersMin,
                 Rules: gameData.Rules,
                 ImageId: gameData.ImageId,
-                Frequency: 0,
+                Frequency: frequency,
                 id: game.id
             })
         });
