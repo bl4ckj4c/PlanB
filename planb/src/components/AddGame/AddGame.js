@@ -1,14 +1,14 @@
 import {Button, Col, Container, Form, Row, Spinner} from "react-bootstrap";
-import GameCard from './GameCard';
+import GameCard from '../Common/GameCard';
 import {ChevronLeft} from "react-bootstrap-icons";
 import {Navigate} from "react-router-dom";
-import API from "../API";
+import API from "../../API";
 import React, {useEffect, useState} from "react";
 
 //special cards
-import NoGamesCard from "./NoGamesCard";
+import NoGamesCard from "../Common/NoGamesCard";
 //modal
-import ModalGameInfo from "./ModalGameInfo";
+import ModalGameInfo from "../Common/ModalGameInfo";
 
 function AddGame(props) {
     const [filter, setFilter] = useState("");

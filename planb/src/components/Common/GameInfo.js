@@ -1,7 +1,7 @@
 import {Button, Col, Container, Image, Modal, Row, Spinner} from "react-bootstrap";
 import {ChevronLeft, Dice1, Dice3, Dice5, HourglassSplit, People} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
-import API from "../API";
+import API from "../../API";
 import {Categories} from "./Categories";
 import Rules from "./Rules";
 
@@ -146,7 +146,7 @@ function GameInfo(props) {
                                 onHide={() => setShowRules(false)}>
                                 <Modal.Header closeButton>
                                     <Modal.Title id="contained-modal-title-vcenter">
-                                        <Rules url={game.rules}/>
+                                        <Rules pdf_url={game.rules}/>
                                     </Modal.Title>
                                 </Modal.Header>
                             </Modal>

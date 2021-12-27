@@ -1,7 +1,7 @@
 import {Navigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import GameCard from "./GameCard";
-import ModalGameInfo from "./ModalGameInfo";
+import GameCard from "../Common/GameCard";
+import ModalGameInfo from "../Common/ModalGameInfo";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {ChevronLeft} from "react-bootstrap-icons";
 

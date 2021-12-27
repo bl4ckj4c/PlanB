@@ -1,7 +1,7 @@
 import {Button, Col, Container, Row, Placeholder, Spinner} from "react-bootstrap";
 import {ChevronLeft, PersonCircle} from "react-bootstrap-icons";
 import React, {useState} from "react";
-import API from '../API'
+import API from '../../API'
 import {Navigate} from "react-router-dom";
 
 function ProfileInfo(props) {
