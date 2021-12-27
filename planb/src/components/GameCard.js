@@ -17,8 +17,10 @@ function GameCard(props) {
     let time;
     if(game.hour === 0)
         time = game.minutes+"m";
-    else
-        time = game.hour+"h"+game.minutes+"m";
+    else if(game.minutes === 0)
+            time = game.hour+"h";
+        else
+            time = game.hour+"h"+game.minutes+"m";
 
     //displaying game categories (max 3)
     let subtitle;
