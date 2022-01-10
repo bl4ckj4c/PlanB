@@ -8,6 +8,7 @@ import React, {useState} from "react";
 
 function ModalGameInfo(props) {
     const [buttonLoading, setButtonLoading] = useState(false);
+    const [buttonConfirmLoading, setButtonConfirmLoading] = useState(false);
     const [showDeleteWarning, setShowDeleteWarning] = useState(false);
 
     //props.add === "true"
@@ -29,17 +30,22 @@ function ModalGameInfo(props) {
 
     const deleteGame = () => {
         //console.log(game);
-        setButtonLoading(true);
+        setButtonConfirmLoading(true);
         API.insertOrRemoveUserGame(game.id, "remove")
             .then(() => {
                 props.deleteusergame(game.id);
+                setButtonConfirmLoading(false);
+                setShowDeleteWarning(false);
                 props.onHide();
-                setButtonLoading(false);
             })
             .catch((err) => {
                 console.log(err);
-                setButtonLoading(false);
+                setButtonConfirmLoading(false);
+                setShowDeleteWarning(false);
             });
+        setButtonConfirmLoading(false);
+        setShowDeleteWarning(false);
+        props.onHide();
     }
 
     const showRules = () => {
@@ -49,9 +55,9 @@ function ModalGameInfo(props) {
     return (
         <>
             <Modal
-                fullscreen = {props.fullscreen}
-                show = {props.show}
-                onHide = {props.onHide}
+                fullscreen={props.fullscreen}
+                show={props.show}
+                onHide={props.onHide}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -91,7 +97,10 @@ function ModalGameInfo(props) {
                                 width: '100%'
                             }}
                             variant="danger"
-                            onClick={() => setShowDeleteWarning(true)}>
+                            onClick={() => {
+                                setShowDeleteWarning(true);
+                                //props.setShow(false);
+                            }}>
                             {buttonLoading ?
                                 <Spinner
                                     as="span"
@@ -112,11 +121,43 @@ function ModalGameInfo(props) {
                 centered
                 show={showDeleteWarning}
                 onHide={() => setShowDeleteWarning(false)}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Are you sure to delete this game from your collection?
+                        Attention!
                     </Modal.Title>
                 </Modal.Header>
+                <Modal.Body>
+                    Are you sure to delete this game from your collection?
+                </Modal.Body>
+                <Modal.Footer as='div'>
+                    <Button
+                        className='mx-1'
+                        style={{
+                            width: '100%'
+                        }}
+                        variant="outline-secondary"
+                        onClick={() => setShowDeleteWarning(false)}>
+                        Keep it
+                    </Button>
+                    <Button
+                        className='mx-1'
+                        style={{
+                            width: '100%'
+                        }}
+                        variant="danger"
+                        onClick={() => deleteGame()}>
+                        {buttonConfirmLoading ?
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"/>
+                            :
+                            'Delete it'
+                        }
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </>
     );
