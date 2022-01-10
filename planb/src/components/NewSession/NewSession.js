@@ -104,6 +104,7 @@ function NewSession(props) {
                                                     type='number'
                                                     placeholder='Number of players'
                                                     value={sessionPlayers}
+                                                    min = {1}
                                                     onChange={(ev) => handlePlayers(ev)}
                                                 />
                                             </Col>
