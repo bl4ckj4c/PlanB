@@ -154,7 +154,7 @@ function GameInfo(props) {
                                 <Col>
                                     <EmailShareButton
                                         subject={game.title + " rules"}
-                                        body={"This is the link to the rule for " + game.title + ":"}
+                                        body={"This is the link to the rules for " + game.title + ":"}
                                         url={game.rules}>
                                         <EmailIcon size={32} round={true}/>
                                     </EmailShareButton>
@@ -176,7 +176,7 @@ function GameInfo(props) {
                                 </Col>
                                 <Col>
                                     <WhatsappShareButton
-                                        title={game.title + " rules"}
+                                        title={game.title + " rules:"}
                                         url={game.rules}>
                                         <WhatsappIcon size={32} round={true} color="#128C7E"/>
                                     </WhatsappShareButton>
