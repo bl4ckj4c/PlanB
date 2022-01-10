@@ -117,7 +117,7 @@ function GameInfo(props) {
                                 }}>
                                     {game.description}<br></br>
                                     <Button variant="link" className="p-0"
-                                            onClick={() => setShowMoreDescription(false)}>Hide more</Button>
+                                            onClick={() => setShowMoreDescription(false)}>Show less</Button>
                                 </p>
                                 :
                                 <p style={{

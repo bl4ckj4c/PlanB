@@ -154,7 +154,7 @@ function AddGame(props) {
                                     </Spinner>
                                 </Container>
                             :
-                                <NoGamesCard filter = {true}/>
+                                <NoGamesCard filter = {true} add = {true}/>
                             )
                         }
                     </Container>
