@@ -163,9 +163,14 @@ function GameInfo(props) {
                                 onHide={() => setShowRules(false)}>
                                 <Modal.Header closeButton>
                                     <Modal.Title id="contained-modal-title-vcenter">
-                                        <Rules pdf_url={game.rules}/>
+                                        {game.title}
                                     </Modal.Title>
                                 </Modal.Header>
+                                <Modal.Body>
+                                    <Container>
+                                        <Rules pdf_url={game.rules}/>
+                                    </Container>
+                                </Modal.Body>
                             </Modal>
                         </Container>
                     </Row>
