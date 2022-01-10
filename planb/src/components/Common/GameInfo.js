@@ -1,9 +1,18 @@
 import {Button, Col, Container, Image, Modal, Row, Spinner} from "react-bootstrap";
-import {ChevronLeft, Dice1, Dice3, Dice5, HourglassSplit, People} from "react-bootstrap-icons";
+import {
+    Dice1,
+    Dice3,
+    Dice5,
+    HourglassSplit,
+    People,
+    Telegram,
+    Facebook
+} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import API from "../../API";
 import {Categories} from "./Categories";
 import Rules from "./Rules";
+import {EmailShareButton, EmailIcon, FacebookShareButton, TelegramShareButton, WhatsappShareButton, WhatsappIcon} from "react-share";
 
 function GameInfo(props) {
     const [imageUrl, setImageUrl] = useState('');
@@ -107,7 +116,7 @@ function GameInfo(props) {
                         </Container>
                     </Row>
                     {/**GAME DESCRIPTION */}
-                    <Row key="game-description" className='align-items-center justify-content-center mt-4'>
+                    <Row key="game-description" className='align-items-center justify-content-center mt-3'>
                         <Container>
                             <h5>Description:</h5>
                             {showMoreDescription ?
@@ -133,13 +142,47 @@ function GameInfo(props) {
                         </Container>
                     </Row>
                     {/**GAME RULES */}
-                    <Row key="game-rules" className='align-items-center justify-content-center mt-4'>
+                    <Row key="game-rules" className='align-items-center justify-content-center mt-2'>
                         <Container>
                             <h5>Rules:</h5>
                             <a href='' onClick={(event) => {
                                 event.preventDefault();
                                 setShowRules(true);
                             }}>Go to rules!</a>
+                            <Row className="justify-content-center mt-4">
+                                <Col/>
+                                <Col>
+                                    <EmailShareButton
+                                        subject={game.title + " rules"}
+                                        body={"This is the link to the rule for " + game.title + ":"}
+                                        url={game.rules}>
+                                        <EmailIcon size={32} round={true}/>
+                                    </EmailShareButton>
+                                </Col>
+                                <Col>
+                                    <FacebookShareButton
+                                        quote={game.title + " rules"}
+                                        hashtag={"PlanB"}
+                                        url={game.rules}>
+                                        <Facebook size={32} color="#4267B2"/>
+                                    </FacebookShareButton>
+                                </Col>
+                                <Col>
+                                    <TelegramShareButton
+                                        title={game.title + " rules"}
+                                        url={game.rules}>
+                                        <Telegram size={32} color="#229ED9"/>
+                                    </TelegramShareButton>
+                                </Col>
+                                <Col>
+                                    <WhatsappShareButton
+                                        title={game.title + " rules"}
+                                        url={game.rules}>
+                                        <WhatsappIcon size={32} round={true} color="#128C7E"/>
+                                    </WhatsappShareButton>
+                                </Col>
+                                <Col/>
+                            </Row>
                             <Modal
                                 fullscreen
                                 show={showRules}
