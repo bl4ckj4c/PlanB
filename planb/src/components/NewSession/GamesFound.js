@@ -132,8 +132,10 @@ function GamesFound(props) {
                                     <>{foundGames.map(game => <GameCard game={game} key={'game' + game.id}
                                                                         showGameInfo={showGameInfo}/>)}</>
                                     <ModalGameInfo
+                                        fullscreen
                                         game={modalGame}
                                         show={modalShow}
+                                        newSession = {true}
                                         onHide={() => setModalShow(false)}
                                     />
                                 </Container>

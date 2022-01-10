@@ -32,9 +32,9 @@ function ModalSuggestGame(props) {
             .then((gameId) => {
                 setLoading(false);
                 setAlert({variant: "success", 
-                msg: "Thank you for suggesting us a new game for our collection. We will handle you request in the next few days."});
+                msg: "Thank you for suggesting us a new game!\nLook to my coming on the first light of the fifth day, at dawn look to the east 🧙‍♂️"});
                 //the modal will show the success message for 3 seconds, and then will disappear if the user doesn't click on X
-                window.setTimeout(() => props.onHide(), 3000);
+                //window.setTimeout(() => props.onHide(), 6000);
             })
             .catch((error) => {
                 setLoading(false);
@@ -63,6 +63,7 @@ function ModalSuggestGame(props) {
                     <SuggestionInfo gameName={gameName} setGameName={setGameName} 
                         description={description} setDescription={setDescription}
                         gameDifficulty={gameDifficulty} setGameDifficulty={setGameDifficulty}
+                        disabled = {alert.variant === "success"}
                     />
                     {/**putting a spinner while waiting for API return */}
                     {loading ?
@@ -129,6 +130,7 @@ function SuggestionInfo(props) {
                         <Form.Control
                             placeholder='Game name'
                             value={props.gameName}
+                            disabled = {props.disabled}
                             onChange={(ev) => handleSetGameName(ev.target.value)}
                         />
                     </FloatingLabel>
@@ -140,6 +142,7 @@ function SuggestionInfo(props) {
                         <Form.Control
                             as='textarea'
                             placeholder='Insert here a brief game description'
+                            disabled = {props.disabled}
                             style={{ height: '140px' }}
                             value={props.description}
                             onChange={(ev) => handleSetDescription(ev.target.value)}
@@ -160,6 +163,7 @@ function SuggestionInfo(props) {
                                 name="radio-key"
                                 type="radio"
                                 id="radio-easy"
+                                disabled = {props.disabled}
                                 onChange={(event) => {
                                     if (event.target.checked)
                                         props.setGameDifficulty('Easy');
@@ -176,6 +180,7 @@ function SuggestionInfo(props) {
                                 name="radio-key"
                                 type="radio"
                                 id="radio-mid"
+                                disabled = {props.disabled}
                                 onChange={(event) => {
                                     if (event.target.checked)
                                         props.setGameDifficulty('Mid');
@@ -192,6 +197,7 @@ function SuggestionInfo(props) {
                                 name="radio-key"
                                 type="radio"
                                 id="radio-hard"
+                                disabled = {props.disabled}
                                 onChange={(event) => {
                                     if (event.target.checked)
                                         props.setGameDifficulty('Hard');

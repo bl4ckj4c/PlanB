@@ -1,15 +1,19 @@
 import {Modal, Button, Row, Spinner} from 'react-bootstrap';
+import {Navigate} from "react-router-dom";
+
 //API
 import API from "../../API";
 
 //GameInfo
 import GameInfo from './GameInfo';
 import React, {useState} from "react";
+import { House } from 'react-bootstrap-icons';
 
 function ModalGameInfo(props) {
     const [buttonLoading, setButtonLoading] = useState(false);
     const [buttonConfirmLoading, setButtonConfirmLoading] = useState(false);
     const [showDeleteWarning, setShowDeleteWarning] = useState(false);
+    const [page, setPage] = useState("");
 
     //props.add === "true"
     const game = props.game;
@@ -54,6 +58,7 @@ function ModalGameInfo(props) {
 
     return (
         <>
+            {page === "Home" && <Navigate replace to="/"/>}
             <Modal
                 fullscreen={props.fullscreen}
                 show={props.show}
@@ -71,47 +76,57 @@ function ModalGameInfo(props) {
                     <GameInfo game={game}/>
                 </Modal.Body>
                 <Modal.Footer as='div'>
-                    {props.add === "true" ?
-                        <Button
-                            className='mx-1'
-                            style={{
-                                width: '100%'
-                            }}
-                            variant="success"
-                            onClick={() => addGame()}>
-                            {buttonLoading ?
-                                <Spinner
-                                    as="span"
-                                    animation="border"
-                                    size="sm"
-                                    role="status"
-                                    aria-hidden="true"/>
-                                :
-                                'Add'
-                            }
-                        </Button>
+                    {
+                        props.newSession ?
+                            <Button className='mx-1'
+                                style={{width: '100%'}}
+                                variant="secondary"
+                                onClick={() => setPage("Home")}>
+                                <House size = {28}/>
+                            </Button>
                         :
-                        <Button
-                            className='mx-1'
-                            style={{
-                                width: '100%'
-                            }}
-                            variant="danger"
-                            onClick={() => {
-                                setShowDeleteWarning(true);
-                                //props.setShow(false);
-                            }}>
-                            {buttonLoading ?
-                                <Spinner
-                                    as="span"
-                                    animation="border"
-                                    size="sm"
-                                    role="status"
-                                    aria-hidden="true"/>
-                                :
-                                'Delete'
-                            }
-                        </Button>
+                            props.add === "true" ?
+                                <Button
+                                    className='mx-1'
+                                    style={{
+                                        width: '100%'
+                                    }}
+                                    variant="success"
+                                    onClick={() => addGame()}>
+                                    {buttonLoading ?
+                                        <Spinner
+                                            as="span"
+                                            animation="border"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"/>
+                                        :
+                                        'Add'
+                                    }
+                                </Button>
+                            :
+                                <Button
+                                    className='mx-1'
+                                    style={{
+                                        width: '100%'
+                                    }}
+                                    variant="danger"
+                                    onClick={() => {
+                                        setShowDeleteWarning(true);
+                                        //props.setShow(false);
+                                    }}>
+                                    {buttonLoading ?
+                                        <Spinner
+                                            as="span"
+                                            animation="border"
+                                            size="sm"
+                                            role="status"
+                                            aria-hidden="true"/>
+                                        :
+                                        'Delete'
+                                    }
+                                </Button>
+                    
                     }
                 </Modal.Footer>
             </Modal>
