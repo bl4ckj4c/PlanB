@@ -20,7 +20,7 @@ function NoGamesCard(props) {
                 <Card className='mb-5 border-danger w-100'>
                     <Card.Body>
                         <Card.Title className='text-danger'>
-                            <ExclamationTriangle /> Wait wait wait... <ExclamationTriangle />
+                            Wait wait wait...
                         </Card.Title>
                         <Card.Subtitle>
                             {props.newSession ? 

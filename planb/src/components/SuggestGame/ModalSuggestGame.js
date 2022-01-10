@@ -1,4 +1,4 @@
-import {Modal, Button, Row, Col, Form, Alert, Spinner} from 'react-bootstrap';
+import {Modal, Button, Row, Col, Form, Alert, Spinner, FloatingLabel} from 'react-bootstrap';
 import {Dice1, Dice3, Dice5} from "react-bootstrap-icons";
 
 //API
@@ -124,23 +124,27 @@ function SuggestionInfo(props) {
     return (
         <>
             <Form>
-                <Form.Group className='mt-3' controlId='gameName'>
-                    <Form.Control
-                        placeholder='Game name'
-                        value={props.gameName}
-                        onChange={(ev) => handleSetGameName(ev.target.value)}
-                    />
+                <Form.Group controlId='gameName'>
+                    <FloatingLabel className="mb-3 text-muted" label="Game name" controlId="gameName">
+                        <Form.Control
+                            placeholder='Game name'
+                            value={props.gameName}
+                            onChange={(ev) => handleSetGameName(ev.target.value)}
+                        />
+                    </FloatingLabel>
                 </Form.Group>
             </Form>
             <Form>
                 <Form.Group className='mt-3' controlId='gameDescription'>
-                    <Form.Control
-                        as='textarea'
-                        placeholder='Insert here a brief game description'
-                        rows={5}
-                        value={props.description}
-                        onChange={(ev) => handleSetDescription(ev.target.value)}
-                    />
+                    <FloatingLabel rows={5} className="mb-3 text-muted" label="Insert here a brief game description" controlId="gameDescription">
+                        <Form.Control
+                            as='textarea'
+                            placeholder='Insert here a brief game description'
+                            style={{ height: '140px' }}
+                            value={props.description}
+                            onChange={(ev) => handleSetDescription(ev.target.value)}
+                        />
+                    </FloatingLabel>
                 </Form.Group>
             </Form>
             <Form>
