@@ -1,4 +1,4 @@
-import {Button, Card, Container} from 'react-bootstrap';
+import {Card, Container} from 'react-bootstrap';
 import { ExclamationTriangle } from 'react-bootstrap-icons';
 import ModalSuggestGame from '../SuggestGame/ModalSuggestGame';
 
@@ -8,6 +8,12 @@ function NoGamesCard(props) {
     //Note: props.filter = true if this card is displayed due to a filter
     //props.filter = false, this card is displayed because user does not have games
     const [suggestGame, setSuggestGame] = useState(false);
+    const handleOnHide = () => {
+        setSuggestGame(false);
+        //if the no games card has been shown from AddGame, when the corresponding modal for suggesting a game is closed the filter is reset
+        if(props.add)
+            props.resetFilter();
+    }
     return (
         <>
             <Container className='d-flex align-items-center min-vh-75 pb-5' >
@@ -17,10 +23,14 @@ function NoGamesCard(props) {
                             <ExclamationTriangle /> Wait wait wait... <ExclamationTriangle />
                         </Card.Title>
                         <Card.Subtitle>
-                            {props.filter ? 
+                            {props.newSession ? 
+                                "It seems noone of your game suits the filters you put! Try with something else!"
+                            :
+                                props.filter ? 
                                     "It seems incredible, we know, but nothing matches your research!"
                                 :   "It seems like you don't have games!" 
-                                }
+                                
+                            }
                         </Card.Subtitle>
                         { (props.filter && props.add) &&
                             <Card.Text className = "mt-3">
@@ -35,7 +45,7 @@ function NoGamesCard(props) {
                 <ModalSuggestGame 
                     fullscreen
                     show={suggestGame}
-                    onHide={() => setSuggestGame(false)}
+                    onHide={() => handleOnHide()}
                 />
             }
         </>

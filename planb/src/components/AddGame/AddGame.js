@@ -112,6 +112,10 @@ function AddGame(props) {
         setModalShow(true);
     }
 
+    const resetFilter = () => {
+        setFilter("");
+    }
+
     return (
         <>
             {page !== '' && <Navigate replace to={`/${page}`}/>}
@@ -154,7 +158,7 @@ function AddGame(props) {
                                     </Spinner>
                                 </Container>
                             :
-                                <NoGamesCard filter = {true} add = {true}/>
+                                <NoGamesCard filter = {true} add = {true} resetFilter = {resetFilter}/>
                             )
                         }
                     </Container>

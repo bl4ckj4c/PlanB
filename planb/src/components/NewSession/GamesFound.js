@@ -4,6 +4,7 @@ import GameCard from "../Common/GameCard";
 import ModalGameInfo from "../Common/ModalGameInfo";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {ChevronLeft} from "react-bootstrap-icons";
+import NoGamesCard from "../Common/NoGamesCard";
 
 function GamesFound(props) {
     const {
@@ -23,7 +24,6 @@ function GamesFound(props) {
     const [modalGame, setModalGame] = useState({});
     const [page, setPage] = useState('');
 
-    console.log(games);
 
     const filterGames = () => {
         const sessionTotMinutes = (parseInt(sessionHours) * 60 + parseInt(sessionMinutes));
@@ -38,12 +38,14 @@ function GamesFound(props) {
                 gameTotMinutes <= sessionTotMinutes &&
                 sessionDifficulty === game.Difficulty &&
                 game.Categories.some(cat => {
+                    if(sessionCategories.length === 0) return true;
                     for (const sessionCat of sessionCategories) {
                         if (cat === sessionCat) {
                             return true;
                         }
                     }
-                }));
+                })
+                );
         });
     };
 
@@ -86,6 +88,7 @@ function GamesFound(props) {
                         <div>We are loading your games...</div>
                         :
                         foundGames.length === 0 ?
+                            <>
                             <Container id="nav" className="pb-2 border-bottom border-secondary">
                                 <Row className='justify-content-between mt-2'>
                                     <Col xs={6}>
@@ -102,6 +105,11 @@ function GamesFound(props) {
                                     <h1 className='m-2'>No Games Found :(</h1>
                                 </Row>
                             </Container>
+                            <Container fluid className='mt-3'>
+                                <NoGamesCard newSession = {true}/>
+                            </Container>
+                            </>
+
                             :
                             <>
                                 <Container id="nav" className="pb-2 border-bottom border-secondary">
