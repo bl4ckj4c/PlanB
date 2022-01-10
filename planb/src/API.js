@@ -168,6 +168,18 @@ async function getGameImage(gameImageID) {
     }
 }
 
+async function suggestGame(gameName, gameDescription, gameDifficulty) {
+    try {
+        //write here the function for inserting into a db table the suggestion of a new game
+        //const url = await getDownloadURL(ref(storage, gameImageID));
+        return 1;
+    } catch (err) {
+        //handle error cases
+        //const url = await getDownloadURL(ref(storage, '404.jpg'));
+        throw -1;
+    }
+}
+
 const API = {
     createNewUserGameList,
     signOutUser,
@@ -175,6 +187,7 @@ const API = {
     getUserGames,
     insertOrRemoveUserGame,
     getGameImage,
+    suggestGame,
     auth
 };
 

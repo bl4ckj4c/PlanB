@@ -4,6 +4,8 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import ControlPanel from './PDFControlPanel';
 import PDFPrinter from "./PDFPrinter";
 import PDFControlPanel from "./PDFControlPanel";
+import {Container} from "react-bootstrap";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 
@@ -23,24 +25,29 @@ const PDFReader = (props) => {
         setIsLoading(false);
     }
 
+    const onDocumentLoadError = (err) => {
+        console.error('pdf viewer error:', err);
+    }
+
     return (
         <div>
-            <Loader isLoading={isLoading} />
+            <Loader isLoading={isLoading}/>
             <section
-                id="pdf-section"
-                className="d-flex flex-column align-items-center w-100"
+                className="d-flex flex-column align-items-center"
             >
                 <Document
                     file={pdf_url}
                     onLoadSuccess={onDocumentLoadSuccess}
-                    onLoadError={console.error}
+                    onLoadError={onDocumentLoadError}
                 >
-                    <Page
-                        pageNumber={pageNumber}
-                        scale={scale}
-                        width={mobileWidth}
-                        height={mobileHeight}
-                    />
+                    <Container ariaLabel="pdf-container">
+                        <Page
+                            pageNumber={pageNumber}
+                            scale={scale}
+                            width={mobileWidth}
+                            height={mobileHeight}
+                        />
+                    </Container>
                 </Document>
                 <PDFControlPanel
                     pdf_url={pdf_url}

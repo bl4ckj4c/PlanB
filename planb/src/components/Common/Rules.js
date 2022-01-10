@@ -1,9 +1,10 @@
 import '../style/pdf.css';
 import PDFReader from "../PDF/PDFReader";
+import React from "react";
 
 
 function Rules(props) {
-    const {pdf_url} = props;
+    const {pdf_url, setShowRulesModal} = props;
 
     //const pdf_url = "https://www.hasbro.com/common/instruct/00009.pdf"; // sample pdf url, should be taken from props
 
@@ -16,7 +17,7 @@ function Rules(props) {
 
     return (
         <>
-            <PDFReader pdf_url={complete_url} />
+            <PDFReader pdf_url={complete_url}/>
         </>
     );
 }

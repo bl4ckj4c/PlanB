@@ -25,13 +25,15 @@ function GameInfo(props) {
         hour: parseInt(props.game.Duration.split(':')[0]),
         minutes: parseInt(props.game.Duration.split(':')[1])
     }
-    let time;
-    if (game.hour === 0)
-        time = game.minutes + "m";
-    else
-        time = game.hour + "h" + game.minutes + "m";
 
-    let subtitle = game.categories.join(' | ');
+    //making the time better to display to users
+    let time;
+    if(game.hour === 0)
+        time = game.minutes+"m";
+    else if(game.minutes === 0)
+            time = game.hour+"h";
+        else
+            time = game.hour+"h"+game.minutes+"m";
 
     let diceIcon;
     if (game.difficulty === 'Easy')
@@ -57,25 +59,6 @@ function GameInfo(props) {
 
     return (
         <>
-            {/*
-            <Container id="nav" className="pb-2">
-                <Row className='justify-content-between mt-2'>
-                    <Col xs={6}>
-                        <Button
-                            type="submit"
-                            className="bg-white border-0 p-0"
-                            /*onClick={() => handleBackButton()}
-                        >
-                            <ChevronLeft size={25} color="grey"/>
-                            <span className="text-muted align-middle">Back</span>
-                        </Button>
-                    </Col>
-                </Row>
-                <Row>
-                    <h1 className='m-2 text-center'>{game.title}</h1>
-                </Row>
-            </Container>
-            */}
             {imageLoading ?
                 <Container className="d-flex align-items-center min-vh-75">
                     <Row className="justify-content-center w-100">
@@ -134,7 +117,7 @@ function GameInfo(props) {
                                 }}>
                                     {game.description}<br></br>
                                     <Button variant="link" className="p-0"
-                                            onClick={() => setShowMoreDescription(false)}>Hide more</Button>
+                                            onClick={() => setShowMoreDescription(false)}>Show less</Button>
                                 </p>
                                 :
                                 <p style={{
@@ -163,9 +146,14 @@ function GameInfo(props) {
                                 onHide={() => setShowRules(false)}>
                                 <Modal.Header closeButton>
                                     <Modal.Title id="contained-modal-title-vcenter">
-                                        <Rules pdf_url={game.rules}/>
+                                        {game.title}
                                     </Modal.Title>
                                 </Modal.Header>
+                                <Modal.Body>
+                                    <Container>
+                                        <Rules pdf_url={game.rules}/>
+                                    </Container>
+                                </Modal.Body>
                             </Modal>
                         </Container>
                     </Row>
