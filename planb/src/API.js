@@ -168,15 +168,16 @@ async function getGameImage(gameImageID) {
     }
 }
 
-async function suggestGame(gameName, gameDescription, gameDifficulty) {
+async function suggestGame(title, description, difficulty) {
+    const docRef = await addDoc(collection(db, 'SuggestGame'), {
+        Title: title,
+        Description: description,
+        Difficulty: difficulty
+    });
     try {
-        //write here the function for inserting into a db table the suggestion of a new game
-        //const url = await getDownloadURL(ref(storage, gameImageID));
-        return 1;
+        return !!docRef.id;
     } catch (err) {
-        //handle error cases
-        //const url = await getDownloadURL(ref(storage, '404.jpg'));
-        throw -1;
+        throw false;
     }
 }
 

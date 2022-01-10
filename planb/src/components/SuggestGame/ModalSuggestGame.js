@@ -1,4 +1,4 @@
-import {Modal, Button, Row, Col, Form, Alert} from 'react-bootstrap';
+import {Modal, Button, Row, Col, Form, Alert, Spinner} from 'react-bootstrap';
 import {Dice1, Dice3, Dice5} from "react-bootstrap-icons";
 
 //API
@@ -11,6 +11,7 @@ function ModalSuggestGame(props) {
     const [description, setDescription] = useState("");
     const [gameDifficulty, setGameDifficulty] = useState("");
     const [alert, setAlert] = useState({variant: "", msg: ""});
+    const [loading, setLoading] = useState(false);
     
 
     const suggestGame = () => {
@@ -26,12 +27,17 @@ function ModalSuggestGame(props) {
             setAlert({variant: "warning", msg: "Please select a game difficulty."});
             return;
         }
+        setLoading(true);
         API.suggestGame(gameName, description, gameDifficulty)
             .then((gameId) => {
+                setLoading(false);
                 setAlert({variant: "success", 
                 msg: "Thank you for suggesting us a new game for our collection. We will handle you request in the next few days."});
+                //the modal will show the success message for 3 seconds, and then will disappear if the user doesn't click on X
+                window.setTimeout(() => props.onHide(), 3000);
             })
             .catch((error) => {
+                setLoading(false);
                 setAlert({variant: "warning", msg: "Sorry, something went wrong during your request. Please try again later."});
             });
 
@@ -58,16 +64,32 @@ function ModalSuggestGame(props) {
                         description={description} setDescription={setDescription}
                         gameDifficulty={gameDifficulty} setGameDifficulty={setGameDifficulty}
                     />
-                    {/**showing in modal body the alert related to the insertion of a suggestion */}
-                    {alert.variant !== "" &&
-                        <Alert variant={alert.variant}>{alert.msg}</Alert>
+                    {/**putting a spinner while waiting for API return */}
+                    {loading ?
+                        <Row className="justify-content-center mt-3">
+                            <Col xs={12} sm={4} md={4}>
+                                <Spinner
+                                    className='mx-auto d-block'
+                                    variant="secondary"
+                                    animation="border">
+                                    <span className="visually-hidden">Waiting for API response...</span>
+                                </Spinner>
+                            </Col>
+                        </Row>
+                    :
+                        <>
+                        {/**showing in modal body the alert related to the insertion of a suggestion */}
+                            {alert.variant !== "" &&
+                            <Alert className = "mt-3" variant={alert.variant}>{alert.msg}</Alert>
+                        }
+                        </>
                     }
                 </Modal.Body>
                 <Modal.Footer as='div'>
                 
                 {/**showing the send request button only in case the request has not been sent, or is not successfull */}
                 {/**showing a close button otherwise*/}
-                {alert.variant !== "success" ?
+                {alert.variant !== "success" &&
                         
                     <Button
                         className='mx-1'
@@ -77,16 +99,6 @@ function ModalSuggestGame(props) {
                         variant="success"
                         onClick={() => suggestGame()}>
                         Send suggestion!
-                    </Button>
-                :
-                    <Button
-                        className='mx-1'
-                        style={{
-                            width: '100%'
-                        }}
-                        variant="secondary"
-                        onClick={() => props.onHide()}>
-                        Close
                     </Button>    
                 }
                 </Modal.Footer>
@@ -112,7 +124,7 @@ function SuggestionInfo(props) {
     return (
         <>
             <Form>
-                <Form.Group className='mt-5' controlId='gameName'>
+                <Form.Group className='mt-3' controlId='gameName'>
                     <Form.Control
                         placeholder='Game name'
                         value={props.gameName}
