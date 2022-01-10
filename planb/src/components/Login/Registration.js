@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import API from "../../API";
 import {useCreateUserWithEmailAndPassword} from "react-firebase-hooks/auth";
 import {ExclamationCircle} from "react-bootstrap-icons";
+import logo from "../../logo/planb_logo.svg";
 
 function Registration(props) {
     const [emailLogin, setEmailLogin] = useState('');
@@ -112,8 +113,8 @@ function Registration(props) {
                 </Toast>
             </ToastContainer>
             <Container fluid className='mt-5'>
-                <Row className="text-center mx-2">
-                    <h1 className="text-center">Register</h1>
+                <Row className="mx-auto d-block pt-3" style={{width:250}}>
+                    <img src={logo} alt="logo"/>
                 </Row>
                 <Form className='mt-5 mx-4'>
                     <FloatingLabel className="mb-3 text-muted" label="Email address" controlId="formBasicEmail">
