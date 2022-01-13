@@ -11,7 +11,7 @@ import Registration from './components/Login/Registration';
 import NewSession from './components/NewSession/NewSession';
 import ProfileInfo from './components/Common/ProfileInfo';
 import Welcome from './components/Login/Welcome';
-import Rules from './components/Common/Rules';
+import WelcomeDesktop from './components/Login/WelcomeDesktop';
 import MyGames from './components/MyGames/MyGames';
 import AddGame from './components/AddGame/AddGame';
 
@@ -138,6 +138,8 @@ function App() {
                 {/*<Route exact path="/suggest" element={
                     isSignedIn ? <div/> : <Navigate replace to="/login"/>
                 }/>*/}
+
+                <Route exact path="/error" element={<WelcomeDesktop/>}/>
             </Routes>
         </BrowserRouter>
     )
