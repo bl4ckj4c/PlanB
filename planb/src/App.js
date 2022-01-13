@@ -55,9 +55,13 @@ function App() {
         }
     }, [loading]);
 
+    //redirecting to error page if you are not on a mobile end not already on an error page
+    if (!window.mobileCheck() && window.location.pathname!=="/error") {
+        window.location.replace("/error");
+    }
+
     return (
         <BrowserRouter>
-            {!window.mobileCheck() && <Navigate replace to="/test"/>}
             <Routes>
                 <Route exact path="/" element={
                     isSignedIn ? <Navigate replace to="/mygames"/> : (
