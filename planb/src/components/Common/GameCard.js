@@ -19,6 +19,8 @@ function GameCard(props) {
         time = game.minutes+"m";
     else if(game.minutes === 0)
             time = game.hour+"h";
+    else if(game.minutes === 0)
+        time = game.hour+"h";
         else
             time = game.hour+"h"+game.minutes+"m";
 

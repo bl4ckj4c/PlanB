@@ -33,19 +33,21 @@ function GamesFound(props) {
             const m = parseInt(game.Duration.split(':')[1]);
             const gameTotMinutes = (h * 60 + m);
 
-            return ( sessionPlayers <= game.PlayersMax &&
+            if( sessionPlayers <= game.PlayersMax &&
                 sessionPlayers >= game.PlayersMin &&
                 gameTotMinutes <= sessionTotMinutes &&
-                sessionDifficulty === game.Difficulty &&
-                game.Categories.some(cat => {
-                    if(sessionCategories.length === 0) return true;
-                    for (const sessionCat of sessionCategories) {
-                        if (cat === sessionCat) {
-                            return true;
+                sessionDifficulty === game.Difficulty)
+                    if(sessionCategories.length === 0)
+                        return true;
+                    else
+                        for(const c of game.Categories)
+                        {
+                            for (const sessionCat of sessionCategories) {
+                                if (c.toLowerCase() === sessionCat.toLowerCase()) {
+                                    return true;
+                                }
+                            }
                         }
-                    }
-                })
-                );
         });
     };
 

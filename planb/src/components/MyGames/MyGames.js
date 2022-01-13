@@ -11,7 +11,7 @@ import NoGamesCard from "../Common/NoGamesCard";
 import ModalGameInfo from "../Common/ModalGameInfo";
 
 function MyGames(props) {
-    const {games, setGames, gamesLoading, setGamesLoading} = props;
+    const {games, setGames, gamesLoading, setGamesLoading, resetSession} = props;
 
     const [newSession, setNewSession] = useState(false);
     const [filter, setFilter] = useState("");
@@ -22,6 +22,7 @@ function MyGames(props) {
 
 
     const handleNewSession = (event) => {
+        resetSession();
         setNewSession(true);
     }
 

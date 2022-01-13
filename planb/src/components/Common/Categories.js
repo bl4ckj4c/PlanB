@@ -3,20 +3,22 @@ import {Badge, Button, Card, Col, Row, Modal, CloseButton, Container, FormCheck}
 import {Clock, Dice1, Dice3, Dice5, People, X, Plus, Dash, Check} from 'react-bootstrap-icons';
 
 function Categories(props) {
-    const {confirmedCategories, setConfirmedCategories} = props;
+    const {confirmedCategories, setConfirmedCategories, setCategories} = props;
 
     return confirmedCategories.map((item, index) => 
             <Category key = {index} category={item} confirmedCategories={confirmedCategories}
-                setConfirmedCategories={setConfirmedCategories}/>
+                setConfirmedCategories={setConfirmedCategories}
+                setCategories={setCategories} />
         );
 }
 
 function Category(props) {
-    const {category, confirmedCategories, setConfirmedCategories} = props;
+    const {category, confirmedCategories, setConfirmedCategories, setCategories} = props;
 
     const handleRemovingTag = async () => {
         let newCategories = await confirmedCategories.filter(cat => cat !== category);
         setConfirmedCategories(newCategories);
+        setCategories(newCategories);
     }
 
     return (
@@ -73,7 +75,10 @@ function AddCategory(props) {
                     <Modal.Title id="contained-modal-title-vcenter">
                         Game categories
                     </Modal.Title>
-                    <CloseButton onClick={() => setModal(false)}/>
+                    <CloseButton onClick={() => {
+                        setModal(false);
+                        setCategories(confirmedCategories);
+                    }}/>
                 </Modal.Header>
                 <Modal.Body>
                     <h6 style={{"margin-bottom": "3%"}}>Select one or more game categories you would like to play</h6>
@@ -90,6 +95,7 @@ function AddCategory(props) {
                         let newCategories = confirmedCategories;
                         categories.forEach(cat => newCategories = [...newCategories, cat]);
                         setConfirmedCategories(newCategories);
+                        setCategories(newCategories);
                     }}>Confirm</Button>
                 </Modal.Footer>
             </Modal>

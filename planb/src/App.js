@@ -26,8 +26,8 @@ function App() {
     const [gamesLoading, setGamesLoading] = useState(true);
 
     const [sessionPlayers, setSessionPlayers] = useState();
-    const [sessionHours, setSessionHours] = useState(1);
-    const [sessionMinutes, setSessionMinutes] = useState(0);
+    const [sessionHours, setSessionHours] = useState();
+    const [sessionMinutes, setSessionMinutes] = useState();
     const [sessionCategories, setSessionCategories] = useState([]);
     const [sessionDifficulty, setSessionDifficulty] = useState('');
 
@@ -44,6 +44,14 @@ function App() {
             }
         }
     }, [loading]);
+
+    const resetSession = () => {
+        setSessionPlayers(undefined);
+        setSessionHours(undefined);
+        setSessionMinutes(undefined);
+        setSessionCategories([]);
+        setSessionDifficulty('');
+    };
 
     return (
         <BrowserRouter>
@@ -70,6 +78,7 @@ function App() {
                         <MyGames
                             games={games} setGames={setGames}
                             gamesLoading={gamesLoading} setGamesLoading={setGamesLoading}
+                            resetSession={resetSession}
                         />
                         :
                         <Navigate replace to = "/login"/>
