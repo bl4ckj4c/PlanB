@@ -123,7 +123,7 @@ function ModalGameInfo(props) {
                                             role="status"
                                             aria-hidden="true"/>
                                         :
-                                        'Delete'
+                                        'Remove'
                                     }
                                 </Button>
                     
@@ -142,7 +142,7 @@ function ModalGameInfo(props) {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Are you sure to delete this game from your collection?
+                    Are you sure to remove this game from your collection?
                 </Modal.Body>
                 <Modal.Footer as='div'>
                     <Button
@@ -169,7 +169,7 @@ function ModalGameInfo(props) {
                                 role="status"
                                 aria-hidden="true"/>
                             :
-                            'Delete it'
+                            'Remove it'
                         }
                     </Button>
                 </Modal.Footer>

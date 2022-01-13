@@ -26,8 +26,8 @@ function App() {
     const [gamesLoading, setGamesLoading] = useState(true);
 
     const [sessionPlayers, setSessionPlayers] = useState();
-    const [sessionHours, setSessionHours] = useState();
-    const [sessionMinutes, setSessionMinutes] = useState();
+    const [sessionHours, setSessionHours] = useState(1);
+    const [sessionMinutes, setSessionMinutes] = useState(0);
     const [sessionCategories, setSessionCategories] = useState([]);
     const [sessionDifficulty, setSessionDifficulty] = useState('');
 
@@ -44,6 +44,11 @@ function App() {
             }
         }
     }, [loading]);
+
+    //redirecting to error page if you are not on a mobile end not already on an error page
+    if (!window.mobileCheck() && window.location.pathname!=="/error") {
+        window.location.replace("/error");
+    }
 
     const resetSession = () => {
         setSessionPlayers(undefined);
@@ -78,7 +83,6 @@ function App() {
                         <MyGames
                             games={games} setGames={setGames}
                             gamesLoading={gamesLoading} setGamesLoading={setGamesLoading}
-                            resetSession={resetSession}
                         />
                         :
                         <Navigate replace to = "/login"/>

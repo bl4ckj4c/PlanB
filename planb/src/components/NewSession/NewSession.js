@@ -1,9 +1,9 @@
-import {Col, Container, Form, Row, Button, Badge, Alert} from "react-bootstrap";
+import {Col, Container, Form, Row, Button, Badge} from "react-bootstrap";
 import {ChevronLeft, HourglassSplit, People, PersonCircle, Plus, Dice1, Dice3, Dice5, X} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import API from "../../API";
-import {Categories, AddCategory} from "../Common/Categories";
+import { Categories, AddCategory } from "../Common/Categories";
 
 function NewSession(props) {
     const {
@@ -17,20 +17,18 @@ function NewSession(props) {
 
     const [page, setPage] = useState('');
 
-    const [time, setTime] = useState(sessionHours === undefined ? "" : (sessionHours + ":" + sessionMinutes));
+    const [time, setTime] = useState();
 
-    const [confirmedCategories, setConfirmedCategories] = useState(sessionCategories);
+    const [confirmedCategories, setConfirmedCategories] = useState([]);
     const [allCategories, setAllCategories] = useState([]);
     const [showAddTag, setShowAddTag] = useState(true);
-
-    const [valid, setValid] = useState(false);
-    const [autoHidingAlert, setAutoHidingAlert] = useState(false);
 
     useEffect(() => {
         const c = [];
         games.forEach(game => {
-            for (const cat of game.Categories) {
-                if (!c.find(tmp => tmp === cat)) {
+            for(const cat of game.Categories)
+            {
+                if(!c.find(tmp => tmp === cat)) {
                     c.push(cat);
                 }
             }
@@ -39,7 +37,7 @@ function NewSession(props) {
     }, []);
 
     useEffect(() => {
-        if (confirmedCategories.length === allCategories.length || allCategories.length === 0)
+        if (confirmedCategories.length === allCategories.length)
             setShowAddTag(false);
         else
             setShowAddTag(true);
@@ -50,17 +48,7 @@ function NewSession(props) {
     }
 
     const handleFindGames = (event) => {
-        if (valid) {
-            setPage('gamesfound');
-        } else {
-            onShowAlert().then(r => window.setTimeout(() => {
-                setAutoHidingAlert(false)
-            }, 2000));
-        }
-    }
-
-    const onShowAlert = async () => {
-        await setAutoHidingAlert(true);
+        setPage('gamesfound');
     }
 
     const handlePlayers = (event) => {
@@ -75,19 +63,6 @@ function NewSession(props) {
         setSessionHours(h);
         setSessionMinutes(m);
     }
-
-    useEffect(() => {
-        if (sessionPlayers === undefined ||
-            sessionHours === undefined ||
-            sessionMinutes === undefined ||
-            sessionCategories === undefined ||
-            sessionDifficulty === '') {
-            setValid(false);
-        } else {
-            setValid(true);
-        }
-    }, [sessionPlayers, sessionHours, sessionMinutes, sessionCategories, sessionDifficulty]);
-
 
     return (
         <>
@@ -235,31 +210,19 @@ function NewSession(props) {
                                                 <div/>
                                         }
 
-                                    </Container>
                                 </Container>
-                                <Container className="flex justify-content-between fixed-bottom">
-                                    {
-                                        autoHidingAlert ?
-                                            <Container className="mb-5 pb-2">
-                                                <Alert variant="warning" className="text-center">
-                                                    Some filters are still undefined!
-                                                </Alert>
-                                            </Container>
-                                            :
-                                            <div/>
-                                    }
-                                    <Container className="mt-5">
-                                        <Row className='fixed-bottom mx-4 mb-4'>
-                                            <Button
-                                                variant="primary"
-                                                type="submit"
-                                                onClick={() => handleFindGames()}>
-                                                Search among your games
-                                            </Button>
-                                        </Row>
-                                    </Container>
-                                </Container>
-                            </>
+                            </Container>
+                            <Container className="mt-5">
+                                <Row className='fixed-bottom mx-4 mb-4'>
+                                    <Button
+                                        variant="primary"
+                                        type="submit"
+                                        onClick={() => handleFindGames()}>
+                                        Search among your games
+                                    </Button>
+                                </Row>
+                            </Container>
+                        </>
             }
         </>
     );
