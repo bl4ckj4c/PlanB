@@ -36,6 +36,10 @@ function App() {
     }, []);*/
 
     useEffect(() => {
+        API.enableCORS().then(() => console.log("API called ok"));
+    }, []);
+
+    useEffect(() => {
         if (!loading) {
             if (user !== null) {
                 setIsSignedIn(true);

@@ -88,7 +88,7 @@ async function getAllGames() {
 
 async function getUserGames() {
     // User authenticated
-    if(currentUser !== null) {
+    if (currentUser !== null) {
         const gamesCollection = collection(db, 'UserGames');
         const q = query(gamesCollection, where('UID', '==', currentUser.uid));
         const querySnapshot = await getDocs(q);
@@ -181,6 +181,38 @@ async function suggestGame(title, description, difficulty) {
     }
 }
 
+async function enableCORS() {
+    /*const res = await fetch("https://cors-anywhere.herokuapp.com/corsdemo", {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "text/html; charset=utf-8"
+        }
+    });
+    console.log(res);
+    const text = await res.text();
+
+    console.log(text)
+
+    const value = text.split("value=\"")[2].split("\"")[0];
+    console.log(value);*/
+
+    const corsRes = await fetch("https://cors-anywhere.herokuapp.com/corsdemo?accessRequest=339886b2d4c0aacfd4634e6fcd365a3e319ebc375fcd2a8b0b86aa56a2b352e9", {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        }
+    });
+    console.log(corsRes);
+    if (corsRes.ok) {
+        console.log("CORS OK");
+    } else {
+        console.log("CORS ERROR");
+    }
+}
+
 const API = {
     createNewUserGameList,
     signOutUser,
@@ -189,7 +221,8 @@ const API = {
     insertOrRemoveUserGame,
     getGameImage,
     suggestGame,
-    auth
+    auth,
+    enableCORS
 };
 
 export default API;
