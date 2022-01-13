@@ -134,7 +134,7 @@ function NewSession(props) {
                                     <div key="radio-key" className="mb-3">
                                         <Row className="align-items-center mx-auto p-3">
                                             <Col xs={4}>
-                                                <div className="text-center">
+                                                <div className="text-center align-items-center d-flex flex-column">
                                                     <Dice1 className='mx-2'/>
                                                     Easy
                                                 </div>
@@ -150,7 +150,7 @@ function NewSession(props) {
                                                 />
                                             </Col>
                                             <Col xs={4}>
-                                                <div className="text-center">
+                                                <div className="text-center align-items-center d-flex flex-column">
                                                     <Dice3 className='mx-2'/>
                                                     Mid
                                                 </div>
@@ -166,7 +166,7 @@ function NewSession(props) {
                                                 />
                                             </Col>
                                             <Col xs={4}>
-                                                <div className="text-center">
+                                                <div className="text-center align-items-center d-flex flex-column">
                                                     <Dice5 className='mx-2'/>
                                                     Hard
                                                 </div>
