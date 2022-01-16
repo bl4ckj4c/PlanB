@@ -4,6 +4,8 @@ import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import API from "../../API";
 import {Categories, AddCategory} from "../Common/Categories";
+import RangeSlider from 'react-bootstrap-range-slider';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 function NewSession(props) {
     const {
@@ -15,9 +17,15 @@ function NewSession(props) {
         sessionDifficulty, setSessionDifficulty
     } = props;
 
+    const minDuration = 15; // in minutes
+    const maxDuration = 720; // in minutes
+    const durationStep = 15; // in minutes
+
     const [page, setPage] = useState('');
 
-    const [time, setTime] = useState(sessionHours === undefined ? "" : (sessionHours + ":" + sessionMinutes));
+    //const [time, setTime] = useState(sessionHours === undefined ? "" : (sessionHours + ":" + sessionMinutes));
+    const [sliderValue, setSliderValue] = useState(sessionHours === undefined ? 60 : fromTimeToMinutes(sessionHours, sessionMinutes));
+    const [sliderValueString, setSliderValueString] = useState(sessionHours === undefined ? "1h" : fromTimeToSliderLabel(sessionHours, sessionMinutes));
 
     const [confirmedCategories, setConfirmedCategories] = useState(sessionCategories);
     const [allCategories, setAllCategories] = useState([]);
@@ -45,6 +53,46 @@ function NewSession(props) {
             setShowAddTag(true);
     }, [allCategories, confirmedCategories]);
 
+    function fromTimeToMinutes(hours, minutes) {
+        // 12, 45 --> 12*60 + 45
+        let h = parseInt(hours);
+        let m = parseInt(minutes);
+        return h * 60 + m;
+    }
+
+    function fromTimeToSliderLabel(hours, minutes) {
+        // 12, 45 --> 12h 45m
+        let h = hours.toString();
+        let m = minutes.toString();
+        if (m !== '0') {
+            return h + 'h ' + m + 'm';
+        } else
+            return h + 'h';
+    }
+
+    useEffect(() => {
+        setSliderValueString(sessionHours === undefined ? "1h" : fromTimeToSliderLabel(sessionHours, sessionMinutes));
+    }, [page]);
+
+    function fromValToSliderLabel(val) {
+        // 125 --> 2h 5m
+        if (val < minDuration + 5) return "< 15m";
+        if (val > maxDuration - 5) return "> 12h";
+        let h = Math.floor(val / 60);
+        let m = val - h * 60;
+        h = h.toString();
+        m = m.toString();
+        if (m !== '0')
+            return h + 'h ' + m + 'm';
+        else
+            return h + 'h';
+    }
+
+    useEffect(() => {
+        let s = fromValToSliderLabel(sliderValue);
+        setSliderValueString(s);
+    }, [sliderValue, page]);
+
     const handleBackButton = (event) => {
         setPage('mygames');
     }
@@ -67,13 +115,32 @@ function NewSession(props) {
         setSessionPlayers(event.target.value);
     }
 
-    const handleTime = async (event) => {
+    /*const handleTime = async (event) => {
         const t = event.target.value;
         await setTime(t);
         const h = t.split(':')[0];
         const m = t.split(':')[1];
         setSessionHours(h);
         setSessionMinutes(m);
+    }*/
+
+    const handleTimeSlider = async (event) => {
+        const val = event.target.value;
+        setSliderValue(val);
+        let h = Math.floor(val / 60);
+        let m = val - h * 60;
+        h = h.toString();
+        m = m.toString();
+        setSessionHours(h);
+        setSessionMinutes(m);
+    }
+
+    const handleSliderTooltipLabel = async (val) => {
+        let h = Math.floor(val / 60);
+        let m = val - h * 60;
+        h = h.toString();
+        m = m.toString();
+        return h + "h " + m + "m";
     }
 
     useEffect(() => {
@@ -124,7 +191,9 @@ function NewSession(props) {
                                     </Row>
                                 </Container>
                                 <Container fluid className='mt-3 p-5'>
-                                    <Form>
+                                    <Form onSubmit={(event => {
+                                        event.preventDefault();
+                                    })}>
                                         <Form.Group className='mb-3' controlId='formNumberOfPlayers'>
                                             <Row className="align-items-center mx-auto">
                                                 <Col xs={4}>
@@ -153,12 +222,32 @@ function NewSession(props) {
                                                     </Form.Label>
                                                 </Col>
                                                 <Col xs={8} className="justify-content-center">
-                                                    <Form.Control
+                                                    {/*<Form.Control
                                                         type='time'
                                                         placeholder='Duration'
                                                         value={time}
                                                         onChange={(ev) => handleTime(ev)}
-                                                    />
+                                                    />*/}
+                                                    <Row>
+                                                        <RangeSlider
+                                                            value={sliderValue}
+                                                            defaultValue={60}
+                                                            min={minDuration}
+                                                            max={maxDuration}
+                                                            step={durationStep}
+                                                            tooltip={'off'}
+                                                            onChange={(ev) => handleTimeSlider(ev)}
+                                                        />
+                                                    </Row>
+                                                    <Row>
+                                                        <Col xs={1}/>
+                                                        <Col xs={9} className="text-center">
+                                                            {
+                                                                sliderValueString
+                                                            }
+                                                        </Col>
+                                                        <Col xs={2}/>
+                                                    </Row>
                                                 </Col>
                                             </Row>
                                         </Form.Group>

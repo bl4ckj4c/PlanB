@@ -38,7 +38,7 @@ const ControlPanel = (props) => {
     };
 
     const isMinZoom = scale < 0.6;
-    const isMaxZoom = scale >= 2.0;
+    const isMaxZoom = scale >= 10.0; // 1000%
 
     const zoomOutClass = isMinZoom ? 'disabled' : 'clickable';
     const zoomInClass = isMaxZoom ? 'disabled' : 'clickable';
@@ -58,7 +58,7 @@ const ControlPanel = (props) => {
                     <div />
                     :
                     <Container className="control-panel m-3 p-3 align-items-center my-auto">
-                        <Row className="my-auto p-3">
+                        {/*<Row className="my-auto p-3">
                             <Col>
                                 <div className="d-flex justify-content-between align-items-baseline">
                                     <div className="p-2">
@@ -72,7 +72,7 @@ const ControlPanel = (props) => {
                                         />
                                     </div>
                                     <span>
-                            Page{' '}
+                                    Page{' '}
                                         <input
                                             name="pageNumber"
                                             type="number"
@@ -83,7 +83,7 @@ const ControlPanel = (props) => {
                                             onChange={onPageChange}
                                         />{' '}
                                         of {numPages}
-                        </span>
+                                    </span>
                                     <div className="p-2">
                                         <ChevronCompactRight
                                             onClick={goToNextPage}
@@ -96,13 +96,22 @@ const ControlPanel = (props) => {
                                     </div>
                                 </div>
                             </Col>
-                        </Row>
+                        </Row>*/}
                         <Row className="my-auto p-3">
                             <Col>
-                                <Container className="d-flex justify-content-between align-items-center">
+                                <Container
+                                    className="d-flex justify-content-between align-items-center"
+                                    style={{
+                                        'background-color':'#bcbcbc',
+                                        'width': '100%',
+                                        'height': '170%',
+                                        'border-radius': '12px'
+                                    }}
+                                >
                                     <div>
                                         <ZoomOut
                                             onClick={zoomOut}
+                                            size={22}
                                         />
                                     </div>
                                     <div>
@@ -111,6 +120,7 @@ const ControlPanel = (props) => {
                                     <div>
                                         <ZoomIn
                                             onClick={zoomIn}
+                                            size={22}
                                         />
                                     </div>
                                 </Container>

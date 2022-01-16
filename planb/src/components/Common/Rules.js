@@ -13,7 +13,7 @@ function Rules(props) {
 
     const complete_url = prevent_cors_errors + pdf_url;
 
-    console.log(complete_url);
+    //console.log(complete_url);
 
     return (
         <>

@@ -1,4 +1,4 @@
-import {Modal, Button, Row, Spinner} from 'react-bootstrap';
+import {Modal, Button, Row, Spinner, Col} from 'react-bootstrap';
 import {Navigate} from "react-router-dom";
 
 //API
@@ -7,7 +7,7 @@ import API from "../../API";
 //GameInfo
 import GameInfo from './GameInfo';
 import React, {useState} from "react";
-import { House } from 'react-bootstrap-icons';
+import {House, CaretLeft, CaretLeftFill, CaretLeftSquare, CaretLeftSquareFill} from 'react-bootstrap-icons';
 
 function ModalGameInfo(props) {
     const [buttonLoading, setButtonLoading] = useState(false);
@@ -79,12 +79,20 @@ function ModalGameInfo(props) {
                     {
                         props.newSession ?
                             <Button className='mx-1'
-                                style={{width: '100%'}}
-                                variant="secondary"
-                                onClick={() => setPage("Home")}>
-                                <House size = {28}/>
+                                    style={{width: '100%', 'padding-left':'0'}}
+                                    variant="secondary"
+                                    onClick={() => setPage("Home")}>
+                                <Row>
+                                    <Col xs={2}>
+                                        <CaretLeft size={22}/>
+                                    </Col>
+                                    <Col xs={8}>
+                                        Back to <strong>My Games</strong>
+                                    </Col>
+                                    <Col xs={1} />
+                                </Row>
                             </Button>
-                        :
+                            :
                             props.add === "true" ?
                                 <Button
                                     className='mx-1'
@@ -104,7 +112,7 @@ function ModalGameInfo(props) {
                                         'Add'
                                     }
                                 </Button>
-                            :
+                                :
                                 <Button
                                     className='mx-1'
                                     style={{
@@ -126,7 +134,7 @@ function ModalGameInfo(props) {
                                         'Remove'
                                     }
                                 </Button>
-                    
+
                     }
                 </Modal.Footer>
             </Modal>

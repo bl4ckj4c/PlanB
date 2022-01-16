@@ -137,7 +137,7 @@ function AddGame(props) {
                             <h1 className='m-2'>Add games</h1>
                         </Row>
                         <Row>
-                            <Form>
+                            <Form onSubmit={(event => { event.preventDefault(); })}>
                                 <Form.Group>
                                     <Form.Control type='text' placeholder='Search among all the games'
                                     value = {filter} onChange = {(event) => setFilter(event.target.value)}/>

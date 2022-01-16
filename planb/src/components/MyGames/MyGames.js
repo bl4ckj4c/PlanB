@@ -109,29 +109,31 @@ function MyGames(props) {
                                 <h1 className='m-2'>My Games</h1>
                             </Row>
                             <Row>
-                                <Form>
+                                <Form onSubmit={(event => { event.preventDefault(); })}>
                                     <Form.Group>
                                         <Form.Control type='text' placeholder='Search among your games'
                                                       value={filter}
-                                                      onChange={(event) => setFilter(event.target.value)}/>
+                                                      onChange={(event) => setFilter(event.target.value)}
+                                        />
                                     </Form.Group>
                                 </Form>
                             </Row>
                         </Container>
                         <Container fluid className='pt-4 bg-light pb-5 min-vh-75 below-nav' id="games">
-                            {gamesToShow.length ? 
-                                gamesToShow.map(game => <GameCard game = {game} key = {'game'+game.id}  showGameInfo = {showGameInfo}/>)
-                            :
-                                ( gamesLoading ?
-                                    <Container className='d-flex align-items-center min-vh-75 pb-5' >
-                                        <Spinner
-                                            className='mx-auto d-block'
-                                            variant="secondary"
-                                            animation="border">
-                                        </Spinner>
-                                    </Container>
+                            {gamesToShow.length ?
+                                gamesToShow.map(game => <GameCard game={game} key={'game' + game.id}
+                                                                  showGameInfo={showGameInfo}/>)
                                 :
-                                    (games.length ? <NoGamesCard filter = {true}/> : <NoGamesCard filter = {false}/>)
+                                (gamesLoading ?
+                                        <Container className='d-flex align-items-center min-vh-75 pb-5'>
+                                            <Spinner
+                                                className='mx-auto d-block'
+                                                variant="secondary"
+                                                animation="border">
+                                            </Spinner>
+                                        </Container>
+                                        :
+                                        (games.length ? <NoGamesCard filter={true}/> : <NoGamesCard filter={false}/>)
                                 )
                             }
                         </Container>
@@ -152,7 +154,7 @@ function MyGames(props) {
                             game={modalGame}
                             show={modalShow}
                             onHide={() => setModalShow(false)}
-                            deleteusergame = {deleteUsergame}
+                            deleteusergame={deleteUsergame}
                         />
                     </>
             }
