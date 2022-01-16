@@ -78,9 +78,13 @@ function NewSession(props) {
 
     useEffect(() => {
         if (sessionPlayers === undefined ||
+            sessionPlayers === '' ||
             sessionHours === undefined ||
+            sessionHours === '' ||
             sessionMinutes === undefined ||
+            sessionMinutes === '' ||
             sessionCategories === undefined ||
+            sessionCategories === '' ||
             sessionDifficulty === '') {
             setValid(false);
         } else {
