@@ -1,9 +1,9 @@
-import {Col, Container, Form, Row, Button, Badge} from "react-bootstrap";
+import {Col, Container, Form, Row, Button, Badge, Alert} from "react-bootstrap";
 import {ChevronLeft, HourglassSplit, People, PersonCircle, Plus, Dice1, Dice3, Dice5, X} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import API from "../../API";
-import { Categories, AddCategory } from "../Common/Categories";
+import {Categories, AddCategory} from "../Common/Categories";
 
 function NewSession(props) {
     const {
@@ -17,18 +17,20 @@ function NewSession(props) {
 
     const [page, setPage] = useState('');
 
-    const [time, setTime] = useState();
+    const [time, setTime] = useState(sessionHours === undefined ? "" : (sessionHours + ":" + sessionMinutes));
 
-    const [confirmedCategories, setConfirmedCategories] = useState([]);
+    const [confirmedCategories, setConfirmedCategories] = useState(sessionCategories);
     const [allCategories, setAllCategories] = useState([]);
     const [showAddTag, setShowAddTag] = useState(true);
+
+    const [valid, setValid] = useState(false);
+    const [autoHidingAlert, setAutoHidingAlert] = useState(false);
 
     useEffect(() => {
         const c = [];
         games.forEach(game => {
-            for(const cat of game.Categories)
-            {
-                if(!c.find(tmp => tmp === cat)) {
+            for (const cat of game.Categories) {
+                if (!c.find(tmp => tmp === cat)) {
                     c.push(cat);
                 }
             }
@@ -37,7 +39,7 @@ function NewSession(props) {
     }, []);
 
     useEffect(() => {
-        if (confirmedCategories.length === allCategories.length)
+        if (confirmedCategories.length === allCategories.length || allCategories.length === 0)
             setShowAddTag(false);
         else
             setShowAddTag(true);
@@ -48,7 +50,17 @@ function NewSession(props) {
     }
 
     const handleFindGames = (event) => {
-        setPage('gamesfound');
+        if (valid) {
+            setPage('gamesfound');
+        } else {
+            onShowAlert().then(r => window.setTimeout(() => {
+                setAutoHidingAlert(false)
+            }, 2000));
+        }
+    }
+
+    const onShowAlert = async () => {
+        await setAutoHidingAlert(true);
     }
 
     const handlePlayers = (event) => {
@@ -64,6 +76,19 @@ function NewSession(props) {
         setSessionMinutes(m);
     }
 
+    useEffect(() => {
+        if (sessionPlayers === undefined ||
+            sessionHours === undefined ||
+            sessionMinutes === undefined ||
+            sessionCategories === undefined ||
+            sessionDifficulty === '') {
+            setValid(false);
+        } else {
+            setValid(true);
+        }
+    }, [sessionPlayers, sessionHours, sessionMinutes, sessionCategories, sessionDifficulty]);
+
+
     return (
         <>
             {
@@ -77,7 +102,8 @@ function NewSession(props) {
                             <Navigate replace to="/gamesfound"/>
                             :
                             <>
-                                <Container id="nav" className="pb-2 border-bottom border-secondary">
+                                <Container id="nav"
+                                           className="pb-2 my-border-color border-bottom border-top-0 border-start-0 border-end-0">
                                     <Row className='justify-content-between mt-2'>
                                         <Col xs={6}>
                                             <Button
@@ -90,7 +116,7 @@ function NewSession(props) {
                                         </Col>
                                     </Row>
                                     <Row>
-                                        <h1 className='m-2'>New Session</h1>
+                                        <h1 className='m-2'>Filter</h1>
                                     </Row>
                                 </Container>
                                 <Container fluid className='mt-3 p-5'>
@@ -210,19 +236,31 @@ function NewSession(props) {
                                                 <div/>
                                         }
 
+                                    </Container>
                                 </Container>
-                            </Container>
-                            <Container className="mt-5">
-                                <Row className='fixed-bottom mx-4 mb-4'>
-                                    <Button
-                                        variant="primary"
-                                        type="submit"
-                                        onClick={() => handleFindGames()}>
-                                        Search among your games
-                                    </Button>
-                                </Row>
-                            </Container>
-                        </>
+                                <Container className="flex justify-content-between fixed-bottom">
+                                    {
+                                        autoHidingAlert ?
+                                            <Container className="mb-5 pb-2">
+                                                <Alert variant="warning" className="text-center">
+                                                    Some filters are still undefined!
+                                                </Alert>
+                                            </Container>
+                                            :
+                                            <div/>
+                                    }
+                                    <Container className="mt-5">
+                                        <Row className='fixed-bottom mx-4 mb-4'>
+                                            <Button
+                                                variant="primary"
+                                                type="submit"
+                                                onClick={() => handleFindGames()}>
+                                                Search among your games
+                                            </Button>
+                                        </Row>
+                                    </Container>
+                                </Container>
+                            </>
             }
         </>
     );

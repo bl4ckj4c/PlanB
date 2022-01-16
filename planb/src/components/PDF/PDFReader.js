@@ -40,7 +40,7 @@ const PDFReader = (props) => {
                     onLoadSuccess={onDocumentLoadSuccess}
                     onLoadError={onDocumentLoadError}
                 >
-                    <Container ariaLabel="pdf-container">
+                    <Container aria-label="pdf-container">
                         <Page
                             pageNumber={pageNumber}
                             scale={scale}

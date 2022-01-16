@@ -205,12 +205,6 @@ async function enableCORS() {
             "Access-Control-Allow-Origin": "*"
         }
     });
-    console.log(corsRes);
-    if (corsRes.ok) {
-        console.log("CORS OK");
-    } else {
-        console.log("CORS ERROR");
-    }
 }
 
 const API = {

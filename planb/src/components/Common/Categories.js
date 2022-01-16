@@ -5,11 +5,11 @@ import {Clock, Dice1, Dice3, Dice5, People, X, Plus, Dash, Check} from 'react-bo
 function Categories(props) {
     const {confirmedCategories, setConfirmedCategories, setCategories} = props;
 
-    return confirmedCategories.map((item, index) => 
-            <Category key = {index} category={item} confirmedCategories={confirmedCategories}
-                setConfirmedCategories={setConfirmedCategories}
-                setCategories={setCategories} />
-        );
+    return confirmedCategories.map((item, index) =>
+        <Category key={index} category={item} confirmedCategories={confirmedCategories}
+                  setConfirmedCategories={setConfirmedCategories}
+                  setCategories={setCategories}/>
+    );
 }
 
 function Category(props) {
@@ -24,17 +24,17 @@ function Category(props) {
     return (
         <Badge pill bg="secondary" style={{"lineHeight": "2.09", "margin": "2px"}}>
             {category}
-            {/**Nel caso in cui Categories viene renderizzato a partire da GameInfo, abbiamo setConfirmedCategories="" 
-             * in modo da non mostrare il bottone con la x dentro il badge, che nel caso di NewSession serve per togliere 
+            {/**Nel caso in cui Categories viene renderizzato a partire da GameInfo, abbiamo setConfirmedCategories=""
+             * in modo da non mostrare il bottone con la x dentro il badge, che nel caso di NewSession serve per togliere
              * una delle categorie inserite.
-            */}
+             */}
             {setConfirmedCategories !== "" &&
-                <Button className="m-0 p-0 bg-secondary border-0"
-                        style={{"height": "18", "width": "18", "vertical-align": "middle", "font-size": "0"}}
-                        onClick={() => handleRemovingTag()}
-                >
-                    <X size={18}/>
-                </Button>
+            <Button className="m-0 p-0 bg-secondary border-0"
+                    style={{"height": "18", "width": "18", "vertical-align": "middle", "font-size": "0"}}
+                    onClick={() => handleRemovingTag()}
+            >
+                <X size={18}/>
+            </Button>
             }
         </Badge>);
 }
@@ -53,7 +53,7 @@ function AddCategory(props) {
         <>
             <Badge pill
                    bg="secondary"
-                   style={{"margin": "2px", "display":"inline-block"}}>
+                   style={{"margin": "2px", "display": "inline-block"}}>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <Button className="m-0 p-0 bg-secondary border-0"
                         onClick={() => handleAddCategory()}
@@ -120,14 +120,11 @@ function CategoryListItem(props) {
     const [alreadyConfirmed, setAlreadyConfirmed] = useState(false);
 
     const handleSwitch = async (event) => {
-        if(alreadyAdded)
-        {
+        if (alreadyAdded) {
             setAlreadyAdded(false);
             let newCategories = await categories.filter(cat => cat !== category);
             setCategories(newCategories);
-        }
-        else
-        {
+        } else {
             setAlreadyAdded(true);
             let newCategories = [...categories, category];
             setCategories(newCategories);
