@@ -33,19 +33,21 @@ function GamesFound(props) {
             const m = parseInt(game.Duration.split(':')[1]);
             const gameTotMinutes = (h * 60 + m);
 
-            return ( sessionPlayers <= game.PlayersMax &&
+            if (sessionPlayers <= game.PlayersMax &&
                 sessionPlayers >= game.PlayersMin &&
                 gameTotMinutes <= sessionTotMinutes &&
-                sessionDifficulty === game.Difficulty &&
-                game.Categories.some(cat => {
-                    if(sessionCategories.length === 0) return true;
-                    for (const sessionCat of sessionCategories) {
-                        if (cat === sessionCat) {
-                            return true;
+                sessionDifficulty === game.Difficulty)
+                if(sessionCategories.length === 0)
+                    return true;
+                else
+                    for(const c of game.Categories)
+                    {
+                        for (const sessionCat of sessionCategories) {
+                            if (c.toLowerCase() === sessionCat.toLowerCase()) {
+                                return true;
+                            }
                         }
                     }
-                })
-                );
         });
     };
 
@@ -89,7 +91,7 @@ function GamesFound(props) {
                         :
                         foundGames.length === 0 ?
                             <>
-                            <Container id="nav" className="pb-2 border-bottom border-secondary">
+                            <Container id="nav" className="pb-2 my-border-color border-bottom border-top-0 border-start-0 border-end-0">
                                 <Row className='justify-content-between mt-2'>
                                     <Col xs={6}>
                                         <Button

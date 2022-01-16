@@ -53,7 +53,7 @@ function Login(props) {
 
     useEffect(() => {
         if (!loading) {
-            console.log(user)
+            //console.log(user)
             
             if (user !== undefined) {
                 props.setIsSignedIn(true);

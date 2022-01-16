@@ -15,28 +15,28 @@ function GameCard(props) {
     }
     //making the time better to display to users
     let time;
-    if(game.hour === 0)
-        time = game.minutes+"m";
-    else if(game.minutes === 0)
-            time = game.hour+"h";
-        else
-            time = game.hour+"h"+game.minutes+"m";
+    if (game.hour === 0)
+        time = game.minutes + "m";
+    else if (game.minutes === 0)
+        time = game.hour + "h";
+    else
+        time = game.hour + "h" + game.minutes + "m";
 
     //displaying game categories (max 3)
     let subtitle;
-    if(game.categories.length < 4)
+    if (game.categories.length < 4)
         subtitle = game.categories.join(' | ');
     else {
-        subtitle = game.categories[0] + ' | ' + game.categories[1] + ' | '  + game.categories[2] + ' | +' + (game.categories.length-3); 
+        subtitle = game.categories[0] + ' | ' + game.categories[1] + ' | ' + game.categories[2] + ' | +' + (game.categories.length - 3);
     }
 
     //choosing the dice icon depending on game difficulty
     let diceIcon;
-    if(game.difficulty === 'Easy')
+    if (game.difficulty === 'Easy')
         diceIcon = <Dice1 className='mx-2'/>;
-    else if(game.difficulty === 'Mid')
+    else if (game.difficulty === 'Mid')
         diceIcon = <Dice3 className='mx-2'/>;
-    else if(game.difficulty === 'Hard')
+    else if (game.difficulty === 'Hard')
         diceIcon = <Dice5 className='mx-2'/>;
 
     const showGameInfo = (game) => {

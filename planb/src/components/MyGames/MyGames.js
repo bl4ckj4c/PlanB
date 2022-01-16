@@ -11,7 +11,7 @@ import NoGamesCard from "../Common/NoGamesCard";
 import ModalGameInfo from "../Common/ModalGameInfo";
 
 function MyGames(props) {
-    const {games, setGames, gamesLoading, setGamesLoading} = props;
+    const {games, setGames, gamesLoading, setGamesLoading, resetSession} = props;
 
     const [newSession, setNewSession] = useState(false);
     const [filter, setFilter] = useState("");
@@ -22,6 +22,7 @@ function MyGames(props) {
 
 
     const handleNewSession = (event) => {
+        resetSession();
         setNewSession(true);
     }
 
@@ -48,10 +49,10 @@ function MyGames(props) {
         if (filter !== "") {
             const filtered = games.filter(game => {
                 if (game.Title.toUpperCase().startsWith(filter.toUpperCase())) {
-                    console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
+                    //console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
                     return true;
                 } else if (game.Difficulty.toUpperCase().startsWith(filter.toUpperCase())) {
-                    console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
+                    //console.log(game.Title + "\n" + game.Difficulty + "\n" + game.Categories);
                     return true;
                 } else if (game.Categories.find(item => item.toUpperCase().startsWith(filter.toUpperCase())))
                     return true;
@@ -83,7 +84,7 @@ function MyGames(props) {
                     :
                     <>
                         <Container id="nav"
-                                   className="pb-2 bg-white my-border-color border-bottom border-top-0 fixed-top">
+                                   className="pb-2 bg-white my-border-color border-bottom border-top-0 border-start-0 border-end-0 fixed-top">
                             <Row className='justify-content-between mt-2'>
                                 <Col xs={6}>
                                     <Button
@@ -141,7 +142,7 @@ function MyGames(props) {
                                     variant="primary"
                                     type="submit"
                                     onClick={() => handleNewSession()}>
-                                    New Session
+                                    Filter
                                 </Button>
                             </Row>
                         </Container>

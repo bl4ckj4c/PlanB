@@ -26,8 +26,8 @@ function App() {
     const [gamesLoading, setGamesLoading] = useState(true);
 
     const [sessionPlayers, setSessionPlayers] = useState();
-    const [sessionHours, setSessionHours] = useState(1);
-    const [sessionMinutes, setSessionMinutes] = useState(0);
+    const [sessionHours, setSessionHours] = useState();
+    const [sessionMinutes, setSessionMinutes] = useState();
     const [sessionCategories, setSessionCategories] = useState([]);
     const [sessionDifficulty, setSessionDifficulty] = useState('');
 
@@ -44,9 +44,16 @@ function App() {
     };
     //console.log("MOBILE CHECK: "+window.mobileCheck());
 
+    const resetSession = () => {
+        setSessionPlayers(undefined);
+        setSessionHours(undefined);
+        setSessionMinutes(undefined);
+        setSessionCategories([]);
+        setSessionDifficulty('');
+    };
 
     useEffect(() => {
-        API.enableCORS().then(() => console.log("API called ok"));
+        API.enableCORS().then(() => {});
     }, []);
 
     useEffect(() => {
@@ -89,6 +96,7 @@ function App() {
                         <MyGames
                             games={games} setGames={setGames}
                             gamesLoading={gamesLoading} setGamesLoading={setGamesLoading}
+                            resetSession={resetSession}
                         />
                         :
                         <Navigate replace to = "/login"/>
