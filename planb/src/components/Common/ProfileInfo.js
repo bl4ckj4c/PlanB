@@ -54,26 +54,28 @@ function ProfileInfo(props) {
                                         <Placeholder bg='secondary' xs={4}/>
                                     </Placeholder>
                                     :
-                                    props.user.email
+                                    (props.user !== null ?
+                                        props.user.email :
+                                        <Navigate replace to="/login"/>)
                                 }
                             </Col>
                         </Row>
                         <Row className='fixed-bottom mx-4 mb-4'>
-                                <Button
-                                    variant="danger"
-                                    onClick={() => handleLogout()}
-                                    disabled={props.userLoading}>
-                                    {props.userLoading ?
-                                        <Spinner
-                                            as="span"
-                                            animation="border"
-                                            size="sm"
-                                            role="status"
-                                            aria-hidden="true"/>
-                                        :
-                                        'Log out'
-                                    }
-                                </Button>
+                            <Button
+                                variant="danger"
+                                onClick={() => handleLogout()}
+                                disabled={props.userLoading}>
+                                {props.userLoading ?
+                                    <Spinner
+                                        as="span"
+                                        animation="border"
+                                        size="sm"
+                                        role="status"
+                                        aria-hidden="true"/>
+                                    :
+                                    'Log out'
+                                }
+                            </Button>
                         </Row>
                     </Container>
                 </>
