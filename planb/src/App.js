@@ -24,7 +24,7 @@ function App() {
     const [games, setGames] = useState([]);
     const [gamesLoading, setGamesLoading] = useState(true);
 
-    const [sessionPlayers, setSessionPlayers] = useState();
+    const [sessionPlayers, setSessionPlayers] = useState(1);
     const [sessionHours, setSessionHours] = useState(1);
     const [sessionMinutes, setSessionMinutes] = useState(0);
     const [sessionCategories, setSessionCategories] = useState([]);

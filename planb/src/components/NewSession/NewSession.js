@@ -114,15 +114,6 @@ function NewSession(props) {
         setSessionPlayers(event.target.value);
     }
 
-    /*const handleTime = async (event) => {
-        const t = event.target.value;
-        await setTime(t);
-        const h = t.split(':')[0];
-        const m = t.split(':')[1];
-        setSessionHours(h);
-        setSessionMinutes(m);
-    }*/
-
     const handleTimeSlider = async (event) => {
         const val = event.target.value;
         setSliderValue(val);
@@ -201,13 +192,19 @@ function NewSession(props) {
                                                     </Form.Label>
                                                 </Col>
                                                 <Col xs={8}>
-                                                    <Form.Control
-                                                        type='number'
-                                                        placeholder='Number of players'
+                                                    <Form.Select
+                                                        aria-label="Number of players"
                                                         value={sessionPlayers}
-                                                        min={1}
-                                                        onChange={(ev) => handlePlayers(ev)}
-                                                    />
+                                                        onChange={(ev) => handlePlayers(ev)}>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8+</option>
+                                                    </Form.Select>
                                                 </Col>
                                             </Row>
                                         </Form.Group>
