@@ -17,7 +17,7 @@ function NewSession(props) {
     } = props;
 
     const minDuration = 15; // in minutes
-    const maxDuration = 720; // in minutes
+    const maxDuration = 360; // in minutes
     const durationStep = 15; // in minutes
 
     const [page, setPage] = useState('');
@@ -76,7 +76,7 @@ function NewSession(props) {
     function fromValToSliderLabel(val) {
         // 125 --> 2h 5m
         if (val < minDuration + 5) return "< 15m";
-        if (val > maxDuration - 5) return "> 12h";
+        if (val > maxDuration - 5) return "> 6h";
         let h = Math.floor(val / 60);
         let m = val - h * 60;
         h = h.toString();
