@@ -9,7 +9,6 @@ import React, {useState} from "react";
 function ModalSuggestGame(props) {
     const [gameName, setGameName] = useState("");
     const [description, setDescription] = useState("");
-    const [gameDifficulty, setGameDifficulty] = useState("");
     const [alert, setAlert] = useState({variant: "", msg: ""});
     const [loading, setLoading] = useState(false);
     
@@ -19,16 +18,8 @@ function ModalSuggestGame(props) {
             setAlert({variant: "warning", msg: "Please enter a game name."});
             return;
         }
-        if(description === ""){
-            setAlert({variant: "warning", msg: "Please enter a game description."});
-            return;
-        }
-        if(gameDifficulty === ""){
-            setAlert({variant: "warning", msg: "Please select a game difficulty."});
-            return;
-        }
         setLoading(true);
-        API.suggestGame(gameName, description, gameDifficulty)
+        API.suggestGame(gameName, description)
             .then((gameId) => {
                 setLoading(false);
                 setAlert({variant: "success", 
@@ -62,7 +53,6 @@ function ModalSuggestGame(props) {
                     {/**Place here all the input you want the user to put */}
                     <SuggestionInfo gameName={gameName} setGameName={setGameName} 
                         description={description} setDescription={setDescription}
-                        gameDifficulty={gameDifficulty} setGameDifficulty={setGameDifficulty}
                         disabled = {alert.variant === "success"}
                     />
                     {/**putting a spinner while waiting for API return */}
@@ -149,63 +139,6 @@ function SuggestionInfo(props) {
                         />
                     </FloatingLabel>
                 </Form.Group>
-            </Form>
-            <Form>
-                <div key="radio-key" className="mt-3">
-                    <Row className="align-items-center mx-auto p-3">
-                        <Col xs={4}>
-                            <div className="align-items-center d-flex flex-column">
-                                <Dice1 className='mx-2'/>
-                                Easy
-                            </div>
-                            <Form.Check
-                                className="text-center"
-                                name="radio-key"
-                                type="radio"
-                                id="radio-easy"
-                                disabled = {props.disabled}
-                                onChange={(event) => {
-                                    if (event.target.checked)
-                                        props.setGameDifficulty('Easy');
-                                }}
-                            />
-                        </Col>
-                        <Col xs={4}>
-                            <div className="align-items-center d-flex flex-column">
-                                <Dice3 className='mx-2'/>
-                                Mid
-                            </div>
-                            <Form.Check
-                                className="text-center"
-                                name="radio-key"
-                                type="radio"
-                                id="radio-mid"
-                                disabled = {props.disabled}
-                                onChange={(event) => {
-                                    if (event.target.checked)
-                                        props.setGameDifficulty('Mid');
-                                }}
-                            />
-                        </Col>
-                        <Col xs={4}>
-                            <div className="align-items-center d-flex flex-column">
-                                <Dice5 className='mx-2'/>
-                                Hard
-                            </div>
-                            <Form.Check
-                                className="text-center"
-                                name="radio-key"
-                                type="radio"
-                                id="radio-hard"
-                                disabled = {props.disabled}
-                                onChange={(event) => {
-                                    if (event.target.checked)
-                                        props.setGameDifficulty('Hard');
-                                }}
-                            />
-                        </Col>
-                    </Row>
-                </div>
             </Form>
         </>
     );

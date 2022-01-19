@@ -168,11 +168,10 @@ async function getGameImage(gameImageID) {
     }
 }
 
-async function suggestGame(title, description, difficulty) {
+async function suggestGame(title, description) {
     const docRef = await addDoc(collection(db, 'SuggestGame'), {
         Title: title,
-        Description: description,
-        Difficulty: difficulty
+        Description: description
     });
     try {
         return !!docRef.id;
