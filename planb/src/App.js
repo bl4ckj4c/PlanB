@@ -32,9 +32,9 @@ function App() {
 
 
     const resetSession = () => {
-        setSessionPlayers(undefined);
-        setSessionHours(undefined);
-        setSessionMinutes(undefined);
+        setSessionPlayers(1);
+        setSessionHours(1);
+        setSessionMinutes(0);
         setSessionCategories([]);
         setSessionDifficulty('');
     };
