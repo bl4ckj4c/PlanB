@@ -21,3 +21,6 @@ The configuration file can be found as a GitHub issue, in order to avoid pushing
 
 ## User Credentials
 - username: `test@aaa.it`, password: `test123`
+
+## CORS
+In-app PDF loading uses heroku-cors-anywhere proxy to overcome CORS limitations. This solution works most of the times but seems have some problems, especially when using Android platforms. First problem is that not all PDFs can be loaded and second problem is that in order to enable that proxy an HTTP request is needed (it works but it returns 403 status code response, so there is an alert in browser console).
