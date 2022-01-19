@@ -2,7 +2,6 @@ import {Col, Container, Form, Row, Button, Alert} from "react-bootstrap";
 import {ChevronLeft, HourglassSplit, People, Dice1, Dice3, Dice5} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
-import API from "../../API";
 import {Categories, AddCategory} from "../Common/Categories";
 import RangeSlider from 'react-bootstrap-range-slider';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
