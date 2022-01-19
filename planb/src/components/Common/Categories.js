@@ -81,7 +81,7 @@ function AddCategory(props) {
                     }}/>
                 </Modal.Header>
                 <Modal.Body>
-                    <h6 style={{"margin-bottom": "3%"}}>Select one or more game categories you would like to play</h6>
+                    <h6 className= "mb-3">Select one or more game categories you would like to play</h6>
                     <Container>
                         <GameCategoriesList allCategories={allCategories}
                                             categories={categories}
@@ -106,6 +106,7 @@ function GameCategoriesList(props) {
     const {allCategories, categories, setCategories, confirmedCategories} = props;
 
     return allCategories.map((item, index) => <CategoryListItem
+        key={index}
         category={item}
         categories={categories}
         setCategories={setCategories}
