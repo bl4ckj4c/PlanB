@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import API from '../../API'
 import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
-import {ExclamationCircle, QuestionCircle} from "react-bootstrap-icons";
+import {ExclamationCircle} from "react-bootstrap-icons";
 import logo from "../../logo/planb_logo.svg"
 
 function Login(props) {

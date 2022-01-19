@@ -1,4 +1,3 @@
-import React, {useEffect} from 'react';
 import {Card, Col, Row} from 'react-bootstrap';
 import {HourglassSplit, Dice1, Dice3, Dice5, People} from 'react-bootstrap-icons';
 

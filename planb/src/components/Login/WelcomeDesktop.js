@@ -1,4 +1,4 @@
-import {Col, Container, Row} from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 import logo from "../../logo/desktop_logo.svg"
 
 function WelcomeDesktop(props) {

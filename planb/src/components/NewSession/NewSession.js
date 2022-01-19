@@ -1,5 +1,5 @@
-import {Col, Container, Form, Row, Button, Badge, Alert} from "react-bootstrap";
-import {ChevronLeft, HourglassSplit, People, PersonCircle, Plus, Dice1, Dice3, Dice5, X} from "react-bootstrap-icons";
+import {Col, Container, Form, Row, Button, Alert} from "react-bootstrap";
+import {ChevronLeft, HourglassSplit, People, Dice1, Dice3, Dice5} from "react-bootstrap-icons";
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import API from "../../API";

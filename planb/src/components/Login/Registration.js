@@ -1,4 +1,4 @@
-import {Card, Container, Form, Button, Col, Row, Toast, ToastContainer, FloatingLabel, Spinner} from 'react-bootstrap';
+import {Container, Form, Button, Row, Toast, ToastContainer, FloatingLabel, Spinner} from 'react-bootstrap';
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import API from "../../API";

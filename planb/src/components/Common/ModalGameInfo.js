@@ -7,7 +7,7 @@ import API from "../../API";
 //GameInfo
 import GameInfo from './GameInfo';
 import React, {useState} from "react";
-import {House, CaretLeft, CaretLeftFill, CaretLeftSquare, CaretLeftSquareFill} from 'react-bootstrap-icons';
+import {CaretLeft} from 'react-bootstrap-icons';
 
 function ModalGameInfo(props) {
     const [buttonLoading, setButtonLoading] = useState(false);

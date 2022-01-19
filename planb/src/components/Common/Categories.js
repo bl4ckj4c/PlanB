@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card, Col, Row, Modal, CloseButton, Container, FormCheck} from 'react-bootstrap';
-import {Clock, Dice1, Dice3, Dice5, People, X, Plus, Dash, Check} from 'react-bootstrap-icons';
 
 function Categories(props) {
     const {confirmedCategories, setConfirmedCategories, setCategories} = props;

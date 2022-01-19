@@ -124,7 +124,7 @@ function GameInfo(props) {
                                     textAlign: 'justify',
                                     textJustify: 'inter-word'
                                 }}>
-                                    {game.description}<br></br>
+                                    {game.description}<br/>
                                     <Button variant="link" className="p-0"
                                             onClick={() => setShowMoreDescription(false)}>Show less</Button>
                                 </p>
@@ -133,7 +133,7 @@ function GameInfo(props) {
                                     textAlign: 'justify',
                                     textJustify: 'inter-word'
                                 }}>
-                                    {game.descriptionCut}<br></br>
+                                    {game.descriptionCut}<br/>
                                     <Button variant="link" className="p-0" onClick={() => setShowMoreDescription(true)}>Show
                                         more</Button>
                                 </p>

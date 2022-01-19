@@ -1,5 +1,4 @@
 import {Card, Container} from 'react-bootstrap';
-import { ExclamationTriangle } from 'react-bootstrap-icons';
 import ModalSuggestGame from '../SuggestGame/ModalSuggestGame';
 
 import React, {useState} from "react";

@@ -1,7 +1,7 @@
 import {Button, Col, Container, Form, Row, Spinner} from "react-bootstrap";
 import GameCard from '../Common/GameCard';
-import {PersonCircle, Plus, PlusLg, Search} from "react-bootstrap-icons";
-import {Link, Navigate} from "react-router-dom";
+import {PersonCircle, Plus} from "react-bootstrap-icons";
+import {Navigate} from "react-router-dom";
 import API from "../../API";
 import React, {useEffect, useState} from "react";
 
