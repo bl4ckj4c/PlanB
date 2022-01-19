@@ -1,0 +1,679 @@
+[
+    {
+        "Title": "7 Wonders",
+        "Categories": [
+            "Card game",
+            "Economic",
+            "Civilization",
+            "City Building"
+        ],
+        "Description": "You are the leader of one of the 7 great cities of the Ancient World. Gather resources, develop commercial routes, and affirm your military supremacy. Build your city and erect an architectural wonder which will transcend future times.",
+        "Difficulty": "Mid",
+        "Duration": "00:30",
+        "PlayersMax": 7,
+        "PlayersMin": 2,
+        "Rules": "https://cdn.svc.asmodee.net/production-rprod/storage/downloads/games/7wonders/en/sev-en02-rules-15988888706j22H.pdf",
+        "ImageId": "7_wonders.jpg"
+    },
+    {
+        "Title": "Bananagrams",
+        "Categories": [
+            "Word Game"
+        ],
+        "Description": "Using a selection of 144 plastic letter tiles in the English edition, each player works independently to create their own 'crossword' faster than one's opponents. When a player uses up all their letters, all players take a new tile from the pool. The object of the game is to be the first to complete a word grid after the \"bunch\" of tiles has been depleted.",
+        "Difficulty": "Easy",
+        "Duration": "00:15",
+        "PlayersMax": 8,
+        "PlayersMin": 1,
+        "Rules": "https://cdn.shopify.com/s/files/1/0469/1034/1283/files/Classic_Rules.pdf",
+        "ImageId": "bananagrams.jpg"
+    },
+    {
+        "Title": "Bang - The Dice Game",
+        "Categories": [
+            "Fighting",
+            "Party",
+            "Dice",
+            "Bluffing"
+        ],
+        "Description": "Bang - The Dice Game keeps the core of the Bang! card game in place. At the start of the game, players each take a role card that secretly places them on a team: the Sheriff and deputies, outlaws, and renegades. The Sheriff and deputies need to kill the outlaws, the outlaws win by killing the Sheriff, and the renegades want to be the last players alive in the game.",
+        "Difficulty": "Mid",
+        "Duration": "00:15",
+        "PlayersMax": 8,
+        "PlayersMin": 3,
+        "Rules": "https://www.dvgiochi.com/giochi/bangtdg/download/BANG!%20Dice%20Game_Rules_ENG.pdf",
+        "ImageId": "bang_the_dice_game.jpg"
+    },
+    {
+        "Title": "Bears vs Babies",
+        "Categories": [
+            "Humor",
+            "Card game"
+        ],
+        "Description": "Bears vs Babies is a card game in which you build handsome, incredible monsters who go to war with horrible, awful babies.",
+        "Difficulty": "Easy",
+        "Duration": "00:20",
+        "PlayersMax": 5,
+        "PlayersMin": 2,
+        "Rules": "https://dumekj556jp75.cloudfront.net/bvb/bvb-english.pdf",
+        "ImageId": "bears_vs_babies.jpg"
+    },
+    {
+        "Title": "Unstable Unicorns",
+        "Categories": [
+            "Humor",
+            "Card game",
+            "Party"
+        ],
+        "Description": " Unstable Unicorns is a strategic card game about everyone’s two favorite things: Destruction and Unicorns! From the back of the box: Learn how unstable your friendships really are. You start with a Baby Unicorn in your Stable. SO CUTE! But don't get too attached, because even Baby Unicorns aren't safe in this game! There are over 20 Magical Unicorns to collect, and each has a special power. Build your Unicorn Army as fast as you can, or be destroyed by one of your so-called friends!",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 8,
+        "PlayersMin": 2,
+        "Rules": "https://www.asmodee.it/giochi/Unstable_Unicorns/Unstable_Unicorns_ITA.pdf",
+        "ImageId": "unstable_unicorns.jpg"
+    },
+    {
+        "Title": "Black Mirror - Nosedive",
+        "Categories": [
+            "Card game"
+        ],
+        "Description": "In NOSEDIVE players are challenged to create a \"perfect\" life by collecting lifestyle cards, while avoiding any \"dings\" to their social score. Integrated with the free NOSEDIVE smartphone app available on iOS and Android, the game includes over one thousand unique experiences to impress players' important friends and improve their social standing.",
+        "Difficulty": "Easy",
+        "Duration": "00:45",
+        "PlayersMax": 6,
+        "PlayersMin": 3,
+        "Rules": "https://www.asmodee.it/giochi/nosedive/IT%20BM_ND_Instructions_6.pdf",
+        "ImageId": "black_mirror_nosedive.jpg"
+    },
+    {
+        "Title": "Boss Monster: The Dungeon Building Card Game",
+        "Categories": [
+            "Card game",
+            "Fantasy"
+        ],
+        "Description": "Inspired by a love of classic video games, Boss Monster: The Dungeon Building Card Game pits 2-4 players in a competition to build the ultimate side-scrolling dungeon. Players compete to lure and destroy hapless adventurers, racing to outbid one another to see who can build the most enticing, treasure-filled dungeon. The goal of Boss Monster is to be the first Boss to amass ten Souls, which are gained when a Hero is lured and defeated — but a player can lose if his Boss takes five Wounds from Heroes who survive his dungeon.",
+        "Difficulty": "Mid",
+        "Duration": "00:30",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://bossmonstergame.files.wordpress.com/2013/11/boss-monster-revised-rules-online.pdf",
+        "ImageId": "boss_monster.jpg"
+    },
+    {
+        "Title": "Citadels",
+        "Categories": [
+            "Bluffing",
+            "Card Game",
+            "City Building",
+            "Fantasy"
+        ],
+        "Description": "In Citadels, players take on new roles each round to represent characters they hire in order to help them acquire gold and erect buildings. The game ends at the close of a round in which a player erects their eighth building. Players then tally their points, and the player with the highest score wins.",
+        "Difficulty": "Mid",
+        "Duration": "01:00",
+        "PlayersMax": 8,
+        "PlayersMin": 2,
+        "Rules": "https://images.zmangames.com/filer_public/c4/8f/c48f0e33-2967-4cf8-a486-487ff4b46e29/zc01-rulebook_web.pdf",
+        "ImageId": "citadels.jpg"
+    },
+    {
+        "Title": "Clue",
+        "Categories": [
+            "Deduction",
+            "Mistery"
+        ],
+        "Description": "Clue/do is a murder mystery game. The aim is to find out who committed the murder, which weapon they used, and where in the mansion they did it. How do you solve the case? By careful questioning of your fellow players you can deduce which information is concealed in the crime envelope. The trick is to be clever with your questioning... Everyone develops their own system!",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 6,
+        "PlayersMin": 2,
+        "Rules": "https://www.hasbro.com/common/documents/dad2885d1c4311ddbd0b0800200c9a66/2BFAEC9E5056900B102C3859E9AC6332.pdf",
+        "ImageId": "clue.jpg"
+    },
+    {
+        "Title": "Blanc-Manger Coco",
+        "Categories": [
+            "Card Game",
+            "Humor",
+            "Party Game",
+            "Word Game"
+        ],
+        "Description": "Blanc-Manger Coco is a French implementation of Cards Against Humanity. The lead player in turn chooses a question with a blank space, other players must choose an answer that must be funny, with the proposed cards having a big chance of being offensive.",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 12,
+        "PlayersMin": 3,
+        "Rules": "null",
+        "ImageId": "blanc_manger_coco.jpg"
+    },
+    {
+        "Title": "Concept",
+        "Categories": [
+            "Deduction",
+            "Party Game"
+        ],
+        "Description": "In Concept, your goal is to guess words through the association of icons. A team of two players – neighbors at the table – choose a word or phrase that the other players need to guess. Acting together, this team places pieces judiciously on the available icons on the game board.",
+        "Difficulty": "Mid",
+        "Duration": "00:40",
+        "PlayersMax": 12,
+        "PlayersMin": 4,
+        "Rules": "https://cdn.svc.asmodee.net/production-rprod/storage/downloads/games/concept/rules/concept-rules-en-1607965337eRmaX.pdf",
+        "ImageId": "concept.jpg"
+    },
+    {
+        "Title": "Cranium",
+        "Categories": [
+            "Party Game",
+            "Puzzle",
+            "Trivia",
+            "Word Game"
+        ],
+        "Description": "Cranium bills itself as the \"whole-brain\" game. It's a party game that borrows from a host of other popular party games of recent times. Players have to successfully complete activities in each of four sections to win: Creative Cat, Data Head, Word Worm and Star Performer.",
+        "Difficulty": "Mid",
+        "Duration": "01:00",
+        "PlayersMax": 16,
+        "PlayersMin": 4,
+        "Rules": "https://www.fgbradleys.com/rules/Cranium.pdf",
+        "ImageId": "cranium.jpg"
+    },
+    {
+        "Title": "Cthulhu: Death May Die",
+        "Categories": [
+            "Fantasy",
+            "Fighting",
+            "Horror"
+        ],
+        "Description": "In Cthulhu: Death May Die, inspired by the writings of H.P. Lovecraft, you and your fellow players represent investigators in the 1920s who instead of trying to stop the coming of Elder Gods, want to summon those otherworldly beings so that you can put a stop to them permanently. You start the game insane, and while your long-term goal is to shoot Cthulhu in the face, so to speak, at some point during the game you'll probably fail to mitigate your dice rolls properly and your insanity will cause you to do something terrible — or maybe advantageous. Hard to know for sure.",
+        "Difficulty": "Hard",
+        "Duration": "02:00",
+        "PlayersMax": 5,
+        "PlayersMin": 1,
+        "Rules": "https://cmon-files.s3.amazonaws.com/pdf/assets_item/resource/186/DMD_Rulebook_web.pdf",
+        "ImageId": "cthulhu_death_may_die.jpg"
+    },
+    {
+        "Title": "Dice Forge",
+        "Categories": [
+            "Dice",
+            "Fantasy",
+            "Mythology"
+        ],
+        "Description": "Heroes, stand ready! The gods are offering a seat in heaven to whichever hero defeats their rivals. Your courage and wits will be your most precious allies as you use divine dice to gather resources along the road to victory. Your divine dice are exceptional, with removable faces! Customize your dice to make them more powerful as the game progresses. Sacrifice gold to the gods to obtain enhanced die faces. Upgrade your dice to produce the resources you need.",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://tesera.ru/images/items/1009129/DF_RULES_EN_HD.pdf",
+        "ImageId": "dice_forge.jpg"
+    },
+    {
+        "Title": "Dixit",
+        "Categories": [
+            "Card Game",
+            "Humor",
+            "Party Game"
+        ],
+        "Description": "Dixit is a French card game created by Jean-Louis Roubira, illustrated by Marie Cardouat, and published by Libellud. Using a deck of cards illustrated with dreamlike images, players select cards that match a title suggested by the \"storyteller\", and attempt to guess which card the storyteller selected.",
+        "Difficulty": "Mid",
+        "Duration": "00:30",
+        "PlayersMax": 6,
+        "PlayersMin": 3,
+        "Rules": "https://ndsslibraryblog.files.wordpress.com/2015/12/dixit-rules-english.pdf",
+        "ImageId": "dixit.jpg"
+    },
+    {
+        "Title": "Exploding Kittens",
+        "Categories": [
+            "Card Game",
+            "Humor"
+        ],
+        "Description": "Exploding Kittens is a kitty-powered version of Russian Roulette. Players take turns drawing cards until someone draws an exploding kitten and loses the game. The deck is made up of cards that let you avoid exploding by peeking at cards before you draw, forcing your opponent to draw multiple cards, or shuffling the deck.",
+        "Difficulty": "Easy",
+        "Duration": "00:15",
+        "PlayersMax": 5,
+        "PlayersMin": 2,
+        "Rules": "https://dumekj556jp75.cloudfront.net/exploding-kittens/English.pdf",
+        "ImageId": "exploding_kittens.jpg"
+    },
+    {
+        "Title": "Stuffed Fables",
+        "Categories": [
+            "Adventure",
+            "Fighting"
+        ],
+        "Description": "Stuffed Fables is an unusual adventure game in which players take on the roles of brave stuffies seeking to save the child they love from a scheming, evil mastermind. Make daring melee attacks, leap across conveyor belts, or even steer a racing wagon down a peril-filled hill. The game delivers a thrilling narrative driven by player choices. Players explore a world of wonder and danger, unlocking curious discoveries. The chapters of Stuffed Fables explore the many milestones of a child's life, creating a memorable tale ideal for families, as well as groups of adults who haven't forgotten their childlike sense of wonder.",
+        "Difficulty": "Mid",
+        "Duration": "01:30",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://images.zmangames.com/filer_public/7b/01/7b0185d6-5f93-4b18-a726-40a541cb71eb/ph2200-rulebook_web.pdf",
+        "ImageId": "stuffed_fables.jpg"
+    },
+    {
+        "Title": "Red7",
+        "Categories": [
+            "Card game"
+        ],
+        "Description": "The rules of are simple: highest card wins! But \"Red\" is just one of seven games you'll be playing in Red7, and if you're not winning the current game at the end of your turn, you're out! The last person standing wins the round.",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://asmadigames.com/Red7Rules.pdf",
+        "ImageId": "red7.jpg"
+    },
+    {
+        "Title": "Trial By Trolley",
+        "Categories": [
+            "Card game",
+            "Party Game"
+        ],
+        "Description": "In Trial by Trolley, one player acts as the Trolley Operator and must choose where to send a murderous, out of control, trolley. Every other player at the table plays cards and argues in order to convince the operator to spare their lives and condemn everyone on the other track to a gruesome death-by-trolley.",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 13,
+        "PlayersMin": 3,
+        "Rules": "https://www.dropbox.com/s/ripdptpngdrfuc6/SKB-CAH-TBT-rules-01-KS.pdf",
+        "ImageId": "trial_by_trolley.jpg"
+    },
+    {
+        "Title": "Jumanji",
+        "Categories": [
+            "Adventure",
+            "Dice"
+        ],
+        "Description": "The Game that Pursues You! Stalking lions, Charging rhinos, Lunging, Snapping crocodiles, and more. In the wild world of Jumanji, they're only a dice roll away.",
+        "Difficulty": "Easy",
+        "Duration": "00:45",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://www.hasbro.com/common/instruct/Jumanji.PDF",
+        "ImageId": "jumanji.jpg"
+    },
+    {
+        "Title": "Just One",
+        "Categories": [
+            "Party Game",
+            "Word Game"
+        ],
+        "Description": "Just One is a cooperative party game in which you play together to discover as many mystery words as possible. Find the best clue to help your teammate. Be unique, as all identical clues will be cancelled!",
+        "Difficulty": "Easy",
+        "Duration": "00:20",
+        "PlayersMax": 7,
+        "PlayersMin": 3,
+        "Rules": "https://cdn.svc.asmodee.net/production-rprod/storage/downloads/games/justone/jo-en01-rules-1612262916hCy2w.pdf",
+        "ImageId": "just_one.jpg"
+    },
+    {
+        "Title": "King Of Tokyo",
+        "Categories": [
+            "Dice",
+            "Fighting"
+        ],
+        "Description": "In King of Tokyo, you play mutant monsters, gigantic robots, and strange aliens—all of whom are destroying Tokyo and whacking each other in order to become the one and only King of Tokyo.",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 6,
+        "PlayersMin": 2,
+        "Rules": "https://cdn.1j1ju.com/medias/f9/2f/9b-king-of-tokyo-rulebook.pdf",
+        "ImageId": "king_of_tokyo.jpg"
+    },
+    {
+        "Title": "Mansions Of Madness",
+        "Categories": [
+            "Adventure",
+            "Exploration",
+            "Fantasy",
+            "Fighting",
+            "Horror"
+        ],
+        "Description": "Mansions of Madness: Second Edition is a fully co-operative, app-driven board game of horror and mystery for one to five players that takes place in the same universe as Eldritch Horror and Elder Sign. Let the immersive app guide you through the veiled streets of Innsmouth and the haunted corridors of Arkham's cursed mansions as you search for answers and respite. Eight brave investigators stand ready to confront four scenarios of fear and mystery, collecting weapons, tools, and information, solving complex puzzles, and fighting monsters, insanity, and death.",
+        "Difficulty": "Hard",
+        "Duration": "03:00",
+        "PlayersMax": 5,
+        "PlayersMin": 1,
+        "Rules": "https://images-cdn.fantasyflightgames.com/filer_public/48/f4/48f426c2-b365-43be-abdd-03b2a55eb38d/mansions_of_madness_second_edition_learn_to_play.pdf",
+        "ImageId": "mansions_of_madness.jpg"
+    },
+    {
+        "Title": "MicroMacro: Crime City",
+        "Categories": [
+            "Deduction",
+            "Mystery"
+        ],
+        "Description": "Crimes have taken place all over the city, and you want to figure out exactly what's happened, so you'll need to look closely at the giant city map (75 x 110 cm / 29.5 x 43 inches) to find all the hidden information and trace the trails of those who had it in for their foes.",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 4,
+        "PlayersMin": 1,
+        "Rules": "https://cdn.1j1ju.com/medias/d2/0d/2b-micromacro-crime-city-rulebook.pdf",
+        "ImageId": "micro_macro.jpg"
+    },
+    {
+        "Title": "Monopoly",
+        "Categories": [
+            "Economic",
+            "Negotiation"
+        ],
+        "Description": "Players take the part of land owners, attempting to buy and then develop their land. Income is gained by other players visiting their properties and money is spent when they visit properties belonging to other players. When times get tough, players may have to mortgage their properties to raise cash for fines, taxes and other misfortunes.",
+        "Difficulty": "Mid",
+        "Duration": "02:00",
+        "PlayersMax": 8,
+        "PlayersMin": 2,
+        "Rules": "https://www.hasbro.com/common/documents/A0AFE3A69EC745EBA77B9A7950BBCA44/AD7742057B1D43609B53D24D75E9CA9B.pdf",
+        "ImageId": "monopoly.jpg"
+    },
+    {
+        "Title": "Mysterium",
+        "Categories": [
+            "Deduction",
+            "Mystery",
+            "Party Game"
+        ],
+        "Description": "In the 1920s, Mr. MacDowell, a gifted astrologer, immediately detected a supernatural being upon entering his new house in Scotland. Unable to talk, the amnesiac ghost communicates with the mediums through visions, which are represented in the game by illustrated cards. The mediums must decipher the images to help the ghost remember how he was murdered: Who did the crime? Where did it take place? Which weapon caused the death? The more the mediums cooperate and guess well, the easier it is to catch the right culprit.",
+        "Difficulty": "Mid",
+        "Duration": "00:40",
+        "PlayersMax": 7,
+        "PlayersMin": 2,
+        "Rules": "https://www.fgbradleys.com/rules/rules3/MysteriumRules.pdf",
+        "ImageId": "mysterium.jpg"
+    },
+    {
+        "Title": "Codenames",
+        "Categories": [
+            "Card Game",
+            "Word Game",
+            "Deduction",
+            "Party Game"
+        ],
+        "Description": "Codenames is a 2015 card game for 4–8 players designed by Vlaada Chvátil and published by Czech Games Edition. Two teams compete by each having a \"spymaster\" give one-word clues that can point to multiple words on the board. The other players on the team attempt to guess their team's words while avoiding the words of the other team.",
+        "Difficulty": "Easy",
+        "Duration": "00:15",
+        "PlayersMax": 8,
+        "PlayersMin": 2,
+        "Rules": "https://czechgames.com/files/rules/codenames-rules-en.pdf",
+        "ImageId": "codenames.jpg"
+    },
+    {
+        "Title": "Pandemic",
+        "Categories": [
+            "Strategy"
+        ],
+        "Description": "In Pandemic, several virulent diseases have broken out simultaneously all over the world! The players are disease-fighting specialists whose mission is to treat disease hotspots while researching cures for each of four plagues before they get out of hand.",
+        "Difficulty": "Hard",
+        "Duration": "00:45",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://images-cdn.zmangames.com/us-east-1/filer_public/25/12/251252dd-1338-4f78-b90d-afe073c72363/zm7101_pandemic_rules.pdf",
+        "ImageId": "pandemic.jpg"
+    },
+    {
+        "Title": "First Contact",
+        "Categories": [
+            "Card Game",
+            "Word Game",
+            "Deduction",
+            "Party Game"
+        ],
+        "Description": "An exceptional party game where imaginary ancient Egyptians are trying to overcome the language barrier with… Aliens.",
+        "Difficulty": "Easy",
+        "Duration": "00:40",
+        "PlayersMax": 7,
+        "PlayersMin": 2,
+        "Rules": "https://cdn.1j1ju.com/medias/f7/4f/91-first-contact-rulebook.pdf",
+        "ImageId": "first_contact.jpg"
+    },
+    {
+        "Title": "RisiKo!",
+        "Categories": [
+            "Strategy",
+            "War Game"
+        ],
+        "Description": "RisiKo! is in Italy synonymous with Strategy! It is unquestionably the cult game that gathers thousands of fans, now renewed in a more compact format and with modern and captivating graphics. But not only: TIME ATTACK! the new game variant that players can choose to set the duration of the game at one hour, speeds up some game phases.",
+        "Difficulty": "Hard",
+        "Duration": "01:00",
+        "PlayersMax": 6,
+        "PlayersMin": 3,
+        "Rules": "https://risiko.it/wp-content/uploads/2017/10/Regolamento-Risiko.pdf",
+        "ImageId": "risiko.jpg"
+    },
+    {
+        "Title": "Rush & Bash",
+        "Categories": [
+            "Humor",
+            "Racing"
+        ],
+        "Description": "Rush & Bash is a fast-paced game about a crazy race set in the same world of games like Vudù, GodZ, and the Super Fantasy series.",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 6,
+        "PlayersMin": 2,
+        "Rules": "https://www.redglove.eu/risorse/regolamenti/regolamento_rushbash.pdf",
+        "ImageId": "rush_and_bash.jpg"
+    },
+    {
+        "Title": "Sagrada",
+        "Categories": [
+            "Dice",
+            "Puzzle"
+        ],
+        "Description": "Draft dice and use the tools-of-the-trade in Sagrada to carefully construct your stained glass window masterpiece.",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 4,
+        "PlayersMin": 1,
+        "Rules": "https://media.floodgate.games/rule-books/Sagrada-Rule-Book.pdf?",
+        "ImageId": "sagrada.jpg"
+    },
+    {
+        "Title": "Santorini",
+        "Categories": [
+            "Strategy",
+            "Mythology"
+        ],
+        "Description": "You are a god out of Greek mythology. Compete against fellow gods to get a loyal follower on top of a temple on the beautiful island of Santorini. Each turn you move, and then build a part of the temple. Be careful where you build lest the opposing god get the advantage. Strategic thinking and your unique godly power will win the day.",
+        "Difficulty": "Hard",
+        "Duration": "00:20",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "http://files.roxley.com/Santorini-Rulebook-Web-2016.08.14.pdf",
+        "ImageId": "santorini.jpg"
+    },
+    {
+        "Title": "Scotland Yard",
+        "Categories": [
+            "Deduction",
+            "Strategy"
+        ],
+        "Description": "In Scotland Yard, one of the players takes on the role of Mr. X. His job is to move from point to point around the map of London taking taxis, buses or subways. The detectives – that is, the remaining players acting in concert – move around similarly in an effort to move into the same space as Mr. X. But while the criminal's mode of transportation is nearly always known, his exact location is only known intermittently throughout the game.",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 6,
+        "PlayersMin": 3,
+        "Rules": "https://desktopgames.com.ua/games/199/scotlandyard_rules_en.pdf",
+        "ImageId": "scotland_yard.jpg"
+    },
+    {
+        "Title": "On a Scale of One to T-Rex",
+        "Categories": [
+            "Humor",
+            "Party Game"
+        ],
+        "Description": "From the creators of Exploding Kittens and The Mind comes a brand new family-friendly party game for people who are bad at charades: perform ridiculous and hilarious actions at different intensities, win points by matching your intensity with another player.",
+        "Difficulty": "Easy",
+        "Duration": "00:15",
+        "PlayersMax": 8,
+        "PlayersMin": 2,
+        "Rules": "https://dumekj556jp75.cloudfront.net/one-to-t-rex/English.pdf",
+        "ImageId": "on_a_scale_of_one_to_trex.jpg"
+    },
+    {
+        "Title": "T.I.M.E Stories",
+        "Categories": [
+            "Adventure",
+            "Fantasy",
+            "Puzzle"
+        ],
+        "Description": "The T.I.M.E Agency protects humanity by preventing temporal faults and paradoxes from threatening the fabric of our universe. As temporal agents, you and your team will be sent into the bodies of beings from different worlds or realities to successfully complete the missions given to you. Failure is impossible, as you will be able to go back in time as many times as required.",
+        "Difficulty": "Hard",
+        "Duration": "02:00",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://www.spacecowboys.fr/_files/ugd/59baa2_9bb13aab86d249c6a886f1baa61cdba5.pdf",
+        "ImageId": "time_stories.jpg"
+    },
+    {
+        "Title": "Taboo",
+        "Categories": [
+            "Party Game",
+            "Word Game"
+        ],
+        "Description": "Taboo is a party word game. Players take turns describing a word or phrase on a drawn card to their partner without using five common additional words or phrases also on the card. The opposing partners watch a timer and use a buzzer to stop the game, buzz the player describing if one of the five off limits words or phrases is used, or the describing player makes any gestures. The describing team gets a point for each card they guess successfully and the opposing team gets a point for each card they pass on, make gestures on, or lose for saying one of the off limits words or phrases.",
+        "Difficulty": "Easy",
+        "Duration": "00:20",
+        "PlayersMax": 10,
+        "PlayersMin": 4,
+        "Rules": "https://www.hasbro.com/common/instruct/Taboo(2000).PDF",
+        "ImageId": "taboo.jpg"
+    },
+    {
+        "Title": "Talisman",
+        "Categories": [
+            "Adventure",
+            "Exploration",
+            "Fantasy",
+            "Fighting"
+        ],
+        "Description": "Talisman is an adventure board game set in a high fantasy medieval world. Players have 14 characters to choose from all based on role playing archetypes, such as heroes, wizards, villains, thieves, monsters, etc. The game makes players feel they are traveling the world to find equipment, weapons, ancient relics, and companions that will help them on their quest to acquire the Crown of Command. Along the way they visit various locales in the worlds, battle each other and fantastic creatures to make their way to the top.",
+        "Difficulty": "Mid",
+        "Duration": "01:30",
+        "PlayersMax": 6,
+        "PlayersMin": 2,
+        "Rules": "https://pegasusshop.de/media/pdf/e6/cf/d8/4250231719097_gb.pdf",
+        "ImageId": "talisman.jpg"
+    },
+    {
+        "Title": "The Crew: The Quest for Planet Nine",
+        "Categories": [
+            "Card Game"
+        ],
+        "Description": "In the co-operative trick-taking game The Crew: The Quest for Planet Nine, the players set out as astronauts on an uncertain space adventure. What about the rumors about the unknown planet about? The eventful journey through space extends over 50 exciting missions. But this game can only be defeated by meeting common individual tasks of each player. In order to meet the varied challenges, communication is essential in the team. But this is more difficult than expected in space.",
+        "Difficulty": "Mid",
+        "Duration": "00:20",
+        "PlayersMax": 5,
+        "PlayersMin": 2,
+        "Rules": "https://www.thamesandkosmos.com/manuals/full/691868_Crew_Manual.pdf",
+        "ImageId": "the_crew.jpg"
+    },
+    {
+        "Title": "The Mind",
+        "Categories": [
+            "Card Game"
+        ],
+        "Description": "The Mind is more than just a game. It's an experiment, a journey, a team experience in which you can't exchange information, yet will become one to defeat all the levels of the game. In more detail, the deck contains cards numbered 1-100, and during the game you try to complete 12, 10, or 8 levels of play with 2, 3, or 4 players.",
+        "Difficulty": "Mid",
+        "Duration": "00:20",
+        "PlayersMax": 4,
+        "PlayersMin": 2,
+        "Rules": "https://www.dropbox.com/s/3aeieyd2dzbnkhl/TheMind_PandaS_rule.pdf",
+        "ImageId": "the_mind.jpg"
+    },
+    {
+        "Title": "Ticket to Ride",
+        "Categories": [
+            "Strategy"
+        ],
+        "Description": "With elegantly simple gameplay, Ticket to Ride can be learned in under 15 minutes. Players collect cards of various types of train cars they then use to claim railway routes in North America. The longer the routes, the more points they earn. Additional points come to those who fulfill Destination Tickets – goal cards that connect distant cities; and to the player who builds the longest continuous route.",
+        "Difficulty": "Mid",
+        "Duration": "01:00",
+        "PlayersMax": 5,
+        "PlayersMin": 2,
+        "Rules": "https://ncdn0.daysofwonder.com/tickettoride/en/img/7201-T2R-Rules-EN-2019.pdf",
+        "ImageId": "ticket_to_ride.jpg"
+    },
+    {
+        "Title": "Trivial Pursuit",
+        "Categories": [
+            "Party Game",
+            "Trivia"
+        ],
+        "Description": "Featuring classic gameplay and gameboard, this game contains 2,400 questions in 6 categories: Geography, Entertainment, History, Art and Literature, Science and Nature, and Sports and Leisure. Players move around the board answering questions. When a player lands on a category space, they'll earn the corresponding colored wedge if they answer the question correctly. The first player to collect 6 different colored wedges and answer a final question correctly wins!",
+        "Difficulty": "Hard",
+        "Duration": "01:30",
+        "PlayersMax": 6,
+        "PlayersMin": 2,
+        "Rules": "https://www.hasbro.com/common/instruct/46015.pdf",
+        "ImageId": "trivial_pursuit.jpg"
+    },
+    {
+        "Title": "UNO",
+        "Categories": [
+            "Card Game"
+        ],
+        "Description": "Players race to empty their hands and catch opposing players with cards left in theirs, which score points. In turns, players attempt to play a card by matching its color, number, or word to the topmost card on the discard pile. If unable to play, players draw a card from the draw pile, and if still unable to play, they pass their turn.",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 10,
+        "PlayersMin": 2,
+        "Rules": "https://service.mattel.com/instruction_sheets/42001pr.pdf",
+        "ImageId": "uno.jpg"
+    },
+    {
+        "Title": "Voodoo",
+        "Categories": [
+            "Humor",
+            "Party Game"
+        ],
+        "Description": "In Voodoo, the players act as the most wicked and malicious sorcerers of all time, and they want to use their curses and black magic to make the lives of their enemies impossible to prevail over them! Each turn, you roll five dice, collect your ingredients, then choose whether to take new cards, take new items, or cast a spell. Each spell has a powerful and tricky curse attached to it that forces your target to play in a specific way, for example, talking with his tongue out for the rest of the game, or using only a single hand, or running around the table each turn. Each curse grants you points when you cast it and many more points if your target forgets to obey it or becomes too exhausted to continue. Collect as many malediction points as you can to reach the final tile of the scoreboard before anyone else!",
+        "Difficulty": "Easy",
+        "Duration": "00:30",
+        "PlayersMax": 6,
+        "PlayersMin": 3,
+        "Rules": "https://www.redglove.eu/risorse/regolamenti/regolamento_vudu.pdf",
+        "ImageId": "voodoo.jpg"
+    },
+    {
+        "Title": "Wavelength",
+        "Categories": [
+            "Party Game",
+            "Deduction"
+        ],
+        "Description": "Wavelength is a social guessing game in which two teams compete to read each other's minds. Teams take turns rotating a dial to where they think a hidden bullseye is located on a spectrum. One of the players on your team — the Psychic — knows exactly where the bullseye is, and draws a card with a pair of binaries on it (such as: Job - Career, Rough - Smooth, Fantasy - Sci-Fi, Sad Song - Happy Song, etc). The Psychic must then provide a clue that is *conceptually* where the bullseye is located between those two binaries.",
+        "Difficulty": "Mid",
+        "Duration": "00:45",
+        "PlayersMax": 12,
+        "PlayersMin": 2,
+        "Rules": "https://tesera.ru/images/items/1666746/Wavelength_rules.pdf",
+        "ImageId": "wavelength.jpg"
+    },
+    {
+        "Title": "When I Dream",
+        "Categories": [
+            "Party Game",
+            "Deduction",
+            "Word Game"
+        ],
+        "Description": "The night has fallen and your mind is floating in the magical world of dreams. But the Dream Spirits want to have some fun tonight! They are giving their best and the dreams become strange and surreal. Become the dreamer, put on your sleeping mask and try to figure out your dream and which spirits are the Naughty ones. Become a good spirit and help the Dreamer by giving him clues about the dream before the naughty spirits mess it up. Close your eyes and dive in!",
+        "Difficulty": "Mid",
+        "Duration": "00:40",
+        "PlayersMax": 10,
+        "PlayersMin": 4,
+        "Rules": "https://cdn.svc.asmodee.net/production-rprod/storage/downloads/games/when-i-dream/whenidream-rules-en-1606208664cmiwL.pdf",
+        "ImageId": "when_i_dream.jpg"
+    },
+    {
+        "Title": "Zombicide",
+        "Categories": [
+            "Adventure",
+            "Horror",
+            "Fighting"
+        ],
+        "Description": "Zombicide is a collaborative game in which players take the role of a survivor – each with unique abilities – and harness both their skills and the power of teamwork against the hordes of unthinking undead! Zombies are predictable, stupid but deadly, controlled by simple rules and a deck of cards. Unfortunately for you, there are a LOT more zombies than you have bullets. Find weapons, kill zombies. The more zombies you kill, the more skilled you get; the more skilled you get, the more zombies appear. The only way out is zombicide!",
+        "Difficulty": "Hard",
+        "Duration": "01:00",
+        "PlayersMax": 6,
+        "PlayersMin": 1,
+        "Rules": "https://www.zombicide.com/dl/rulebook-zombicide-2nd-edition.pdf",
+        "ImageId": "zombicide.jpg"
+    }
+]

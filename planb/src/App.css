@@ -7,6 +7,27 @@
   pointer-events: none;
 }
 
+.my-border-color {
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.min-vh-75 {
+  min-height: 85vh;
+}
+
+.min-vh-200px {
+  min-height: 200px;
+}
+
+.below-nav {
+  margin-top: 7.8rem !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +56,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
