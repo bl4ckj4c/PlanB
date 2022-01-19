@@ -33,21 +33,42 @@ function GamesFound(props) {
             const m = parseInt(game.Duration.split(':')[1]);
             const gameTotMinutes = (h * 60 + m);
 
-            if (sessionPlayers <= game.PlayersMax &&
-                sessionPlayers >= game.PlayersMin &&
-                gameTotMinutes <= sessionTotMinutes &&
-                sessionDifficulty === game.Difficulty)
-                if(sessionCategories.length === 0)
-                    return true;
-                else
-                    for(const c of game.Categories)
-                    {
-                        for (const sessionCat of sessionCategories) {
-                            if (c.toLowerCase() === sessionCat.toLowerCase()) {
-                                return true;
+            // More or equal to 8 players
+            if(sessionPlayers === 8) {
+                if (sessionPlayers <= game.PlayersMax && gameTotMinutes <= sessionTotMinutes && sessionDifficulty === game.Difficulty) {
+                    if(sessionCategories.length === 0) {
+                        return true;
+                    }
+                    else {
+                        for(const c of game.Categories)
+                        {
+                            for (const sessionCat of sessionCategories) {
+                                if (c.toLowerCase() === sessionCat.toLowerCase()) {
+                                    return true;
+                                }
                             }
                         }
                     }
+                }
+            }
+            // Less than 8 players
+            else {
+                if (sessionPlayers <= game.PlayersMax && sessionPlayers >= game.PlayersMin && gameTotMinutes <= sessionTotMinutes && sessionDifficulty === game.Difficulty) {
+                    if(sessionCategories.length === 0) {
+                        return true;
+                    }
+                    else {
+                        for(const c of game.Categories)
+                        {
+                            for (const sessionCat of sessionCategories) {
+                                if (c.toLowerCase() === sessionCat.toLowerCase()) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
     };
 
