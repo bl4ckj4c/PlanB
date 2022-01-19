@@ -150,6 +150,9 @@ function GameInfo(props) {
                                 setShowRules(true);
                             }}>Go to rules!</a>
                             <Row className="justify-content-center mt-4">
+                                <h5>Share rules:</h5>
+                            </Row>
+                            <Row className="justify-content-center mt-2">
                                 <Col/>
                                 <Col>
                                     <EmailShareButton
