@@ -1,5 +1,13 @@
 # PlanB
 
+Project for Human Computer Interaction (02JSKOV) course @ Politecnico di Torino.
+
+## Contributors
+- Lanfranco Dario s287524
+- Marino Jacopo s281949
+- Molteni Lorenzo s
+- Nuovo Caterina s280091
+
 ## Application Routes
 - Route `/`: entrypoint of the application
 - Route `/login`: page handling login phase
