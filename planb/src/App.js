@@ -78,12 +78,6 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/*<Route exact path="/" element={
-                    isSignedIn ? <Navigate replace to="/mygames"/> : (
-                        loading ?
-                            <Welcome/> :
-                            <Navigate replace to="/login"/>
-                    )}/>*/}
                 <Route exact path="/" element={
                     loading ? <Welcome/> : (
                         isSignedIn ?
@@ -123,38 +117,33 @@ function App() {
                 }/>
 
                 <Route exact path="/newsession" element={
-                    //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
-                    <NewSession
-                        games={games}
-                        sessionPlayers={sessionPlayers} setSessionPlayers={setSessionPlayers}
-                        sessionHours={sessionHours} setSessionHours={setSessionHours}
-                        sessionMinutes={sessionMinutes} setSessionMinutes={setSessionMinutes}
-                        sessionCategories={sessionCategories} setSessionCategories={setSessionCategories}
-                        sessionDifficulty={sessionDifficulty} setSessionDifficulty={setSessionDifficulty}
-                    />
+                    isSignedIn ?
+                        <NewSession
+                            games={games}
+                            sessionPlayers={sessionPlayers} setSessionPlayers={setSessionPlayers}
+                            sessionHours={sessionHours} setSessionHours={setSessionHours}
+                            sessionMinutes={sessionMinutes} setSessionMinutes={setSessionMinutes}
+                            sessionCategories={sessionCategories} setSessionCategories={setSessionCategories}
+                            sessionDifficulty={sessionDifficulty} setSessionDifficulty={setSessionDifficulty}
+                        />
+                        :
+                        <Navigate replace to="/login"/>
                 }/>
 
                 <Route exact path="/gamesfound" element={
-                    //isSignedIn ? <div/> : <Navigate replace to = "/login"/>
-                    <GamesFound
-                        games={games}
-                        gamesLoading={gamesLoading}
-                        sessionPlayers={sessionPlayers}
-                        sessionHours={sessionHours}
-                        sessionMinutes={sessionMinutes}
-                        sessionCategories={sessionCategories}
-                        sessionDifficulty={sessionDifficulty}
-                    />
+                    isSignedIn ?
+                        <GamesFound
+                            games={games}
+                            gamesLoading={gamesLoading}
+                            sessionPlayers={sessionPlayers}
+                            sessionHours={sessionHours}
+                            sessionMinutes={sessionMinutes}
+                            sessionCategories={sessionCategories}
+                            sessionDifficulty={sessionDifficulty}
+                        />
+                        :
+                        <Navigate replace to="/login"/>
                 }/>
-
-                {/*<Route exact path="/rules" element={
-                    //isSignedIn ? <Rules pdf_url={"https://www.hasbro.com/common/instruct/00009.pdf"} /> : <Navigate replace to="/login"/>
-                    //<Rules pdf_url={"https://www.hasbro.com/common/instruct/00009.pdf"} />
-                }/>*/}
-
-                {/*<Route exact path="/suggest" element={
-                    isSignedIn ? <div/> : <Navigate replace to="/login"/>
-                }/>*/}
 
                 <Route exact path="/error" element={<WelcomeDesktop/>}/>
             </Routes>
