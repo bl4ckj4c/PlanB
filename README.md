@@ -5,7 +5,7 @@ Project for Human Computer Interaction (02JSKOV) course @ Politecnico di Torino.
 ## Contributors
 - Lanfranco Dario s287524
 - Marino Jacopo s281949
-- Molteni Lorenzo s
+- Molteni Lorenzo s289650
 - Nuovo Caterina s280091
 
 ## Application Routes
