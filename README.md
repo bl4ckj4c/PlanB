@@ -19,8 +19,7 @@ In our case the original project idea is already self-explanatory. However we wo
 - Route `/error`: page handling a device that is using a desktop browser, showing an error message
 
 ## Database
-The database is implemented using Firebase and its APIs. In order to run the project is needed to add the configuration file following the absolute path (starting from the root folder of the repository): `planb/src/firebase-client/config.js`.
-The configuration file can be found as a GitHub issue, in order to avoid pushing it directly inside the repository for security reasons.
+The database is implemented using Firebase and its APIs.
 ### Tables
 - Table `Games` is used to store the predefined game list used in the `/addgame` page. It contains `Categories` `Description` `Difficulty` `Duration` `ImageId` `PlayersMax` `PlayersMin` `Rules` `Title`
 - Table `SuggestGame` is used to store the suggest game requests. It contains `Description` `Title`
